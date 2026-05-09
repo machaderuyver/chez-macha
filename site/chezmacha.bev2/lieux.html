@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <meta name="description" content="Les lieux partenaires de Chez Macha — bars, restos et espaces insolites qui accueillent nos soirées stand-up." />
+  <title>Partenaires — Chez Macha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700;800;900&family=Didact+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    h1 { margin-bottom: 1rem; }
+    .intro { margin-bottom: 3rem; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    .lieu {
+      background: var(--bg-card);
+      border: 2px solid #D4A017;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 10px rgba(212,160,23,0.15);
+    }
+    .lieu:hover { border-color: #f5c518; box-shadow: 0 0 20px rgba(212,160,23,0.3); }
+
+    .lieu-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      background: #0a0e1a;
+    }
+    .lieu-img-placeholder {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #0a0e1a, #0e1220);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .lieu-body { padding: 1.25rem 1.5rem; }
+    .lieu-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .lieu h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .lieu p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .lieu-loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--yellow);
+      margin-top: 0.6rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 700;
+    }
+
+    .cta { margin-top: 3rem; margin-bottom: 3rem; text-align: center; }
+    .cta p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem; }
+
+    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .lieu-img { height: 130px; }
+      .lieu-body { padding: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .cta { margin-top: 2rem; margin-bottom: 2rem; }
+      .cta .btn { width: 100%; box-sizing: border-box; }
+    }
+
+    /* ── DÉCO LATÉRALE PARTENAIRES ── */
+    .tex-side {
+      position: fixed;
+      top: 130px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.82;
+    }
+    .tex-left  { left: 0;  width: calc(50vw - 440px); max-width: 158px; display: flex; justify-content: flex-end; }
+    .tex-right { right: 0; width: calc(50vw - 430px); max-width: 215px; }
+    .tex-side svg { width: 100%; height: auto; display: block; }
+    @media (max-width: 1180px) { .tex-side { display: none; } }
+  </style>
+
+  <style>
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 768px) {
+      .site-header { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+      .page { padding-left: 1rem !important; padding-right: 1rem !important; box-sizing: border-box; }
+
+      img { max-width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;">
+        <a href="index.html"><img class="logo" src="Logo_officiel_transparent.png" alt="Chez Macha" /></a>
+        <div class="header-socials">
+          <a class="social-btn" href="https://www.instagram.com/chezmacha_standup/" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/ChezMachaComedyclub/" target="_blank" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@chezmacha_standup" target="_blank" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
+          </a>
+                  <a class="social-btn" href="mailto:info@chezmacha.be" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <polyline points="2,4 12,13 22,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:1rem;">
+      <ul class="site-nav">
+                <li><a href="index.html">Accueil</a></li>
+        <li><a href="tickets.html">Agenda</a></li>
+        <li><a href="lieux.html" class="active">Partenaires</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="presse.html">Presse</a></li>
+        <li><a href="asbl.html">ASBL</a></li>
+      </ul>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <!-- Menu mobile -->
+  <div class="mobile-nav-panel" id="mobileNavPanel"></div>
+
+  <!-- ══ DÉCO LATÉRALE PARTENAIRES ══ -->
+
+  <!-- ══ DÉCO LATÉRALE PARTENAIRES ══ -->
+
+  <!-- GAUCHE : Amphithéâtre grec vue de biais -->
+  <div class="tex-side tex-left" aria-hidden="true">
+    <svg viewBox="0 0 100 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Étoiles + croissant de lune -->
+      <circle cx="12" cy="18" r="1"   fill="#fcbc1c" opacity="0.52"/><circle cx="28" cy="8"  r="1.3" fill="#fcbc1c" opacity="0.65"/>
+      <circle cx="44" cy="22" r="0.8" fill="#fcbc1c" opacity="0.5"/><circle cx="62" cy="12" r="1"   fill="#fcbc1c" opacity="0.58"/>
+      <circle cx="78" cy="5"  r="1.1" fill="#fcbc1c" opacity="0.55"/><circle cx="92" cy="28" r="0.9" fill="#fcbc1c" opacity="0.48"/>
+      <circle cx="35" cy="35" r="0.7" fill="#fcbc1c" opacity="0.4"/><circle cx="82" cy="32" r="0.8" fill="#fcbc1c" opacity="0.44"/>
+      <circle cx="16" cy="52" r="13" fill="rgba(252,188,28,0.1)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <circle cx="22" cy="48" r="11" fill="rgba(4,6,20,0.95)"/>
+      <!-- Mur arrière incurvé -->
+      <path d="M 0 138 Q 22 115 52 120 Q 78 125 100 138 L 100 156 Q 78 144 52 139 Q 22 133 0 156 Z" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M 0 138 Q 22 115 52 120 Q 78 125 100 138" stroke="#fcbc1c" stroke-width="2" fill="none"/>
+      <g fill="#fcbc1c" opacity="0.62">
+        <rect x="2"  y="132" width="5" height="7"/><rect x="12" y="126" width="5" height="7"/>
+        <rect x="22" y="122" width="5" height="7"/><rect x="32" y="120" width="5" height="7"/>
+        <rect x="42" y="119" width="5" height="7"/><rect x="52" y="120" width="5" height="7"/>
+        <rect x="62" y="122" width="5" height="7"/><rect x="72" y="126" width="5" height="7"/>
+        <rect x="82" y="130" width="5" height="7"/><rect x="92" y="135" width="5" height="7"/>
+      </g>
+      <!-- Gradins en perspective -->
+      <path d="M 0 158 Q 50 154 100 158" stroke="#fcbc1c" stroke-width="1.2" opacity="0.7" fill="none"/>
+      <path d="M 0 158 Q 50 154 100 158 L 100 169 Q 50 165 0 169 Z" fill="rgba(252,188,28,0.08)"/>
+      <path d="M 0 171 Q 50 168 100 171" stroke="#fcbc1c" stroke-width="1.2" opacity="0.68" fill="none"/>
+      <path d="M 0 171 Q 50 168 100 171 L 100 183 Q 50 180 0 183 Z" fill="rgba(252,188,28,0.08)"/>
+      <path d="M 0 185 Q 50 182 100 185" stroke="#fcbc1c" stroke-width="1.3" opacity="0.66" fill="none"/>
+      <path d="M 0 185 Q 50 182 100 185 L 100 198 Q 50 195 0 198 Z" fill="rgba(252,188,28,0.08)"/>
+      <path d="M 0 200 Q 50 198 100 200" stroke="#fcbc1c" stroke-width="1.3" opacity="0.64" fill="none"/>
+      <path d="M 0 200 Q 50 198 100 200 L 100 214 Q 50 212 0 214 Z" fill="rgba(252,188,28,0.09)"/>
+      <path d="M 0 216 Q 50 214 100 216" stroke="#fcbc1c" stroke-width="1.3" opacity="0.63" fill="none"/>
+      <path d="M 0 216 Q 50 214 100 216 L 100 230 Q 50 228 0 230 Z" fill="rgba(252,188,28,0.09)"/>
+      <path d="M 0 232 Q 50 230 100 232" stroke="#fcbc1c" stroke-width="1.4" opacity="0.62" fill="none"/>
+      <path d="M 0 232 Q 50 230 100 232 L 100 247 Q 50 245 0 247 Z" fill="rgba(252,188,28,0.09)"/>
+      <path d="M 0 249 L 100 249" stroke="#fcbc1c" stroke-width="1.4" opacity="0.61" fill="none"/>
+      <rect x="0" y="249" width="100" height="15" fill="rgba(252,188,28,0.09)"/>
+      <path d="M 0 265 L 100 265" stroke="#fcbc1c" stroke-width="1.5" opacity="0.61" fill="none"/>
+      <rect x="0" y="265" width="100" height="16" fill="rgba(252,188,28,0.09)"/>
+      <!-- Diazoma -->
+      <rect x="0" y="281" width="100" height="13" fill="rgba(252,188,28,0.16)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <text x="50" y="291" font-family="Jost,sans-serif" font-size="4.5" font-weight="700" fill="rgba(252,188,28,0.55)" text-anchor="middle" letter-spacing="2">DIAZOMA</text>
+      <!-- Gradins inférieurs -->
+      <path d="M 0 295 L 100 295" stroke="#fcbc1c" stroke-width="1.5" opacity="0.62" fill="none"/>
+      <rect x="0" y="295" width="100" height="14" fill="rgba(252,188,28,0.09)"/>
+      <path d="M 0 310 L 100 310" stroke="#fcbc1c" stroke-width="1.5" opacity="0.63" fill="none"/>
+      <rect x="0" y="310" width="100" height="15" fill="rgba(252,188,28,0.1)"/>
+      <path d="M 0 326 L 100 326" stroke="#fcbc1c" stroke-width="1.6" opacity="0.64" fill="none"/>
+      <rect x="0" y="326" width="100" height="15" fill="rgba(252,188,28,0.1)"/>
+      <!-- Allées scalaria -->
+      <line x1="50" y1="156" x2="50" y2="281" stroke="rgba(252,188,28,0.2)" stroke-width="2.5"/>
+      <line x1="50" y1="294" x2="50" y2="341" stroke="rgba(252,188,28,0.2)" stroke-width="2.5"/>
+      <line x1="18" y1="158" x2="18" y2="281" stroke="rgba(252,188,28,0.13)" stroke-width="1.8"/>
+      <line x1="18" y1="294" x2="18" y2="341" stroke="rgba(252,188,28,0.13)" stroke-width="1.8"/>
+      <line x1="82" y1="158" x2="82" y2="281" stroke="rgba(252,188,28,0.13)" stroke-width="1.8"/>
+      <line x1="82" y1="294" x2="82" y2="341" stroke="rgba(252,188,28,0.13)" stroke-width="1.8"/>
+      <!-- Orchestra -->
+      <rect x="8" y="341" width="84" height="14" fill="rgba(252,188,28,0.15)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <ellipse cx="50" cy="348" rx="26" ry="5.5" stroke="#fcbc1c" stroke-width="0.9" fill="none" stroke-dasharray="5 3" opacity="0.5"/>
+      <!-- Colonnes doriques + entablement -->
+      <rect x="6" y="323" width="88" height="9" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.6"/>
+      <g fill="rgba(252,188,28,0.38)">
+        <rect x="12" y="324" width="5" height="7"/><rect x="23" y="324" width="5" height="7"/>
+        <rect x="34" y="324" width="5" height="7"/><rect x="45" y="324" width="5" height="7"/>
+        <rect x="56" y="324" width="5" height="7"/><rect x="67" y="324" width="5" height="7"/>
+        <rect x="78" y="324" width="5" height="7"/>
+      </g>
+      <rect x="10" y="295" width="9" height="28" fill="rgba(0,0,0,0.9)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <line x1="12.5" y1="295" x2="12.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="15"   y1="295" x2="15"   y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="17.5" y1="295" x2="17.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <rect x="8" y="291" width="13" height="4" fill="rgba(252,188,28,0.42)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="44" y="295" width="9" height="28" fill="rgba(0,0,0,0.9)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <line x1="46.5" y1="295" x2="46.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="49"   y1="295" x2="49"   y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="51.5" y1="295" x2="51.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <rect x="42" y="291" width="13" height="4" fill="rgba(252,188,28,0.42)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="78" y="295" width="9" height="28" fill="rgba(0,0,0,0.9)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <line x1="80.5" y1="295" x2="80.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="83"   y1="295" x2="83"   y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <line x1="85.5" y1="295" x2="85.5" y2="323" stroke="rgba(252,188,28,0.28)" stroke-width="0.8"/>
+      <rect x="76" y="291" width="13" height="4" fill="rgba(252,188,28,0.42)" stroke="#fcbc1c" stroke-width="1"/>
+      <!-- Texte bas -->
+      <line x1="12" y1="366" x2="88" y2="366" stroke="#fcbc1c" stroke-width="1" opacity="0.48"/>
+      <text x="50" y="378" font-family="Jost,sans-serif" font-size="8" font-weight="900" fill="rgba(252,188,28,0.65)" text-anchor="middle" letter-spacing="2.5">THÉÂTRE</text>
+      <text x="50" y="389" font-family="Jost,sans-serif" font-size="6.5" font-weight="700" fill="rgba(252,188,28,0.48)" text-anchor="middle" letter-spacing="1.5">ODÉON</text>
+      <line x1="12" y1="394" x2="88" y2="394" stroke="#fcbc1c" stroke-width="1" opacity="0.48"/>
+    </svg>
+  </div>
+
+  <!-- DROITE : Allée de Broadway -->
+  <div class="tex-side tex-right" aria-hidden="true">
+    <svg viewBox="0 0 200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10"  cy="12" r="1"   fill="#fcbc1c" opacity="0.5"/><circle cx="25"  cy="5"  r="1.2" fill="#fcbc1c" opacity="0.6"/>
+      <circle cx="45"  cy="18" r="0.8" fill="#fcbc1c" opacity="0.45"/><circle cx="62"  cy="8"  r="1"   fill="#fcbc1c" opacity="0.55"/>
+      <circle cx="80"  cy="22" r="0.8" fill="#fcbc1c" opacity="0.4"/><circle cx="120" cy="14" r="1"   fill="#fcbc1c" opacity="0.5"/>
+      <circle cx="142" cy="6"  r="1.3" fill="#fcbc1c" opacity="0.65"/><circle cx="162" cy="20" r="0.9" fill="#fcbc1c" opacity="0.48"/>
+      <circle cx="182" cy="10" r="1"   fill="#fcbc1c" opacity="0.55"/><circle cx="196" cy="26" r="0.8" fill="#fcbc1c" opacity="0.42"/>
+      <!-- Enseigne néon BROADWAY -->
+      <rect x="36" y="36" width="128" height="32" rx="4" fill="rgba(0,0,0,0.9)" stroke="#fcbc1c" stroke-width="2"/>
+      <circle cx="44" cy="40" r="2" fill="#fcbc1c"/><circle cx="52" cy="40" r="2" fill="#fcbc1c"/><circle cx="60" cy="40" r="2" fill="#fcbc1c"/><circle cx="68" cy="40" r="2" fill="#fcbc1c"/>
+      <circle cx="76" cy="40" r="2" fill="#fcbc1c"/><circle cx="84" cy="40" r="2" fill="#fcbc1c"/><circle cx="92" cy="40" r="2" fill="#fcbc1c"/><circle cx="100" cy="40" r="2" fill="#fcbc1c"/>
+      <circle cx="108" cy="40" r="2" fill="#fcbc1c"/><circle cx="116" cy="40" r="2" fill="#fcbc1c"/><circle cx="124" cy="40" r="2" fill="#fcbc1c"/><circle cx="132" cy="40" r="2" fill="#fcbc1c"/>
+      <circle cx="140" cy="40" r="2" fill="#fcbc1c"/><circle cx="148" cy="40" r="2" fill="#fcbc1c"/><circle cx="156" cy="40" r="2" fill="#fcbc1c"/>
+      <circle cx="44" cy="66" r="2" fill="#fcbc1c"/><circle cx="52" cy="66" r="2" fill="#fcbc1c"/><circle cx="60" cy="66" r="2" fill="#fcbc1c"/><circle cx="68" cy="66" r="2" fill="#fcbc1c"/>
+      <circle cx="76" cy="66" r="2" fill="#fcbc1c"/><circle cx="84" cy="66" r="2" fill="#fcbc1c"/><circle cx="92" cy="66" r="2" fill="#fcbc1c"/><circle cx="100" cy="66" r="2" fill="#fcbc1c"/>
+      <circle cx="108" cy="66" r="2" fill="#fcbc1c"/><circle cx="116" cy="66" r="2" fill="#fcbc1c"/><circle cx="124" cy="66" r="2" fill="#fcbc1c"/><circle cx="132" cy="66" r="2" fill="#fcbc1c"/>
+      <circle cx="140" cy="66" r="2" fill="#fcbc1c"/><circle cx="148" cy="66" r="2" fill="#fcbc1c"/><circle cx="156" cy="66" r="2" fill="#fcbc1c"/>
+      <circle cx="38" cy="48" r="2" fill="#fcbc1c"/><circle cx="38" cy="56" r="2" fill="#fcbc1c"/>
+      <circle cx="162" cy="48" r="2" fill="#fcbc1c"/><circle cx="162" cy="56" r="2" fill="#fcbc1c"/>
+      <text x="100" y="59" font-family="Jost,sans-serif" font-size="14" font-weight="900" fill="#fcbc1c" text-anchor="middle" letter-spacing="2">BROADWAY</text>
+      <rect x="30" y="30" width="140" height="44" rx="6" stroke="rgba(252,188,28,0.16)" stroke-width="6" fill="none"/>
+      <!-- Bâtiment gauche -->
+      <rect x="0" y="92" width="74" height="332" fill="rgba(0,0,0,0.85)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <rect x="0" y="92" width="74" height="10" fill="rgba(252,188,28,0.24)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="8"  y="110" width="13" height="17" rx="1" fill="rgba(252,188,28,0.3)"  stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="26" y="110" width="13" height="17" rx="1" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="44" y="110" width="13" height="17" rx="1" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="8"  y="135" width="13" height="17" rx="1" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="26" y="135" width="13" height="17" rx="1" fill="rgba(252,188,28,0.32)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="44" y="135" width="13" height="17" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <!-- Marquise théâtre -->
+      <rect x="0" y="155" width="74" height="46" fill="rgba(0,0,0,0.92)" stroke="#fcbc1c" stroke-width="2.2"/>
+      <circle cx="6"  cy="159" r="2.2" fill="#fcbc1c"/><circle cx="14" cy="159" r="2.2" fill="#fcbc1c"/><circle cx="22" cy="159" r="2.2" fill="#fcbc1c"/><circle cx="30" cy="159" r="2.2" fill="#fcbc1c"/>
+      <circle cx="38" cy="159" r="2.2" fill="#fcbc1c"/><circle cx="46" cy="159" r="2.2" fill="#fcbc1c"/><circle cx="54" cy="159" r="2.2" fill="#fcbc1c"/><circle cx="62" cy="159" r="2.2" fill="#fcbc1c"/>
+      <circle cx="6"  cy="198" r="2.2" fill="#fcbc1c"/><circle cx="14" cy="198" r="2.2" fill="#fcbc1c"/><circle cx="22" cy="198" r="2.2" fill="#fcbc1c"/><circle cx="30" cy="198" r="2.2" fill="#fcbc1c"/>
+      <circle cx="38" cy="198" r="2.2" fill="#fcbc1c"/><circle cx="46" cy="198" r="2.2" fill="#fcbc1c"/><circle cx="54" cy="198" r="2.2" fill="#fcbc1c"/><circle cx="62" cy="198" r="2.2" fill="#fcbc1c"/>
+      <circle cx="2"  cy="167" r="2.2" fill="#fcbc1c"/><circle cx="2"  cy="177" r="2.2" fill="#fcbc1c"/><circle cx="2"  cy="188" r="2.2" fill="#fcbc1c"/>
+      <circle cx="70" cy="167" r="2.2" fill="#fcbc1c"/><circle cx="70" cy="177" r="2.2" fill="#fcbc1c"/><circle cx="70" cy="188" r="2.2" fill="#fcbc1c"/>
+      <text x="37" y="176" font-family="Jost,sans-serif" font-size="9.5" font-weight="900" fill="#fcbc1c" text-anchor="middle" letter-spacing="1.5">COMEDY</text>
+      <text x="37" y="188" font-family="Jost,sans-serif" font-size="7" font-weight="700" fill="rgba(252,188,28,0.72)" text-anchor="middle" letter-spacing="1">STAND-UP</text>
+      <rect x="8"  y="208" width="13" height="17" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="26" y="208" width="13" height="17" rx="1" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="44" y="208" width="13" height="17" rx="1" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="8"  y="268" width="13" height="17" rx="1" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="26" y="268" width="13" height="17" rx="1" fill="rgba(252,188,28,0.32)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="44" y="268" width="13" height="17" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <path d="M 22 424 L 22 400 Q 22 385 37 385 Q 52 385 52 400 L 52 424 Z" fill="rgba(252,188,28,0.14)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <line x1="68" y1="92" x2="68" y2="385" stroke="#fcbc1c" stroke-width="1.3" opacity="0.55"/>
+      <line x1="73" y1="92" x2="73" y2="385" stroke="#fcbc1c" stroke-width="1.3" opacity="0.55"/>
+      <line x1="65" y1="155" x2="76" y2="155" stroke="#fcbc1c" stroke-width="1.8" opacity="0.6"/>
+      <line x1="65" y1="220" x2="76" y2="220" stroke="#fcbc1c" stroke-width="1.8" opacity="0.6"/>
+      <line x1="65" y1="290" x2="76" y2="290" stroke="#fcbc1c" stroke-width="1.8" opacity="0.6"/>
+      <!-- Bâtiment droit -->
+      <rect x="130" y="78" width="70" height="346" fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <rect x="130" y="78" width="70" height="9" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="136" y="96"  width="14" height="18" rx="1" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="96"  width="14" height="18" rx="1" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="136" y="122" width="14" height="18" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="122" width="14" height="18" rx="1" fill="rgba(252,188,28,0.32)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="136" y="148" width="14" height="18" rx="1" fill="rgba(252,188,28,0.25)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="148" width="14" height="18" rx="1" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="136" y="174" width="14" height="18" rx="1" fill="rgba(252,188,28,0.3)"  stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="174" width="14" height="18" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="136" y="200" width="14" height="18" rx="1" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="200" width="14" height="18" rx="1" fill="rgba(252,188,28,0.26)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="136" y="252" width="14" height="18" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="155" y="252" width="14" height="18" rx="1" fill="rgba(252,188,28,0.3)"  stroke="#fcbc1c" stroke-width="0.9"/>
+      <rect x="130" y="308" width="70" height="44" fill="rgba(0,0,0,0.9)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <text x="165" y="328" font-family="Jost,sans-serif" font-size="9" font-weight="900" fill="#fcbc1c" text-anchor="middle" letter-spacing="1.5">COMEDY</text>
+      <text x="165" y="342" font-family="Jost,sans-serif" font-size="7" font-weight="700" fill="rgba(252,188,28,0.7)" text-anchor="middle" letter-spacing="1">IS KING</text>
+      <line x1="128" y1="78" x2="128" y2="424" stroke="#fcbc1c" stroke-width="1.3" opacity="0.52"/>
+      <line x1="134" y1="78" x2="134" y2="424" stroke="#fcbc1c" stroke-width="1.3" opacity="0.52"/>
+      <line x1="125" y1="145" x2="136" y2="145" stroke="#fcbc1c" stroke-width="1.6" opacity="0.58"/>
+      <line x1="125" y1="215" x2="136" y2="215" stroke="#fcbc1c" stroke-width="1.6" opacity="0.58"/>
+      <line x1="125" y1="280" x2="136" y2="280" stroke="#fcbc1c" stroke-width="1.6" opacity="0.58"/>
+      <!-- Allée centrale perspective -->
+      <path d="M 74 424 L 101 155 L 130 424 Z" fill="rgba(252,188,28,0.04)"/>
+      <line x1="74"  y1="424" x2="101" y2="155" stroke="#fcbc1c" stroke-width="1.2" opacity="0.38"/>
+      <line x1="130" y1="424" x2="101" y2="155" stroke="#fcbc1c" stroke-width="1.2" opacity="0.38"/>
+      <line x1="80"  y1="370" x2="122" y2="370" stroke="rgba(252,188,28,0.2)" stroke-width="1"/>
+      <line x1="83"  y1="330" x2="119" y2="330" stroke="rgba(252,188,28,0.16)" stroke-width="0.9"/>
+      <line x1="86"  y1="288" x2="116" y2="288" stroke="rgba(252,188,28,0.13)" stroke-width="0.8"/>
+      <line x1="101" y1="340" x2="101" y2="424" stroke="#fcbc1c" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 101 340 Q 101 328 110 326" stroke="#fcbc1c" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="111" cy="325" r="5.5" fill="rgba(252,188,28,0.42)" stroke="#fcbc1c" stroke-width="1.2" opacity="0.65"/>
+      <!-- Trottoir + texte bas -->
+      <rect x="0" y="424" width="200" height="14" fill="rgba(252,188,28,0.16)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <rect x="0" y="438" width="200" height="10" fill="rgba(252,188,28,0.1)"  stroke="#fcbc1c" stroke-width="1"/>
+      <line x1="20"  y1="462" x2="180" y2="462" stroke="#fcbc1c" stroke-width="1" opacity="0.48"/>
+      <text x="100" y="474" font-family="Jost,sans-serif" font-size="9" font-weight="900" fill="rgba(252,188,28,0.65)" text-anchor="middle" letter-spacing="2">BROADWAY</text>
+      <text x="100" y="485" font-family="Jost,sans-serif" font-size="6.5" font-weight="700" fill="rgba(252,188,28,0.48)" text-anchor="middle" letter-spacing="1.5">BOULEVARD</text>
+      <line x1="20"  y1="490" x2="180" y2="490" stroke="#fcbc1c" stroke-width="1" opacity="0.48"/>
+    </svg>
+  </div>
+
+<div class="page">
+
+    <p class="label">Nos lieux partenaires</p>
+    <h1>Ils nous<br><span>accueillent</span></h1>
+    <p class="intro">Chez Macha, c'est du stand-up dans des endroits qui ont une âme. Voici les lieux qui nous font confiance et qui donnent le ton à chaque soirée.</p>
+
+    <div class="cta">
+      <p>Vous gérez un lieu et souhaitez accueillir une soirée Chez Macha ?</p>
+      <a href="mailto:info@chezmacha.be?subject=Proposition de lieu partenaire" class="btn btn-primary">Proposer votre lieu</a>
+    </div>
+
+    <div class="grid">
+
+      <!-- Chez Bobbi — 1er -->
+      <div class="lieu">
+        <img class="lieu-img" src="https://www.chezbobbi.be/wp-content/uploads/2022/03/web-logo-round.png" alt="Chez Bobbi" style="object-fit:contain;padding:1rem;background:#fff;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Bar & brasserie</p>
+          <h2>Chez Bobbi</h2>
+          <p>Un bar chaleureux à Haut-Ittre qui accueille régulièrement nos plateaux — ambiance garantie, bières aussi.</p>
+          <span class="lieu-loc">📍 Ittre</span>
+        </div>
+      </div>
+
+      <!-- Ten Gallery — 2e -->
+      <div class="lieu">
+        <img class="lieu-img" src="logos/ten-gallery.png" alt="Ten Gallery" style="object-fit:contain;padding:1.25rem;background:#fff;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Galerie d'art</p>
+          <h2>Ten Gallery</h2>
+          <p>Un espace atypique où l'art et l'humour se rencontrent — Ten Gallery accueille nos plateaux dans un cadre unique et inspirant.</p>
+          <span class="lieu-loc">📍 Knokke</span>
+        </div>
+      </div>
+
+      <!-- Tribu Bar — 3e -->
+      <div class="lieu">
+        <img class="lieu-img" src="logos/tribu-bar.png" alt="Tribu Bar" style="object-fit:contain;padding:1.5rem;background:#fff;object-position:center;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Bar culturel</p>
+          <h2>Tribu Bar</h2>
+          <p>Un bar de quartier à Ixelles avec du caractère — exactement le genre d'endroit où le stand-up trouve sa place naturellement.</p>
+          <span class="lieu-loc">📍 Ixelles</span>
+        </div>
+      </div>
+
+      <!-- Padel Montjoie -->
+      <div class="lieu">
+        <img class="lieu-img" src="logos/MONTJOIE_Logo_DEF_2022_2.png" alt="Padel Montjoie" style="object-fit:contain;padding:1rem;background:#fff;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Club de padel</p>
+          <h2>Padel Montjoie</h2>
+          <p>Un club de padel qui se transforme en salle de stand-up — le combo sport et humour qu'on n'attendait pas.</p>
+          <span class="lieu-loc">📍 Uccle</span>
+        </div>
+      </div>
+
+      <!-- Wine Club Uccle -->
+      <div class="lieu">
+        <img class="lieu-img" src="https://thewineclub.be/wp-content/uploads/2023/10/wine-club-logo.svg" alt="The Wine Club" style="object-fit:contain;padding:1.5rem;background:#fff;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Bar à vins</p>
+          <h2>Wine Club</h2>
+          <p>Le cadre intimiste du Fort Jaco pour des soirées stand-up au coin d'un verre — élégant et décalé à la fois.</p>
+          <span class="lieu-loc">📍 Uccle — Fort Jaco</span>
+        </div>
+      </div>
+
+      <!-- Côté Meuse -->
+      <div class="lieu">
+        <img class="lieu-img" src="logos/cote-meuse.jpg" alt="Côté Meuse" style="object-fit:contain;padding:1rem;background:#f5f0eb;" />
+        <div class="lieu-body">
+          <p class="lieu-tag">Restaurant</p>
+          <h2>Côté Meuse</h2>
+          <p>Un restaurant avec vue sur la Meuse à Namur — dîner et stand-up dans un cadre pittoresque, loin de la capitale.</p>
+          <span class="lieu-loc">📍 Namur</span>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <!-- Lien vers partenariat Korian -->
+    <div style="margin-top:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+      <div>
+        <p style="font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.3rem;">Partenariat spécial</p>
+        <p style="font-family:'Jost',sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;margin-bottom:0.2rem;">Korian — Maisons de repos</p>
+        <p style="color:var(--text-muted);font-size:0.82rem;">Chez Macha amène le stand-up dans les établissements Korian dès septembre 2026.</p>
+      </div>
+      <a href="partenaires.html" class="btn btn-outline" style="white-space:nowrap;">En savoir plus →</a>
+    </div>
+
+
+  </div>
+
+  <div class="quote-centree">
+    <blockquote>
+      « Le rire est universel, il n'a pas de frontière ; c'est d'ailleurs lui qui nous unit tous ensemble. »
+    </blockquote>
+    <cite>— Macha De Ruyver, Fondatrice de Chez Macha</cite>
+  </div>
+  <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
+    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+    </nav>
+  </footer>
+  <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var panel = document.getElementById('mobileNavPanel');
+      if (!btn || !panel) return;
+      var links = document.querySelectorAll('.site-nav a');
+      links.forEach(function(link) {
+        var a = link.cloneNode(true);
+        panel.appendChild(a);
+      });
+      btn.addEventListener('click', function() {
+        var open = panel.classList.toggle('open');
+        btn.classList.toggle('open', open);
+      });
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('open');
+          btn.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

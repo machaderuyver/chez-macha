@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sondage – Dan Gagnon en spectacle</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f4f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+      color: #1a1a1a;
+    }
+
+    .survey {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    /* ── Banner ── */
+    .banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border-radius: 18px;
+      padding: 2rem 1.75rem 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 130px; height: 130px;
+      background: rgba(255,200,0,0.07);
+      border-radius: 50%;
+    }
+    .banner-emoji { font-size: 38px; margin-bottom: 0.5rem; }
+    .banner h1 { font-size: 21px; font-weight: 600; color: #FFD700; margin-bottom: 0.4rem; }
+    .banner p  { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .banner .badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.14);
+      border: 1px solid rgba(255,215,0,0.4);
+      color: #FFD700;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-top: 0.75rem;
+    }
+
+    /* ── Progress ── */
+    .progress-bar {
+      height: 4px;
+      background: #e0ddd6;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #FFD700;
+      border-radius: 2px;
+      transition: width 0.35s ease;
+      width: 0%;
+    }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* ── Question card ── */
+    .q-card {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .q-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    .q-sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: -0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Option cards (icons) ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .opt-card {
+      background: #f8f7f4;
+      border: 1px solid #e0ddd6;
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .opt-card:hover { border-color: #aaa; }
+    .opt-card.selected { background: #EBF4FF; border-color: #378ADD; }
+    .opt-card .icon  { font-size: 22px; margin-bottom: 6px; }
+    .opt-card .label { font-size: 12px; font-weight: 500; color: #333; }
+    .opt-card.selected .label { color: #0C447C; }
+
+    /* ── Age / pill buttons ── */
+    .age-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .age-btn {
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 13px;
+      color: #333;
+      background: #f8f7f4;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+      font-family: inherit;
+    }
+    .age-btn:hover { border-color: #aaa; }
+    .age-btn.selected { background: #EBF4FF; border-color: #378ADD; color: #0C447C; font-weight: 500; }
+
+    /* ── Scale ── */
+    .scale { display: flex; gap: 8px; }
+    .scale-btn {
+      flex: 1;
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      padding: 11px 4px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #f8f7f4;
+      color: #333;
+      transition: border-color 0.15s, background 0.15s;
+      text-align: center;
+      font-family: inherit;
+    }
+    .scale-btn:hover { border-color: #aaa; }
+    .scale-btn.selected { background: #EBF4FF; border-color: #378ADD; color: #0C447C; }
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    .scale-labels span { font-size: 11px; color: #888; }
+
+    /* ── Textarea ── */
+    .input-text {
+      width: 100%;
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #333;
+      background: #fafaf8;
+      outline: none;
+      transition: border-color 0.15s;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .input-text:focus { border-color: #378ADD; }
+
+    /* ── Nav buttons ── */
+    .nav { display: flex; gap: 10px; margin-top: 1.25rem; }
+    .btn-next {
+      flex: 1;
+      background: #1a1a2e;
+      color: #FFD700;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      font-family: inherit;
+    }
+    .btn-next:hover { opacity: 0.85; }
+    .btn-back {
+      background: #f0ede8;
+      border: 1px solid #d6d3cc;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+    .btn-back:hover { border-color: #aaa; }
+
+    /* ── Thank you ── */
+    .thankyou {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 2rem 1.5rem 1.75rem;
+      text-align: center;
+    }
+    .thankyou .big  { font-size: 42px; margin-bottom: 0.75rem; }
+    .thankyou h2   { font-size: 19px; font-weight: 600; color: #1a1a1a; margin-bottom: 0.6rem; }
+    .thankyou p    { font-size: 13px; color: #666; line-height: 1.7; }
+    .restart-btn {
+      margin-top: 1.25rem;
+      background: #f0ede8;
+      border: 1px solid #d6d3cc;
+      border-radius: 10px;
+      padding: 11px 22px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      color: #333;
+      transition: border-color 0.15s;
+    }
+    .restart-btn:hover { border-color: #aaa; }
+
+    /* ── Résultats admin ── */
+    #admin-panel {
+      display: none;
+      margin-top: 1.5rem;
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    #admin-panel h2 { font-size: 16px; font-weight: 600; margin-bottom: 1.25rem; color: #1a1a1a; }
+    .r-section { margin-bottom: 1.5rem; }
+    .r-section h3 { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .result-row { margin-bottom: 8px; }
+    .r-line { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 3px; }
+    .r-bar-bg { background: #f0ede8; border-radius: 4px; height: 7px; overflow: hidden; }
+    .r-bar    { height: 100%; border-radius: 4px; background: #378ADD; transition: width 0.5s ease; }
+    .r-count  { font-size: 11px; color: #aaa; }
+    .export-btn {
+      background: #1a1a2e;
+      color: #FFD700;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 0.5rem;
+    }
+    .export-btn:hover { opacity: 0.85; }
+    .admin-toggle {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 11px;
+      color: #bbb;
+      cursor: pointer;
+      user-select: none;
+    }
+    .admin-toggle:hover { color: #888; }
+
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .scale-btn { padding: 10px 2px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div style="width:100%;max-width:620px;margin:0 auto 0.75rem;padding:0 1rem;">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:system-ui,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#8a92a6;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color='#8a92a6'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour au site
+  </a>
+</div>
+
+<div class="survey">
+
+  <div class="banner">
+    <div class="banner-emoji">🎤</div>
+    <h1>Dan Gagnon en spectacle !</h1>
+    <p><em>« Tu comprendras quand tu seras grand »</em><br>Un spectacle familial pour faire découvrir le stand-up à vos enfants</p>
+    <span class="badge">8–12 ans et les grands enfants</span>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+  <div class="step active" id="s1">
+    <div class="q-card">
+      <div class="q-label">Seriez-vous intéressé(e) à assister à ce spectacle ?</div>
+      <div class="cards" id="q1">
+        <div class="opt-card" data-val="Oui, définitivement !"><div class="icon">🙋</div><div class="label">Oui, définitivement !</div></div>
+        <div class="opt-card" data-val="Probablement oui"><div class="icon">😊</div><div class="label">Probablement oui</div></div>
+        <div class="opt-card" data-val="Peut-être"><div class="icon">🤔</div><div class="label">Peut-être</div></div>
+        <div class="opt-card" data-val="Non"><div class="icon">😕</div><div class="label">Non</div></div>
+      </div>
+    </div>
+    <div class="nav"><button class="btn-next" onclick="nextStep(1)">Continuer →</button></div>
+  </div>
+
+  <div class="step" id="s2">
+    <div class="q-card">
+      <div class="q-label">Combien de personnes viendraient avec vous ?</div>
+      <div class="age-row" id="q2">
+        <button class="age-btn" data-val="Juste moi (1)">Juste moi</button>
+        <button class="age-btn" data-val="2 personnes">2 personnes</button>
+        <button class="age-btn" data-val="3 personnes">3 personnes</button>
+        <button class="age-btn" data-val="4 personnes">4 personnes</button>
+        <button class="age-btn" data-val="5 personnes ou plus">5 ou plus</button>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(2)">←</button>
+      <button class="btn-next" onclick="nextStep(2)">Continuer →</button>
+    </div>
+  </div>
+
+  <div class="step" id="s3">
+    <div class="q-card">
+      <div class="q-label">Quels âges ont les enfants qui viendraient ?</div>
+      <div class="q-sub">Sélectionnez tout ce qui s'applique</div>
+      <div class="age-row" id="q3">
+        <button class="age-btn" data-val="Moins de 6 ans">Moins de 6 ans</button>
+        <button class="age-btn" data-val="6–8 ans">6–8 ans</button>
+        <button class="age-btn" data-val="8–12 ans">8–12 ans</button>
+        <button class="age-btn" data-val="12–17 ans">12–17 ans</button>
+        <button class="age-btn" data-val="18 ans et plus">18 ans et +</button>
+        <button class="age-btn" data-val="Adultes seulement">Adultes seulement</button>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(3)">←</button>
+      <button class="btn-next" onclick="nextStep(3)">Continuer →</button>
+    </div>
+  </div>
+
+  <div class="step" id="s4">
+    <div class="q-card">
+      <div class="q-label">Quel format de spectacle vous convient le mieux ?</div>
+      <div class="cards" id="q4">
+        <div class="opt-card" data-val="En semaine le soir"><div class="icon">🌙</div><div class="label">En semaine, le soir</div></div>
+        <div class="opt-card" data-val="Week-end en après-midi"><div class="icon">☀️</div><div class="label">Week-end, après-midi</div></div>
+        <div class="opt-card" data-val="Week-end en soirée"><div class="icon">🌟</div><div class="label">Week-end, soirée</div></div>
+        <div class="opt-card" data-val="Peu importe"><div class="icon">🗓️</div><div class="label">Peu importe</div></div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(4)">←</button>
+      <button class="btn-next" onclick="nextStep(4)">Continuer →</button>
+    </div>
+  </div>
+
+  <div class="step" id="s5">
+    <div class="q-card">
+      <div class="q-label">Sur une échelle de 1 à 5, à quel point vos enfants connaissent-ils Dan Gagnon ?</div>
+      <div class="scale" id="q5">
+        <button class="scale-btn" data-val="1">1</button>
+        <button class="scale-btn" data-val="2">2</button>
+        <button class="scale-btn" data-val="3">3</button>
+        <button class="scale-btn" data-val="4">4</button>
+        <button class="scale-btn" data-val="5">5</button>
+      </div>
+      <div class="scale-labels"><span>Pas du tout</span><span>Très bien !</span></div>
+    </div>
+    <div class="q-card" style="margin-top:0.75rem">
+      <div class="q-label">Un commentaire ou une question ? <span style="font-size:12px; font-weight:400; color:#888">(optionnel)</span></div>
+      <textarea class="input-text" id="q6" rows="3" placeholder="Ex. : Est-ce que le spectacle est adapté aux 6 ans ? Y a-t-il un tarif famille ?"></textarea>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(5)">←</button>
+      <button class="btn-next" onclick="submitSurvey()">Envoyer mes réponses 🎤</button>
+    </div>
+  </div>
+
+  <div class="step" id="s6">
+    <div class="thankyou">
+      <div class="big">🎉</div>
+      <h2>Merci pour votre participation !</h2>
+      <p>Vos réponses nous aident à préparer le meilleur spectacle possible.<br>Restez à l'affût pour les billets — ça va être une belle soirée !</p>
+      <button class="restart-btn" onclick="restartSurvey()">Recommencer le sondage</button>
+    </div>
+    <div class="admin-toggle" onclick="toggleAdmin()">▸ Voir les résultats (admin)</div>
+    <div id="admin-panel">
+      <h2>📊 Résultats du sondage</h2>
+      <div id="results-content"></div>
+      <button class="export-btn" onclick="exportCSV()">Exporter CSV</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const responses = [];
+  const current_answer = {};
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  document.querySelectorAll('.opt-card, .scale-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('.age-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (this.parentElement.id === 'q3') {
+        this.classList.toggle('selected');
+      } else {
+        this.parentElement.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+      }
+    });
+  });
+
+  function getSelected(groupId, multi) {
+    const btns = document.querySelectorAll('#' + groupId + ' [data-val].selected');
+    if (!multi) return btns.length ? btns[0].dataset.val : null;
+    return Array.from(btns).map(b => b.dataset.val);
+  }
+
+  function updateProgress(step) {
+    document.getElementById('prog').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
+  }
+
+  function nextStep(from) {
+    if (from === 1) current_answer.interet  = getSelected('q1', false);
+    if (from === 2) current_answer.groupe   = getSelected('q2', false);
+    if (from === 3) current_answer.ages     = getSelected('q3', true);
+    if (from === 4) current_answer.format   = getSelected('q4', false);
+    document.getElementById('s' + from).classList.remove('active');
+    currentStep = from + 1;
+    document.getElementById('s' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevStep(from) {
+    document.getElementById('s' + from).classList.remove('active');
+    currentStep = from - 1;
+    document.getElementById('s' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+  }
+
+  function submitSurvey() {
+    current_answer.connaissance = getSelected('q5', false);
+    current_answer.commentaire  = document.getElementById('q6').value.trim();
+    current_answer.date         = new Date().toLocaleString('fr-CA');
+    responses.push(Object.assign({}, current_answer));
+    document.getElementById('s5').classList.remove('active');
+    document.getElementById('s6').classList.add('active');
+    document.getElementById('prog').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restartSurvey() {
+    document.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+    document.getElementById('q6').value = '';
+    document.getElementById('s6').classList.remove('active');
+    currentStep = 1;
+    document.getElementById('s1').classList.add('active');
+    updateProgress(1);
+    document.getElementById('admin-panel').style.display = 'none';
+  }
+
+  function toggleAdmin() {
+    const panel = document.getElementById('admin-panel');
+    if (panel.style.display === 'none' || panel.style.display === '') {
+      renderResults();
+      panel.style.display = 'block';
+    } else {
+      panel.style.display = 'none';
+    }
+  }
+
+  function countValues(key, multi) {
+    const counts = {};
+    responses.forEach(r => {
+      const val = r[key];
+      if (!val) return;
+      const arr = multi ? val : [val];
+      arr.forEach(v => { counts[v] = (counts[v] || 0) + 1; });
+    });
+    return counts;
+  }
+
+  function renderBar(label, counts) {
+    const total = responses.length || 1;
+    let html = '<div class="r-section"><h3>' + label + '</h3>';
+    Object.entries(counts).sort((a,b) => b[1]-a[1]).forEach(([k,v]) => {
+      const pct = Math.round((v / total) * 100);
+      html += '<div class="result-row"><div class="r-line"><span>' + k + '</span><span class="r-count">' + v + ' rép. · ' + pct + '%</span></div><div class="r-bar-bg"><div class="r-bar" style="width:' + pct + '%"></div></div></div>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderResults() {
+    const n = responses.length;
+    if (n === 0) {
+      document.getElementById('results-content').innerHTML = '<p style="color:#888;font-size:13px">Aucune réponse pour l\'instant.</p>';
+      return;
+    }
+    let html = '<p style="font-size:13px;color:#666;margin-bottom:1.25rem">' + n + ' réponse' + (n>1?'s':'') + ' enregistrée' + (n>1?'s':'') + '</p>';
+    html += renderBar('Intérêt pour le spectacle', countValues('interet', false));
+    html += renderBar('Taille du groupe', countValues('groupe', false));
+    html += renderBar('Âges des enfants', countValues('ages', true));
+    html += renderBar('Format préféré', countValues('format', false));
+    html += renderBar('Notoriété de Dan Gagnon (1-5)', countValues('connaissance', false));
+    const comments = responses.filter(r => r.commentaire).map(r => r.commentaire);
+    if (comments.length) {
+      html += '<div class="r-section"><h3>Commentaires</h3>';
+      comments.forEach(c => { html += '<p style="font-size:12px;color:#444;background:#f8f7f4;border-radius:8px;padding:8px 12px;margin-bottom:6px">' + c + '</p>'; });
+      html += '</div>';
+    }
+    document.getElementById('results-content').innerHTML = html;
+  }
+
+  function exportCSV() {
+    if (responses.length === 0) { alert('Aucune réponse à exporter.'); return; }
+    const headers = ['Date','Intérêt','Groupe','Âges','Format','Connaissance Dan Gagnon','Commentaire'];
+    const rows = responses.map(r => [
+      r.date || '', r.interet || '', r.groupe || '',
+      Array.isArray(r.ages) ? r.ages.join(' | ') : (r.ages || ''),
+      r.format || '', r.connaissance || '',
+      (r.commentaire || '').replace(/"/g, '""')
+    ].map(v => '"' + v + '"').join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'sondage-dan-gagnon.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>

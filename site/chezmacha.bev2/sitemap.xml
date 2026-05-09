@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://chezmacha.be/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://chezmacha.be/tickets.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://chezmacha.be/apropos.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/galerie.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/lieux.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/partenaires.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/sponsors.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/corporate.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/presse.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/newsletter.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://chezmacha.be/charte.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+</urlset>

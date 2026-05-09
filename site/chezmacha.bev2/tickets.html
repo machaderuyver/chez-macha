@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <meta name="description" content="Tous les plateaux Chez Macha — réservez vos places pour les prochaines soirées stand-up belges." />
+  <title>Tous les événements — Chez Macha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700;800;900&family=Didact+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-size: 15px; line-height: 1.6; }
+    .page { max-width: 860px; box-sizing: border-box; }
+    h1 { margin-bottom: 3rem; }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card:hover {
+      border-color: var(--yellow);
+      background: var(--bg-card-hover);
+    }
+
+    .event-card.featured {
+      border-color: rgba(252,188,28,0.4);
+      background: linear-gradient(135deg, #100d00 0%, var(--bg-card) 100%);
+    }
+
+    .event-thumb {
+      width: 90px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .event-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 48px;
+      flex-shrink: 0;
+    }
+
+    .event-day {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--yellow);
+    }
+
+    .event-month {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .event-body {
+      flex: 1;
+    }
+
+    .event-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .event-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--yellow);
+      color: #060917;
+      border-radius: 4px;
+      padding: 0.2em 0.6em;
+      flex-shrink: 0;
+    }
+
+    .event-row {
+      display: flex;
+      border: 2px solid #D4A017;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 10px rgba(212,160,23,0.15);
+    }
+    .event-row:hover { border-color: #f5c518; box-shadow: 0 0 18px rgba(212,160,23,0.3); }
+    .event-row.featured { border-color: #D4A017; box-shadow: 0 0 14px rgba(212,160,23,0.25); }
+    .event-row .event-card {
+      flex: 1;
+      border-radius: 0;
+      border: none;
+      border-right: 1px solid var(--border);
+    }
+    .event-row .event-card:hover { border-color: transparent; }
+    .event-map {
+      width: 160px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0.75rem;
+      background: var(--bg-card);
+      text-decoration: none;
+      border-left: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .event-map:hover { background: var(--bg-card-hover); }
+    .event-map svg { color: var(--yellow); flex-shrink: 0; }
+    .event-map-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .event-map-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .event-map-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid rgba(252,188,28,0.3);
+      border-radius: 5px;
+      padding: 0.25em 0.6em;
+      margin-top: 0.25rem;
+    }
+    @media (max-width: 600px) {
+      .quote-universelle { padding: 1rem 1.1rem; }
+      /* ── event-map en ligne sur mobile ── */
+      .event-map svg { width: 22px; height: 22px; }
+      .event-map-label { font-size: 0.65rem; }
+      .event-map-sub { font-size: 0.62rem; }
+      .event-map-cta { font-size: 0.55rem; padding: 0.2em 0.5em; }
+
+      /* Carte + map empilées */
+      .event-row { flex-direction: column; }
+      .event-map { width: 100%; flex-direction: row; padding: 0.75rem 1rem; gap: 0.75rem; border-left: none; border-top: 1px solid var(--border); }
+
+      /* Intérieur de la carte */
+      .event-card { padding: 0.9rem 1rem; gap: 0.75rem; flex-wrap: wrap; }
+      .event-thumb { width: 58px; height: 48px; } /* plus petit sur mobile mais visible */
+      .event-date { min-width: 40px; }
+      .event-day { font-size: 1.45rem; }
+      .event-body { flex: 1 1 160px; min-width: 0; } /* min-width:0 autorise le retour à la ligne */
+      .event-title { font-size: 0.92rem; white-space: normal; word-break: break-word; }
+      .event-meta { flex-wrap: wrap; gap: 0.35rem 0.75rem; font-size: 0.75rem; }
+      .badge { align-self: flex-start; }
+      .ticket-btn { font-size: 0.68rem; padding: 0.45em 0.85em; align-self: flex-end; }
+    }
+
+    .ticket-btn {
+      flex-shrink: 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--yellow);
+      color: #060917;
+      border-radius: 7px;
+      padding: 0.5em 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+      white-space: nowrap;
+    }
+
+
+    /* ── Événement passé (dynamique) ── */
+    .event-row.event-past { opacity: 0.52; }
+    .event-row.event-past .event-card,
+    .event-row.event-past > div.event-card { filter: grayscale(40%); cursor: default; pointer-events: none; }
+    .event-row.event-past .event-map { opacity: 0.6; }
+    .badge-past {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(138,146,166,0.18);
+      color: #8a92a6;
+      border: 1px solid rgba(138,146,166,0.3);
+      border-radius: 4px;
+      padding: 0.2em 0.6em;
+      flex-shrink: 0;
+    }
+    .ticket-btn-past {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(138,146,166,0.1);
+      color: #8a92a6;
+      border: 1px solid rgba(138,146,166,0.25);
+      border-radius: 7px;
+      padding: 0.5em 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      flex-shrink: 0;
+      cursor: default;
+    }
+
+    /* ── Citation centrée ── */
+    .quote-centree {
+      margin: 3rem auto 0;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(252,188,28,0.18);
+      max-width: 680px;
+    }
+    .quote-centree blockquote {
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      margin: 0;
+    }
+    .quote-centree cite {
+      display: block;
+      margin-top: 0.85rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    /* ── DÉCO TEX AVERY LATÉRALE ── */
+    .tex-side {
+      position: fixed;
+      top: 130px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.72;
+    }
+    .tex-left  { left: 0;  width: calc(50vw - 430px); max-width: 172px; display: flex; justify-content: flex-end; }
+    .tex-right { right: 0; width: calc(50vw - 435px); max-width: 148px; }
+    .tex-side svg { width: 100%; height: auto; }
+    @media (max-width: 1180px) { .tex-side { display: none; } }
+
+    .badge-urgence {
+      display: inline-block;
+      background: #ff4500;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+  </style>
+
+  <style>
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 768px) {
+      .site-header { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+      .page { padding-left: 1rem !important; padding-right: 1rem !important; box-sizing: border-box; }
+
+      img { max-width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;">
+        <a href="index.html"><img class="logo" src="Logo_officiel_transparent.png" alt="Chez Macha" /></a>
+        <div class="header-socials">
+          <a class="social-btn" href="https://www.instagram.com/chezmacha_standup/" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/ChezMachaComedyclub/" target="_blank" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@chezmacha_standup" target="_blank" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
+          </a>
+                  <a class="social-btn" href="mailto:info@chezmacha.be" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <polyline points="2,4 12,13 22,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:1rem;">
+      <ul class="site-nav">
+                <li><a href="index.html">Accueil</a></li>
+        <li><a href="tickets.html" class="active">Agenda</a></li>
+        <li><a href="lieux.html">Partenaires</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="presse.html">Presse</a></li>
+        <li><a href="asbl.html">ASBL</a></li>
+      </ul>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <!-- Menu mobile -->
+  <div class="mobile-nav-panel" id="mobileNavPanel"></div>
+
+  <!-- ══ PULP NOIR — gouttières latérales ══ -->
+
+  <!-- ══ PULP NOIR — gouttières latérales ══ -->
+
+  <!-- GAUCHE : Brooklyn · façade de théâtre -->
+  <div class="tex-side tex-left" aria-hidden="true">
+    <svg viewBox="0 0 100 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ciel nuit -->
+      <rect x="0" y="0" width="100" height="480" fill="rgba(4,6,16,0.0)"/>
+      <!-- ── Couronne Art Déco ── -->
+      <line x1="50" y1="0" x2="50" y2="14" stroke="#fcbc1c" stroke-width="1.5"/>
+      <circle cx="50" cy="0" r="3.5" fill="#fcbc1c"/>
+      <!-- Dents de scie niveau 3 -->
+      <path d="M 36 16 L 39 10 L 42 16 L 45 10 L 48 16 L 51 10 L 54 16 L 57 10 L 60 16 L 63 10 L 66 16" stroke="#fcbc1c" stroke-width="1.2" fill="none"/>
+      <rect x="35" y="16" width="30" height="11" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <!-- Étage 2 -->
+      <rect x="22" y="27" width="56" height="11" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <rect x="26" y="27" width="4" height="11" fill="rgba(252,188,28,0.32)"/>
+      <rect x="46" y="27" width="4" height="11" fill="rgba(252,188,28,0.32)"/>
+      <rect x="68" y="27" width="4" height="11" fill="rgba(252,188,28,0.32)"/>
+      <!-- Base couronne -->
+      <rect x="12" y="38" width="76" height="9" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <!-- ── Corps du théâtre ── -->
+      <rect x="10" y="47" width="80" height="235" fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <!-- Texture brique -->
+      <line x1="10" y1="58"  x2="90" y2="58"  stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="68"  x2="90" y2="68"  stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="78"  x2="90" y2="78"  stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="168" x2="90" y2="168" stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="178" x2="90" y2="178" stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="218" x2="90" y2="218" stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <line x1="10" y1="228" x2="90" y2="228" stroke="rgba(252,188,28,0.1)" stroke-width="0.8"/>
+      <!-- Pilastres -->
+      <rect x="12" y="47" width="9"  height="235" fill="rgba(252,188,28,0.09)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="79" y="47" width="9"  height="235" fill="rgba(252,188,28,0.09)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="10" y="47" width="13" height="9" fill="rgba(252,188,28,0.35)"/>
+      <rect x="77" y="47" width="13" height="9" fill="rgba(252,188,28,0.35)"/>
+      <!-- ── Marquise (COMEDY TONITE) ── -->
+      <rect x="8" y="92" width="84" height="44" fill="rgba(0,0,0,0.92)" stroke="#fcbc1c" stroke-width="2.2"/>
+      <rect x="10" y="94" width="80" height="40" fill="rgba(252,188,28,0.07)"/>
+      <!-- Ampoules rangée haute -->
+      <circle cx="15" cy="96" r="2.5" fill="#fcbc1c"/><circle cx="22" cy="96" r="2.5" fill="#fcbc1c"/>
+      <circle cx="29" cy="96" r="2.5" fill="#fcbc1c"/><circle cx="36" cy="96" r="2.5" fill="#fcbc1c"/>
+      <circle cx="43" cy="96" r="2.5" fill="#fcbc1c"/><circle cx="50" cy="96" r="2.5" fill="#fcbc1c"/>
+      <circle cx="57" cy="96" r="2.5" fill="#fcbc1c"/><circle cx="64" cy="96" r="2.5" fill="#fcbc1c"/>
+      <circle cx="71" cy="96" r="2.5" fill="#fcbc1c"/><circle cx="78" cy="96" r="2.5" fill="#fcbc1c"/>
+      <circle cx="85" cy="96" r="2.5" fill="#fcbc1c"/>
+      <!-- Ampoules rangée basse -->
+      <circle cx="15" cy="132" r="2.5" fill="#fcbc1c"/><circle cx="22" cy="132" r="2.5" fill="#fcbc1c"/>
+      <circle cx="29" cy="132" r="2.5" fill="#fcbc1c"/><circle cx="36" cy="132" r="2.5" fill="#fcbc1c"/>
+      <circle cx="43" cy="132" r="2.5" fill="#fcbc1c"/><circle cx="50" cy="132" r="2.5" fill="#fcbc1c"/>
+      <circle cx="57" cy="132" r="2.5" fill="#fcbc1c"/><circle cx="64" cy="132" r="2.5" fill="#fcbc1c"/>
+      <circle cx="71" cy="132" r="2.5" fill="#fcbc1c"/><circle cx="78" cy="132" r="2.5" fill="#fcbc1c"/>
+      <circle cx="85" cy="132" r="2.5" fill="#fcbc1c"/>
+      <!-- Ampoules côtés -->
+      <circle cx="10" cy="104" r="2.5" fill="#fcbc1c"/><circle cx="10" cy="112" r="2.5" fill="#fcbc1c"/>
+      <circle cx="10" cy="120" r="2.5" fill="#fcbc1c"/><circle cx="10" cy="128" r="2.5" fill="#fcbc1c"/>
+      <circle cx="90" cy="104" r="2.5" fill="#fcbc1c"/><circle cx="90" cy="112" r="2.5" fill="#fcbc1c"/>
+      <circle cx="90" cy="120" r="2.5" fill="#fcbc1c"/><circle cx="90" cy="128" r="2.5" fill="#fcbc1c"/>
+      <!-- Texte marquise -->
+      <text x="50" y="112" font-family="Jost,sans-serif" font-size="9.5" font-weight="900" fill="#fcbc1c" text-anchor="middle" letter-spacing="2">COMEDY</text>
+      <text x="50" y="124" font-family="Jost,sans-serif" font-size="7.5" font-weight="700" fill="rgba(252,188,28,0.72)" text-anchor="middle" letter-spacing="1.5">TONITE</text>
+      <!-- ── Fenêtres éclairées ── -->
+      <rect x="22" y="55" width="14" height="17" rx="1" fill="rgba(252,188,28,0.38)" stroke="#fcbc1c" stroke-width="1"/>
+      <line x1="29" y1="55" x2="29" y2="72" stroke="#fcbc1c" stroke-width="0.8" opacity="0.6"/>
+      <rect x="62" y="55" width="14" height="17" rx="1" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="1"/>
+      <line x1="69" y1="55" x2="69" y2="72" stroke="#fcbc1c" stroke-width="0.8" opacity="0.6"/>
+      <rect x="22" y="148" width="14" height="20" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="62" y="148" width="14" height="20" rx="1" fill="rgba(252,188,28,0.3)"  stroke="#fcbc1c" stroke-width="1"/>
+      <!-- Halo fenêtres -->
+      <ellipse cx="29" cy="64" rx="9" ry="6" fill="rgba(252,188,28,0.1)"/>
+      <ellipse cx="69" cy="64" rx="9" ry="6" fill="rgba(252,188,28,0.08)"/>
+      <!-- ── Arche d'entrée ── -->
+      <path d="M 30 282 Q 30 252 50 252 Q 70 252 70 282 Z" fill="rgba(252,188,28,0.14)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <rect x="30" y="258" width="40" height="24" fill="rgba(252,188,28,0.1)"/>
+      <ellipse cx="50" cy="264" rx="20" ry="10" fill="rgba(252,188,28,0.1)"/>
+      <!-- Halo entrée -->
+      <ellipse cx="50" cy="276" rx="25" ry="8" fill="rgba(252,188,28,0.12)"/>
+      <!-- ── Escalier + trottoir ── -->
+      <rect x="5"  y="282" width="90" height="8" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1"/>
+      <rect x="2"  y="290" width="96" height="8" fill="rgba(252,188,28,0.14)" stroke="#fcbc1c" stroke-width="1"/>
+      <!-- Reflet trottoir mouillé -->
+      <line x1="10" y1="298" x2="90" y2="298" stroke="rgba(252,188,28,0.28)" stroke-width="1.5"/>
+      <!-- ── Escalier de secours (fire escape) ── -->
+      <line x1="92" y1="47"  x2="92" y2="282" stroke="#fcbc1c" stroke-width="1.4" opacity="0.65"/>
+      <line x1="100" y1="47" x2="100" y2="282" stroke="#fcbc1c" stroke-width="1.4" opacity="0.65"/>
+      <line x1="88" y1="108" x2="100" y2="108" stroke="#fcbc1c" stroke-width="2" opacity="0.65"/>
+      <line x1="88" y1="175" x2="100" y2="175" stroke="#fcbc1c" stroke-width="2" opacity="0.65"/>
+      <line x1="88" y1="242" x2="100" y2="242" stroke="#fcbc1c" stroke-width="2" opacity="0.65"/>
+      <line x1="95" y1="108" x2="96" y2="175" stroke="#fcbc1c" stroke-width="0.9" opacity="0.45"/>
+      <!-- ── Lampadaire ── -->
+      <line x1="5" y1="175" x2="5" y2="298" stroke="#fcbc1c" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 5 175 Q 5 160 17 158" stroke="#fcbc1c" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="18" cy="157" r="7"   fill="rgba(252,188,28,0.5)"  stroke="#fcbc1c" stroke-width="1.5"/>
+      <circle cx="18" cy="157" r="4"   fill="rgba(252,188,28,0.88)"/>
+      <circle cx="18" cy="157" r="14"  fill="rgba(252,188,28,0.08)"/>
+      <!-- ── Enseigne néon bas ── -->
+      <text x="50" y="208" font-family="Jost,sans-serif" font-size="7.5" font-weight="900" fill="rgba(252,188,28,0.62)" text-anchor="middle" letter-spacing="2">STAND-UP</text>
+      <text x="50" y="219" font-family="Jost,sans-serif" font-size="5.5" font-weight="700" fill="rgba(252,188,28,0.42)" text-anchor="middle" letter-spacing="1.5">NEW YORK</text>
+      <!-- ── Titre BROOKLYN bas ── -->
+      <line x1="15" y1="324" x2="85" y2="324" stroke="rgba(252,188,28,0.4)" stroke-width="1"/>
+      <text x="50" y="336" font-family="Jost,sans-serif" font-size="8.5" font-weight="900" fill="rgba(252,188,28,0.6)" text-anchor="middle" letter-spacing="3">BROOKLYN</text>
+      <line x1="15" y1="341" x2="85" y2="341" stroke="rgba(252,188,28,0.4)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- DROITE : Hollywood Boulevard — zigzag -->
+  <div class="tex-side tex-right" aria-hidden="true">
+    <svg viewBox="0 0 120 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- ═══ BLOC 1 — flush DROITE : collines + Hollywood ═══ -->
+      <g transform="translate(18,0)">
+        <path d="M 0 122 Q 12 78 28 90 Q 38 96 50 68 Q 60 42 66 66 Q 73 86 84 74 Q 93 62 102 82 L 102 122 Z" fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.2"/>
+        <text x="51" y="90" font-family="Jost,sans-serif" font-size="7" font-weight="900" fill="rgba(252,188,28,0.88)" text-anchor="middle" letter-spacing="2">HOLLYWOOD</text>
+        <!-- Faisceaux -->
+        <path d="M 18 500 L 4 248 L 32 248 Z"  fill="rgba(252,188,28,0.05)"/>
+        <path d="M 84 500 L 72 205 L 96 205 Z" fill="rgba(252,188,28,0.05)"/>
+        <line x1="18" y1="500" x2="4"  y2="248" stroke="#fcbc1c" stroke-width="0.9" opacity="0.2"/>
+        <line x1="18" y1="500" x2="32" y2="248" stroke="#fcbc1c" stroke-width="0.9" opacity="0.2"/>
+        <line x1="84" y1="500" x2="72" y2="205" stroke="#fcbc1c" stroke-width="0.9" opacity="0.2"/>
+        <line x1="84" y1="500" x2="96" y2="205" stroke="#fcbc1c" stroke-width="0.9" opacity="0.2"/>
+      </g>
+      <!-- ═══ BLOC 2 — flush GAUCHE : caméra ═══ -->
+      <g transform="translate(0,0)">
+        <!-- Pellicule gauche -->
+        <rect x="0" y="122" width="13" height="270" fill="rgba(0,0,0,0.72)" stroke="#fcbc1c" stroke-width="1"/>
+        <rect x="2" y="130" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="143" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="156" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="169" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="182" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="195" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="208" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="221" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="234" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="247" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="260" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="273" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="286" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="299" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="312" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="325" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="338" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="351" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <rect x="2" y="364" width="9" height="7" rx="1" fill="rgba(252,188,28,0.55)"/>
+        <!-- Caméra vintage -->
+        <rect x="18" y="152" width="42" height="30" rx="3" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8"/>
+        <circle cx="39" cy="167" r="11"  fill="rgba(0,0,0,0.92)"  stroke="#fcbc1c" stroke-width="1.8"/>
+        <circle cx="39" cy="167" r="7.5" fill="rgba(252,188,28,0.14)" stroke="#fcbc1c" stroke-width="1"/>
+        <circle cx="39" cy="167" r="4"   fill="rgba(252,188,28,0.42)"/>
+        <circle cx="36" cy="164" r="1.6" fill="rgba(255,255,255,0.5)"/>
+        <!-- Bobines -->
+        <circle cx="22" cy="149" r="9"  fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.5"/>
+        <circle cx="22" cy="149" r="5"  fill="rgba(252,188,28,0.18)"/>
+        <line x1="22" y1="140" x2="22" y2="158" stroke="#fcbc1c" stroke-width="0.9" opacity="0.5"/>
+        <line x1="13" y1="149" x2="31" y2="149" stroke="#fcbc1c" stroke-width="0.9" opacity="0.5"/>
+        <circle cx="52" cy="149" r="9"  fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.5"/>
+        <circle cx="52" cy="149" r="5"  fill="rgba(252,188,28,0.18)"/>
+        <line x1="52" y1="140" x2="52" y2="158" stroke="#fcbc1c" stroke-width="0.9" opacity="0.5"/>
+        <line x1="43" y1="149" x2="61" y2="149" stroke="#fcbc1c" stroke-width="0.9" opacity="0.5"/>
+        <!-- Trépied -->
+        <line x1="39" y1="182" x2="39" y2="212" stroke="#fcbc1c" stroke-width="2"/>
+        <line x1="39" y1="212" x2="24" y2="234" stroke="#fcbc1c" stroke-width="1.5"/>
+        <line x1="39" y1="212" x2="54" y2="234" stroke="#fcbc1c" stroke-width="1.5"/>
+        <line x1="39" y1="212" x2="39" y2="235" stroke="#fcbc1c" stroke-width="1.5"/>
+      </g>
+      <!-- ═══ BLOC 3 — flush DROITE : Walk of Fame ═══ -->
+      <g transform="translate(12,0)">
+        <rect x="18" y="312" width="72" height="62" rx="4" fill="rgba(0,0,0,0.72)" stroke="#fcbc1c" stroke-width="1.5"/>
+        <line x1="18" y1="326" x2="90" y2="326" stroke="rgba(252,188,28,0.12)" stroke-width="0.8"/>
+        <line x1="18" y1="340" x2="90" y2="340" stroke="rgba(252,188,28,0.12)" stroke-width="0.8"/>
+        <line x1="18" y1="354" x2="90" y2="354" stroke="rgba(252,188,28,0.12)" stroke-width="0.8"/>
+        <line x1="18" y1="368" x2="90" y2="368" stroke="rgba(252,188,28,0.12)" stroke-width="0.8"/>
+        <!-- Étoile -->
+        <path d="M 54 320 L 57 330 L 67 330 L 59 336 L 62 346 L 54 340.5 L 46 346 L 49 336 L 41 330 L 51 330 Z" fill="#fcbc1c" stroke="rgba(0,0,0,0.45)" stroke-width="1.2"/>
+        <ellipse cx="54" cy="333" rx="15" ry="13" fill="rgba(252,188,28,0.09)"/>
+        <text x="54" y="354" font-family="Jost,sans-serif" font-size="7"   font-weight="700" fill="rgba(252,188,28,0.8)"  text-anchor="middle" letter-spacing="1">COMEDY</text>
+        <text x="54" y="365" font-family="Jost,sans-serif" font-size="5.5" font-weight="600" fill="rgba(252,188,28,0.55)" text-anchor="middle" letter-spacing="0.5">STAND-UP</text>
+      </g>
+      <!-- ═══ BLOC 4 — flush GAUCHE : palmiers ═══ -->
+      <g transform="translate(0,0)">
+        <line x1="10" y1="500" x2="11" y2="302" stroke="#fcbc1c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 11 302 Q -3 288 -6 272"  stroke="#fcbc1c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M 11 302 Q 4 285 7 270"    stroke="#fcbc1c" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <path d="M 11 302 Q 20 283 28 281"  stroke="#fcbc1c" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <path d="M 11 302 Q 22 292 28 289"  stroke="#fcbc1c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <line x1="96" y1="500" x2="94" y2="260" stroke="#fcbc1c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 94 260 Q 108 245 112 230" stroke="#fcbc1c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M 94 260 Q 102 244 100 230" stroke="#fcbc1c" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <path d="M 94 260 Q 80 244 74 242"   stroke="#fcbc1c" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <path d="M 94 260 Q 83 252 79 248"   stroke="#fcbc1c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- ═══ BLOC 5 — centré : Hollywood Blvd ═══ -->
+      <line x1="8"  y1="402" x2="92" y2="402" stroke="#fcbc1c" stroke-width="1" opacity="0.5"/>
+      <text x="50" y="416" font-family="Jost,sans-serif" font-size="7.5" font-weight="900" fill="rgba(252,188,28,0.72)" text-anchor="middle" letter-spacing="1.5">HOLLYWOOD</text>
+      <text x="50" y="428" font-family="Jost,sans-serif" font-size="6"   font-weight="700" fill="rgba(252,188,28,0.5)"  text-anchor="middle" letter-spacing="1">BOULEVARD</text>
+      <line x1="8"  y1="433" x2="92" y2="433" stroke="#fcbc1c" stroke-width="1" opacity="0.5"/>
+      <line x1="20" y1="472" x2="80" y2="472" stroke="rgba(252,188,28,0.2)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+<div class="page">
+
+    <p class="label">Agenda complet</p>
+    <h1>Tous les<br><span style="color:var(--yellow);">plateaux</span></h1>
+
+  <!-- Sondage Dan Gagnon -->
+  <div style="margin-bottom:2rem;">
+    <div style="background:rgba(204,0,0,0.07);border:2.5px solid #CC0000;box-shadow:0 0 14px rgba(204,0,0,0.25);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <p style="font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#CC0000;margin-bottom:0.3rem;">Sondage</p>
+        <p style="font-family:'Jost',sans-serif;font-size:0.95rem;font-weight:800;text-transform:uppercase;color:#fff;margin-bottom:0.15rem;line-height:1.3;">Dan Gagnon — <em style="color:var(--gold);font-style:normal;">« Tu comprendras quand tu seras grand »</em> chez Macha ?</p>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.35rem;">OUI / NON — donne ton avis en 2 minutes !</p>
+      </div>
+      <a href="sondage-dan-gagnon.html" class="dan-btn" style="font-family:'Jost',sans-serif !important;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:#CC0000 !important;color:#fff !important;border-radius:8px;padding:0.65em 1.4em;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:opacity 0.2s;box-shadow:0 3px 12px rgba(204,0,0,0.35);" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Participer →</a>
+    </div>
+  </div>
+
+    <div class="events-list">
+
+      <!-- Stand Up & Beers — Chez Bobbi, Ittre (28 Mai) -->
+      <div class="event-row" data-date="2026-05-28">
+        <a class="event-card" href="https://www.partyfinder.com/en/event/15752" target="_blank">
+          <img class="event-thumb" src="events/BOBBI - MAI.png" alt="Stand Up &amp; Beers" onerror="this.style.display='none'">
+          <div class="event-date"><span class="event-day">28</span><span class="event-month">Mai</span></div>
+          <div class="event-body">
+            <span class="event-title">Stand Up &amp; Beers</span>
+            <div class="event-meta"><span>20:00</span><span>Chez Bobbi, Ittre</span></div>
+          </div>
+          <span class="ticket-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3M2 9h20M2 9v9a1 1 0 001 1h18a1 1 0 001-1V9"/></svg> Tickets</span>
+        </a>
+        <a class="event-map" href="https://maps.google.com/?q=Chez+Bobbi,+Ittre,+Belgique" target="_blank">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span class="event-map-label">Chez Bobbi</span><span class="event-map-sub">Ittre</span><span class="event-map-cta">Voir sur Maps</span>
+        </a>
+      </div>
+
+      <!-- Alex Vizorek — 2 ½ — Chez Bobbi, Ittre — SOLD OUT -->
+      <div class="event-row featured" data-date="2026-05-31" style="flex-direction:column;">
+        <div class="event-card featured" style="opacity:0.9;cursor:default;border-bottom:1px solid rgba(252,188,28,0.2);">
+          <img class="event-thumb" src="events/ALEX VIZOREK.png" alt="Alex Vizorek — 2 ½" onerror="this.style.display='none'" style="filter:grayscale(25%);">
+          <div class="event-date"><span class="event-day">31</span><span class="event-month">Mai</span></div>
+          <div class="event-body">
+            <span class="event-title">Alex Vizorek — 2 ½</span>
+            <div class="event-meta"><span>19:00</span><span>Chez Bobbi, Ittre</span></div>
+          </div>
+          <span class="badge" style="margin-left:auto;flex-shrink:0;background:rgba(204,0,0,0.12);color:#CC0000;border:2px solid #CC0000;letter-spacing:0.12em;font-size:0.75rem;padding:0.45em 1em;border-radius:8px;text-shadow:0 0 8px rgba(204,0,0,0.4);box-shadow:0 0 12px rgba(204,0,0,0.2);">🔴 SOLD OUT</span>
+        </div>
+        <!-- Barre liste d'attente -->
+        <div class="waitlist-bar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding:0.85rem 1.25rem;background:rgba(204,0,0,0.05);border-top:1px solid rgba(204,0,0,0.2);">
+          <span style="font-family:'DM Sans','Didact Gothic',sans-serif;font-size:0.85rem;color:var(--text-muted);">
+            Tu veux quand même venir ? Rejoins la liste d'attente — on te prévient si une place se libère.
+          </span>
+          <a href="mailto:info@chezmacha.be?subject=Liste%20d'attente%20—%20Alex%20Vizorek%2031%20Mai&body=Bonjour%2C%0A%0AJe%20souhaite%20être%20ajouté(e)%20à%20la%20liste%20d'attente%20pour%20le%20spectacle%20d'Alex%20Vizorek%20le%2031%20mai%20à%20Chez%20Bobbi%2C%20Ittre.%0A%0AMerci%20!"
+             style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:#CC0000;color:#fff;border-radius:8px;padding:0.6em 1.2em;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+            ✉ Liste d'attente
+          </a>
+        </div>
+        <a class="event-map" href="https://maps.google.com/?q=Chez+Bobbi,+Ittre,+Belgique" target="_blank" style="width:100%;flex-direction:row;border-left:none;border-top:1px solid var(--border);padding:0.65rem 1.25rem;gap:0.75rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span class="event-map-label">Chez Bobbi</span><span class="event-map-sub">Ittre</span><span class="event-map-cta">Voir sur Maps</span>
+        </a>
+      </div>
+
+      <!-- Stand Up & Beers — Chez Bobbi, Ittre (18 Juin) -->
+      <div class="event-row" data-date="2026-06-18">
+        <a class="event-card" href="https://www.partyfinder.com/en/event/16141" target="_blank">
+          <img class="event-thumb" src="events/BOBBI- JUINpng.png" alt="Stand Up &amp; Beers" onerror="this.style.display='none'">
+          <div class="event-date"><span class="event-day">18</span><span class="event-month">Juin</span></div>
+          <div class="event-body">
+            <span class="event-title">Stand Up &amp; Beers</span>
+            <div class="event-meta"><span>20:00</span><span>Chez Bobbi, Ittre</span></div>
+          </div>
+          <span class="ticket-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3M2 9h20M2 9v9a1 1 0 001 1h18a1 1 0 001-1V9"/></svg> Tickets</span>
+        </a>
+        <a class="event-map" href="https://maps.google.com/?q=Chez+Bobbi,+Ittre,+Belgique" target="_blank">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span class="event-map-label">Chez Bobbi</span><span class="event-map-sub">Ittre</span><span class="event-map-cta">Voir sur Maps</span>
+        </a>
+      </div>
+
+      <!-- Le Calme et la Tempête — Tribu Bar, Ixelles (20 Juin) -->
+      <div class="event-row" data-date="2026-06-20">
+        <a class="event-card" href="https://www.partyfinder.com/en/event/16045" target="_blank">
+          <img class="event-thumb" src="events/TRIBU BAR - JUIN.png" alt="Le Calme et la Tempête" onerror="this.style.display='none'">
+          <div class="event-date"><span class="event-day">20</span><span class="event-month">Juin</span></div>
+          <div class="event-body">
+            <span class="event-title">Le Calme et la Tempête</span>
+            <div class="event-meta"><span>20:00</span><span>Tribu Bar, Ixelles</span></div>
+          </div>
+          <span class="ticket-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3M2 9h20M2 9v9a1 1 0 001 1h18a1 1 0 001-1V9"/></svg> Tickets</span>
+        </a>
+        <a class="event-map" href="https://maps.google.com/?q=Tribu+Bar,+Ixelles,+Belgique" target="_blank">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span class="event-map-label">Tribu Bar</span><span class="event-map-sub">Ixelles</span><span class="event-map-cta">Voir sur Maps</span>
+        </a>
+      </div>
+
+      <!-- Stand Up & Spaghetti — Côté Meuse, Namur (26 Juin) -->
+      <div class="event-row" data-date="2026-06-26">
+        <a class="event-card" style="cursor:default;pointer-events:none;" target="_blank">
+          <img class="event-thumb" src="events/NAMUR - JUIN.png" alt="Stand Up &amp; Spaghetti" onerror="this.style.display='none'">
+          <div class="event-date"><span class="event-day">26</span><span class="event-month">Juin</span></div>
+          <div class="event-body">
+            <span class="event-title">Stand Up &amp; Spaghetti</span>
+            <div class="event-meta"><span>20:00</span><span>Côté Meuse, Namur</span></div>
+          </div>
+          <span class="badge" style="background:rgba(138,146,166,0.15);color:#8a92a6;border:1px solid rgba(138,146,166,0.3);">Bientôt</span>
+        </a>
+        <a class="event-map" href="https://maps.google.com/?q=Côté+Meuse,+Namur,+Belgique" target="_blank">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><span class="event-map-label">Côté Meuse</span><span class="event-map-sub">Namur</span><span class="event-map-cta">Voir sur Maps</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+
+    <div class="quote-centree">
+      <blockquote>
+        « Le rire est universel, il n'a pas de frontière&nbsp;; c'est d'ailleurs lui qui nous unit tous ensemble. »
+      </blockquote>
+      <cite>— Macha De Ruyver, Fondatrice de Chez Macha</cite>
+    </div>
+
+  <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
+    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+    </nav>
+  </footer>
+  <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var panel = document.getElementById('mobileNavPanel');
+      if (!btn || !panel) return;
+      var links = document.querySelectorAll('.site-nav a');
+      links.forEach(function(link) {
+        var a = link.cloneNode(true);
+        panel.appendChild(a);
+      });
+      btn.addEventListener('click', function() {
+        var open = panel.classList.toggle('open');
+        btn.classList.toggle('open', open);
+      });
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('open');
+          btn.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    /* ── Détection dynamique des événements passés ── */
+    (function () {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0); // Minuit du jour actuel
+
+      document.querySelectorAll('.event-row[data-date]').forEach(function (row) {
+        var eventDate = new Date(row.dataset.date);
+        eventDate.setHours(0, 0, 0, 0);
+
+        if (eventDate < today) {
+          row.classList.add('event-past');
+
+          // Remplacer le ticket-btn par "Événement passé"
+          var ticketBtn = row.querySelector('.ticket-btn');
+          if (ticketBtn) {
+            ticketBtn.outerHTML =
+              '<span class="ticket-btn-past">' +
+              '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+              '<circle cx="12" cy="12" r="10"/><line x1="8" y1="8" x2="16" y2="16"/><line x1="16" y1="8" x2="8" y2="16"/></svg>' +
+              ' Événement passé</span>';
+          }
+
+          // Remplacer le badge existant par "Passé"
+          var badge = row.querySelector('.badge:not(.badge-past)');
+          if (badge && !badge.style.color.includes('ff4444')) {
+            badge.outerHTML = '<span class="badge-past">Passé</span>';
+          }
+
+          // Désactiver le lien de la carte
+          var card = row.querySelector('a.event-card');
+          if (card) {
+            card.style.pointerEvents = 'none';
+            card.style.cursor = 'default';
+          }
+
+          // Masquer la barre liste d'attente si présente
+          var waitlist = row.querySelector('.waitlist-bar');
+          if (waitlist) waitlist.style.display = 'none';
+        }
+      });
+    })();
+  </script>
+  <script>
+    // Scroll automatique vers le prochain événement si #prochain dans l'URL
+    (function() {
+      if (window.location.hash !== '#prochain') return;
+      var today = new Date(); today.setHours(0,0,0,0);
+      var rows = document.querySelectorAll('.event-row[data-date]');
+      for (var i = 0; i < rows.length; i++) {
+        var d = new Date(rows[i].dataset.date); d.setHours(0,0,0,0);
+        if (d >= today) {
+          rows[i].id = 'prochain';
+          setTimeout(function(el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.style.borderColor = '#fcbc1c';
+            setTimeout(function() { el.style.borderColor = ''; }, 1800);
+          }, 350, rows[i]);
+          break;
+        }
+      }
+    })();
+  </script>
+  <script>
+    function ajouterBadgeUrgence() {
+      var aujourd = new Date();
+      document.querySelectorAll('.event-card').forEach(function(card) {
+        var row = card.closest('.event-row');
+        var dateStr = (row && row.dataset.date) || card.dataset.date;
+        if (!dateStr) return;
+        if (card.querySelector('.badge[style*="ff4444"]')) return; // skip SOLD OUT
+        var dateSpectacle = new Date(dateStr);
+        var diffJours = Math.ceil((dateSpectacle - aujourd) / (1000 * 60 * 60 * 24));
+        if (diffJours > 0 && diffJours <= 14) {
+          var badge = document.createElement('span');
+          badge.className = 'badge-urgence';
+          badge.textContent = '⚡ Réserve vite !';
+          var body = card.querySelector('.event-body');
+          if (body) body.prepend(badge); else card.prepend(badge);
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', ajouterBadgeUrgence);
+  </script>
+</body>
+</html>

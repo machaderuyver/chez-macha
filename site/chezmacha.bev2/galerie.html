@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <meta name="description" content="Galerie photos de Chez Macha — humoristes, scènes et ambiances de nos soirées stand-up." />
+  <title>Galerie — Chez Macha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700;800;900&family=Didact+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    h1 { margin-bottom: 0.75rem; }
+    .intro { margin-bottom: 2.5rem; }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Featured grid (photos de groupe) ── */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+    .featured-grid .gallery-item:first-child {
+      grid-column: span 2;
+    }
+
+    /* ── Gallery item (commun) ── */
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .gallery-item:hover { border-color: rgba(252,188,28,0.4); transform: scale(1.01); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .featured-grid .gallery-item { min-height: 220px; }
+    .featured-grid .gallery-item:first-child { min-height: 280px; }
+
+    .caption { display: none; }
+
+    /* ── Carousel ── */
+    .carousel-wrap {
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+    .carousel-track {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      aspect-ratio: 16/9;
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      cursor: pointer;
+    }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: var(--bg-card);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(6,9,23,0.7);
+      border: 1px solid rgba(252,188,28,0.25);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1rem;
+      transition: background 0.2s, border-color 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .carousel-btn:hover { background: rgba(252,188,28,0.2); border-color: var(--yellow); }
+    .carousel-btn.prev { left: 0.75rem; }
+    .carousel-btn.next { right: 0.75rem; }
+
+    .carousel-counter {
+      text-align: center;
+      margin-top: 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    .carousel-counter span { color: var(--yellow); }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(6,9,23,0.95);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid rgba(252,188,28,0.2);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: 1px solid rgba(252,188,28,0.3);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--yellow); border-color: var(--yellow); }
+
+    @media (max-width: 640px) {
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .featured-grid .gallery-item:first-child { grid-column: span 2; }
+      .featured-grid .gallery-item { min-height: 160px; }
+      .carousel-track { aspect-ratio: 4/3; }
+      .carousel-btn { width: 34px; height: 34px; font-size: 0.85rem; }
+    }
+
+    /* ── DÉCO LATÉRALE ── */
+    .tex-side {
+      position: fixed;
+      top: 130px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.82;
+    }
+    .tex-left  { left: 0;  width: calc(50vw - 440px); max-width: 158px; display: flex; justify-content: flex-end; }
+    .tex-right { right: 0; width: calc(50vw - 430px); max-width: 215px; }
+    .tex-side svg { width: 100%; height: auto; display: block; }
+    @media (max-width: 1180px) { .tex-side { display: none; } }
+    @media (max-width: 768px) {
+      .quote-universelle { padding: 1.1rem; }
+    }
+
+    /* ── Citation universelle ── */
+    .quote-universelle {
+      margin: 2.5rem 0;
+      padding: 1.75rem 2rem;
+      border-left: 3px solid var(--yellow);
+      background: rgba(252,188,28,0.05);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-universelle blockquote {
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0;
+      font-style: italic;
+    }
+    .quote-universelle cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-style: normal;
+    }
+  </style>
+
+  <style>
+    html, body { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+    @media (max-width: 768px) {
+      .site-header { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+      .page { padding-left: 1rem !important; padding-right: 1rem !important; box-sizing: border-box; }
+
+      img { max-width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;">
+        <a href="index.html"><img class="logo" src="Logo_officiel_transparent.png" alt="Chez Macha" /></a>
+        <div class="header-socials">
+          <a class="social-btn" href="https://www.instagram.com/chezmacha_standup/" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/ChezMachaComedyclub/" target="_blank" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@chezmacha_standup" target="_blank" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
+          </a>
+                  <a class="social-btn" href="mailto:info@chezmacha.be" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <polyline points="2,4 12,13 22,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav style="display:flex;align-items:center;gap:1rem;">
+      <ul class="site-nav">
+                <li><a href="index.html">Accueil</a></li>
+        <li><a href="tickets.html">Agenda</a></li>
+        <li><a href="lieux.html">Partenaires</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="galerie.html" class="active">Galerie</a></li>
+        <li><a href="presse.html">Presse</a></li>
+        <li><a href="asbl.html">ASBL</a></li>
+      </ul>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <!-- Menu mobile -->
+  <div class="mobile-nav-panel" id="mobileNavPanel"></div>
+
+  <!-- ══ DÉCO LATÉRALE ══ -->
+  <!-- GAUCHE : Cariatide + éléments de théâtre -->
+  <div class="tex-side tex-left" aria-hidden="true">
+    <svg viewBox="0 0 100 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15" cy="12" r="1"   fill="#fcbc1c" opacity="0.5"/>
+      <circle cx="40" cy="5"  r="1.2" fill="#fcbc1c" opacity="0.6"/>
+      <circle cx="80" cy="18" r="0.9" fill="#fcbc1c" opacity="0.45"/>
+      <circle cx="92" cy="8"  r="1"   fill="#fcbc1c" opacity="0.52"/>
+      <!-- Masque de Dionysos -->
+      <ellipse cx="22" cy="158" rx="18" ry="22" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <path d="M 11 166 Q 22 176 33 166" stroke="#fcbc1c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="16" cy="152" rx="5" ry="7" fill="rgba(252,188,28,0.12)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <ellipse cx="28" cy="152" rx="5" ry="7" fill="rgba(252,188,28,0.12)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <path d="M 10 145 Q 16 140 22 144" stroke="#fcbc1c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 22 144 Q 28 140 34 145" stroke="#fcbc1c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 7 168 Q 4 178 8 186 Q 10 192 14 190" stroke="#fcbc1c" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <path d="M 37 168 Q 40 178 36 186 Q 34 192 30 190" stroke="#fcbc1c" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <path d="M 5 140 Q 12 130 22 128 Q 32 130 39 140" stroke="#fcbc1c" stroke-width="1.5" fill="none"/>
+      <ellipse cx="8"  cy="134" rx="5" ry="4" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <ellipse cx="22" cy="128" rx="5" ry="4" fill="rgba(252,188,28,0.25)" stroke="#fcbc1c" stroke-width="1"/>
+      <ellipse cx="36" cy="134" rx="5" ry="4" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <text x="22" y="200" font-family="Jost,sans-serif" font-size="5" font-weight="700" fill="rgba(252,188,28,0.52)" text-anchor="middle" letter-spacing="1">DIONYSOS</text>
+      <!-- Couronne de lauriers -->
+      <ellipse cx="22" cy="242" rx="20" ry="13" stroke="#fcbc1c" stroke-width="1.5" fill="none"/>
+      <ellipse cx="22" cy="242" rx="13" ry="8" stroke="rgba(252,188,28,0.45)" stroke-width="0.9" fill="none"/>
+      <path d="M 4 242 Q 5 233 10 231 Q 15 231 13 240" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 8 234 Q 10 225 16 223 Q 21 223 19 232" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 16 228 Q 19 219 24 218 Q 28 219 27 228" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 25 228 Q 28 219 33 220 Q 37 222 36 231" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 33 233 Q 38 225 42 228 Q 44 234 40 240" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 38 242 Q 42 250 38 256 Q 34 258 32 252" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 26 254 Q 23 262 19 260 Q 15 258 17 250" fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1"/>
+      <path d="M 12 252 Q 7 257 5 252 Q 3 246 8 242"    fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1"/>
+      <text x="22" y="244" font-family="Jost,sans-serif" font-size="5" font-weight="700" fill="rgba(252,188,28,0.52)" text-anchor="middle" letter-spacing="0.5">LAURIERS</text>
+      <!-- Muse avec lyre -->
+      <circle cx="15" cy="302" r="10" fill="rgba(252,188,28,0.9)" stroke="rgba(0,0,0,0.9)" stroke-width="2"/>
+      <path d="M 10 312 Q 15 340 15 358" stroke="#fcbc1c" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 15 312 Q 22 340 24 356" stroke="#fcbc1c" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M 10 320 Q 4 318 2 328" stroke="#fcbc1c" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M 18 320 Q 28 315 32 322" stroke="#fcbc1c" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="32" cy="326" rx="7" ry="10" stroke="#fcbc1c" stroke-width="1.5" fill="rgba(252,188,28,0.12)"/>
+      <line x1="26" y1="316" x2="26" y2="336" stroke="#fcbc1c" stroke-width="0.9"/>
+      <line x1="28.5" y1="316" x2="28.5" y2="336" stroke="#fcbc1c" stroke-width="0.9"/>
+      <line x1="31" y1="316" x2="31" y2="336" stroke="#fcbc1c" stroke-width="0.9"/>
+      <line x1="33.5" y1="316" x2="33.5" y2="336" stroke="#fcbc1c" stroke-width="0.9"/>
+      <line x1="36" y1="316" x2="36" y2="336" stroke="#fcbc1c" stroke-width="0.9"/>
+      <ellipse cx="7" cy="328" rx="6" ry="8" fill="rgba(0,0,0,0.82)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <path d="M 3 332 Q 7 337 11 332" stroke="#fcbc1c" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <ellipse cx="5"  cy="325" rx="2" ry="3" fill="rgba(252,188,28,0.12)" stroke="#fcbc1c" stroke-width="0.8"/>
+      <ellipse cx="9"  cy="325" rx="2" ry="3" fill="rgba(252,188,28,0.12)" stroke="#fcbc1c" stroke-width="0.8"/>
+      <text x="20" y="372" font-family="Jost,sans-serif" font-size="5" font-weight="700" fill="rgba(252,188,28,0.52)" text-anchor="middle" letter-spacing="1">LES MUSES</text>
+      <!-- Cariatide -->
+      <rect x="40" y="38" width="36" height="10" rx="1" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <rect x="38" y="48" width="40" height="7" rx="1" fill="rgba(252,188,28,0.22)" stroke="#fcbc1c" stroke-width="1.4"/>
+      <g stroke="rgba(252,188,28,0.35)" stroke-width="0.9"><line x1="46" y1="38" x2="46" y2="48"/><line x1="52" y1="38" x2="52" y2="48"/><line x1="58" y1="38" x2="58" y2="48"/><line x1="64" y1="38" x2="64" y2="48"/></g>
+      <circle cx="58" cy="72" r="16" fill="rgba(252,188,28,0.9)" stroke="rgba(0,0,0,0.92)" stroke-width="2.5"/>
+      <path d="M 48 60 Q 58 52 68 60 Q 74 67 74 74" stroke="rgba(0,0,0,0.45)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M 50 60 Q 58 55 66 60" stroke="rgba(0,0,0,0.32)" stroke-width="1.5" fill="none"/>
+      <ellipse cx="53" cy="70" rx="2.5" ry="2.5" fill="rgba(0,0,0,0.5)"/>
+      <ellipse cx="63" cy="70" rx="2.5" ry="2.5" fill="rgba(0,0,0,0.5)"/>
+      <path d="M 53 78 Q 58 82 63 78" stroke="rgba(0,0,0,0.4)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <rect x="53" y="88" width="10" height="14" rx="3" fill="rgba(252,188,28,0.88)" stroke="rgba(0,0,0,0.88)" stroke-width="1.5"/>
+      <path d="M 42 102 Q 58 98 74 102 L 72 152 Q 58 155 44 152 Z" fill="rgba(252,188,28,0.9)" stroke="rgba(0,0,0,0.9)" stroke-width="2"/>
+      <path d="M 44 108 Q 38 118 36 138 Q 34 152 37 165" stroke="#fcbc1c" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 72 108 Q 78 122 78 144 Q 78 160 75 174" stroke="#fcbc1c" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <line x1="76" y1="175" x2="80" y2="145" stroke="#fcbc1c" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 77 145 Q 80 138 83 145 Q 81 150 77 148 Z" fill="#fcbc1c" stroke="rgba(0,0,0,0.7)" stroke-width="1"/>
+      <path d="M 44 152 Q 42 240 42 340 Q 42 360 58 362 Q 74 360 74 340 Q 74 240 72 152" fill="rgba(252,188,28,0.88)" stroke="rgba(0,0,0,0.92)" stroke-width="2" stroke-linejoin="round"/>
+      <g stroke="rgba(0,0,0,0.2)" stroke-width="1"><line x1="47" y1="152" x2="47" y2="360"/><line x1="50" y1="152" x2="50" y2="361"/><line x1="53" y1="152" x2="53" y2="362"/><line x1="56" y1="152" x2="56" y2="362"/><line x1="60" y1="152" x2="60" y2="362"/><line x1="63" y1="152" x2="63" y2="362"/><line x1="66" y1="152" x2="66" y2="361"/><line x1="69" y1="152" x2="69" y2="360"/></g>
+      <line x1="43" y1="356" x2="73" y2="356" stroke="#fcbc1c" stroke-width="2.2" opacity="0.7"/>
+      <path d="M 44 360 Q 47 368 52 366 Q 56 364 54 360" fill="rgba(252,188,28,0.8)" stroke="rgba(0,0,0,0.8)" stroke-width="1.2"/>
+      <path d="M 62 360 Q 65 368 70 366 Q 74 364 72 360" fill="rgba(252,188,28,0.8)" stroke="rgba(0,0,0,0.8)" stroke-width="1.2"/>
+      <rect x="36" y="370" width="44" height="14" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <rect x="32" y="384" width="52" height="8" fill="rgba(252,188,28,0.2)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <circle cx="58" cy="220" r="90" stroke="rgba(252,188,28,0.05)" stroke-width="10" fill="none"/>
+      <line x1="8"  y1="400" x2="92" y2="400" stroke="#fcbc1c" stroke-width="1" opacity="0.45"/>
+      <text x="58" y="412" font-family="Jost,sans-serif" font-size="7.5" font-weight="900" fill="rgba(252,188,28,0.62)" text-anchor="middle" letter-spacing="2">CARIATIDE</text>
+      <text x="58" y="423" font-family="Jost,sans-serif" font-size="6" font-weight="700" fill="rgba(252,188,28,0.45)" text-anchor="middle" letter-spacing="1.5">ÉRECHTHÉION</text>
+      <line x1="8"  y1="428" x2="92" y2="428" stroke="#fcbc1c" stroke-width="1" opacity="0.45"/>
+    </svg>
+  </div>
+  <!-- DROITE : Niké + grappe de raisins -->
+  <div class="tex-side tex-right" aria-hidden="true">
+    <svg viewBox="0 0 200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20"  cy="10" r="1"   fill="#fcbc1c" opacity="0.5"/>
+      <circle cx="60"  cy="4"  r="1.2" fill="#fcbc1c" opacity="0.58"/>
+      <circle cx="110" cy="16" r="0.9" fill="#fcbc1c" opacity="0.46"/>
+      <circle cx="165" cy="8"  r="1"   fill="#fcbc1c" opacity="0.54"/>
+      <circle cx="192" cy="22" r="0.8" fill="#fcbc1c" opacity="0.42"/>
+      <circle cx="100" cy="148" r="38" fill="rgba(252,188,28,0.06)"/>
+      <!-- Aile gauche -->
+      <path d="M 98 178 Q 78 162 55 156 Q 32 150 14 160 Q 4 168 8 182 Q 12 196 35 200 Q 62 204 85 200 Q 94 198 98 194" fill="rgba(252,188,28,0.85)" stroke="rgba(0,0,0,0.92)" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M 98 192 Q 78 188 52 186 Q 28 184 12 176" fill="rgba(0,0,0,0.18)" stroke="none"/>
+      <path d="M 98 180 Q 70 168 42 170 Q 20 172 10 178" stroke="rgba(0,0,0,0.3)" stroke-width="1.4" fill="none"/>
+      <path d="M 97 186 Q 68 176 40 178 Q 18 180 8 186" stroke="rgba(0,0,0,0.25)" stroke-width="1.2" fill="none"/>
+      <path d="M 96 192 Q 68 185 42 187 Q 20 190 8 192" stroke="rgba(0,0,0,0.2)" stroke-width="1" fill="none"/>
+      <line x1="96" y1="182" x2="14" y2="162" stroke="rgba(0,0,0,0.16)" stroke-width="0.9"/>
+      <line x1="95" y1="187" x2="20" y2="172" stroke="rgba(0,0,0,0.14)" stroke-width="0.9"/>
+      <line x1="94" y1="193" x2="28" y2="182" stroke="rgba(0,0,0,0.12)" stroke-width="0.9"/>
+      <!-- Aile droite -->
+      <path d="M 104 178 Q 126 160 150 155 Q 172 150 188 160 Q 198 168 194 182 Q 190 196 166 200 Q 140 204 116 200 Q 106 198 104 194" fill="rgba(200,148,10,0.9)" stroke="rgba(0,0,0,0.92)" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M 104 192 Q 126 188 152 186 Q 174 184 190 176" fill="rgba(0,0,0,0.15)" stroke="none"/>
+      <path d="M 104 180 Q 132 168 158 170 Q 178 172 192 178" stroke="rgba(0,0,0,0.28)" stroke-width="1.4" fill="none"/>
+      <path d="M 105 186 Q 134 176 160 178 Q 180 180 192 186" stroke="rgba(0,0,0,0.22)" stroke-width="1.2" fill="none"/>
+      <line x1="106" y1="182" x2="188" y2="162" stroke="rgba(0,0,0,0.14)" stroke-width="0.9"/>
+      <line x1="106" y1="188" x2="182" y2="172" stroke="rgba(0,0,0,0.12)" stroke-width="0.9"/>
+      <!-- Corps Niké -->
+      <path d="M 88 200 Q 100 195 114 200 L 112 252 Q 100 256 90 252 Z" fill="rgba(252,188,28,0.92)" stroke="rgba(0,0,0,0.92)" stroke-width="2.5"/>
+      <path d="M 90 252 Q 82 296 78 348 Q 74 388 78 408 Q 82 420 100 422 Q 118 420 122 408 Q 126 388 122 348 Q 118 296 112 252" fill="rgba(252,188,28,0.9)" stroke="rgba(0,0,0,0.92)" stroke-width="2.2" stroke-linejoin="round"/>
+      <g stroke="rgba(0,0,0,0.2)" stroke-width="1.1"><line x1="84" y1="258" x2="80" y2="408"/><line x1="88" y1="255" x2="85" y2="416"/><line x1="93" y1="253" x2="90" y2="420"/><line x1="99" y1="252" x2="98" y2="420"/><line x1="106" y1="253" x2="108" y2="420"/><line x1="112" y1="255" x2="115" y2="416"/><line x1="116" y1="258" x2="120" y2="408"/></g>
+      <!-- Tête Niké + couronne -->
+      <circle cx="100" cy="150" r="18" fill="rgba(252,188,28,0.92)" stroke="rgba(0,0,0,0.92)" stroke-width="2.8"/>
+      <path d="M 83 144 Q 90 132 100 130 Q 110 132 117 144" stroke="#fcbc1c" stroke-width="2" fill="none"/>
+      <ellipse cx="85" cy="136" rx="6" ry="4.5" fill="rgba(252,188,28,0.35)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <ellipse cx="100" cy="130" rx="6" ry="4.5" fill="rgba(252,188,28,0.4)"  stroke="#fcbc1c" stroke-width="1.2"/>
+      <ellipse cx="115" cy="136" rx="6" ry="4.5" fill="rgba(252,188,28,0.35)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <ellipse cx="93" cy="148" rx="2.5" ry="2.5" fill="rgba(0,0,0,0.5)"/>
+      <ellipse cx="107" cy="148" rx="2.5" ry="2.5" fill="rgba(0,0,0,0.5)"/>
+      <path d="M 93 157 Q 100 162 107 157" stroke="rgba(0,0,0,0.4)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path d="M 84 142 Q 90 136 100 134 Q 110 136 116 142" stroke="rgba(0,0,0,0.42)" stroke-width="2.2" fill="none"/>
+      <!-- Bras gauche + couronne de victoire -->
+      <path d="M 90 210 Q 74 202 60 192 Q 46 182 40 170" stroke="#fcbc1c" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="36" cy="163" r="16" stroke="#fcbc1c" stroke-width="2.2" fill="none"/>
+      <circle cx="36" cy="163" r="10" stroke="rgba(252,188,28,0.5)" stroke-width="1" fill="rgba(252,188,28,0.08)"/>
+      <ellipse cx="20" cy="163" rx="7" ry="5" fill="rgba(252,188,28,0.3)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(-40,20,163)"/>
+      <ellipse cx="26" cy="148" rx="7" ry="5" fill="rgba(252,188,28,0.3)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(-15,26,148)"/>
+      <ellipse cx="36" cy="147" rx="7" ry="5" fill="rgba(252,188,28,0.35)" stroke="#fcbc1c" stroke-width="1.2"/>
+      <ellipse cx="46" cy="150" rx="7" ry="5" fill="rgba(252,188,28,0.3)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(15,46,150)"/>
+      <ellipse cx="52" cy="163" rx="7" ry="5" fill="rgba(252,188,28,0.3)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(40,52,163)"/>
+      <ellipse cx="46" cy="176" rx="7" ry="5" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(-140,46,176)"/>
+      <ellipse cx="26" cy="178" rx="7" ry="5" fill="rgba(252,188,28,0.28)" stroke="#fcbc1c" stroke-width="1.2" transform="rotate(-165,26,178)"/>
+      <!-- Bras droit -->
+      <path d="M 112 210 Q 130 218 145 228 Q 158 238 162 252" stroke="#fcbc1c" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="162" cy="256" r="8" fill="rgba(252,188,28,0.9)" stroke="rgba(0,0,0,0.88)" stroke-width="2"/>
+      <!-- Pieds + socle -->
+      <path d="M 80 416 Q 84 425 91 423 Q 96 421 94 416" fill="rgba(252,188,28,0.82)" stroke="rgba(0,0,0,0.82)" stroke-width="1.2"/>
+      <path d="M 106 416 Q 110 425 117 423 Q 122 420 120 416" fill="rgba(252,188,28,0.82)" stroke="rgba(0,0,0,0.82)" stroke-width="1.2"/>
+      <rect x="72" y="425" width="58" height="12" fill="rgba(0,0,0,0.88)" stroke="#fcbc1c" stroke-width="1.8"/>
+      <rect x="68" y="437" width="66" height="8"  fill="rgba(252,188,28,0.2)"  stroke="#fcbc1c" stroke-width="1.2"/>
+      <text x="100" y="450" font-family="Jost,sans-serif" font-size="6" font-weight="700" fill="rgba(252,188,28,0.52)" text-anchor="middle" letter-spacing="1.5">NIKÉ</text>
+      <!-- Grappe de raisins -->
+      <path d="M 158 270 Q 162 284 164 305" stroke="#fcbc1c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M 157 272 Q 148 265 145 255 Q 143 247 150 244" stroke="#fcbc1c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 158 274 Q 168 268 174 258 Q 178 250 174 244" stroke="#fcbc1c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 158 280 Q 148 272 144 280 Q 140 292 150 296 Q 160 298 162 288 Q 163 282 158 280 Z" fill="rgba(252,188,28,0.2)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <path d="M 164 282 Q 175 273 180 282 Q 184 294 174 298 Q 163 299 162 288 Z" fill="rgba(252,188,28,0.18)" stroke="#fcbc1c" stroke-width="1.5"/>
+      <circle cx="146" cy="318" r="9" fill="rgba(252,188,28,0.82)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="164" cy="318" r="9" fill="rgba(252,188,28,0.88)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="182" cy="318" r="9" fill="rgba(252,188,28,0.8)"  stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="200" cy="318" r="9" fill="rgba(252,188,28,0.75)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="155" cy="336" r="9" fill="rgba(200,148,10,0.92)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="173" cy="336" r="9" fill="rgba(200,148,10,0.88)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="191" cy="336" r="9" fill="rgba(200,148,10,0.85)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="146" cy="354" r="9" fill="rgba(180,134,8,0.92)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="164" cy="354" r="9" fill="rgba(180,134,8,0.88)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="182" cy="354" r="9" fill="rgba(180,134,8,0.9)"  stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="155" cy="372" r="9" fill="rgba(150,112,6,0.92)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="173" cy="372" r="9" fill="rgba(150,112,6,0.88)" stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="164" cy="390" r="9" fill="rgba(120,90,5,0.92)"  stroke="rgba(0,0,0,0.88)" stroke-width="1.8"/>
+      <circle cx="142" cy="315" r="3" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="160" cy="315" r="3" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="178" cy="315" r="3" fill="rgba(255,255,255,0.2)"/>
+      <line x1="20"  y1="464" x2="180" y2="464" stroke="#fcbc1c" stroke-width="1" opacity="0.45"/>
+      <text x="100" y="476" font-family="Jost,sans-serif" font-size="8" font-weight="900" fill="rgba(252,188,28,0.62)" text-anchor="middle" letter-spacing="2">VICTOIRE</text>
+      <text x="100" y="487" font-family="Jost,sans-serif" font-size="6.5" font-weight="700" fill="rgba(252,188,28,0.45)" text-anchor="middle" letter-spacing="1.5">&amp; CÉLÉBRATION</text>
+      <line x1="20"  y1="492" x2="180" y2="492" stroke="#fcbc1c" stroke-width="1" opacity="0.45"/>
+    </svg>
+  </div>
+
+
+  <div class="page">
+
+    <p class="label">En images</p>
+    <h1>La galerie<br><span style="color:var(--yellow);">Chez Macha</span></h1>
+    <p class="intro" style="color:var(--text-muted);font-size:0.95rem;">Les humoristes, les scènes, les moments — dans les lieux qui nous accueillent. Cliquez sur une photo pour l'agrandir.</p>
+
+    <!-- ── SOIRÉE STAND UP — CHEZ MACHA × CHEZ BOBBI ── -->
+    <p class="section-label">Avril 2026</p>
+    <h2 class="section-title">Chez Macha × Chez Bobbi — <span style="color:var(--yellow);">Soirée Stand Up</span></h2>
+    <p style="font-family:'Jost',sans-serif;font-size:0.78rem;color:var(--text-muted);margin-bottom:1.5rem;">📸 Photos : <a href="https://www.instagram.com/charly_creative_/" target="_blank" style="color:var(--yellow);text-decoration:none;">@charly_creative_</a></p>
+
+    <div class="carousel-wrap" id="standup-carouselWrap">
+      <div class="carousel-track" id="standup-carouselTrack">
+
+        <div class="carousel-slide active" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3982.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2867.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2868.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2873.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2906.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2907.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2925.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2934.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2938.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2943.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2962.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2976.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2978.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2980.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2986.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2988.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2990.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2992.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_2995.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3003.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3014.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3029.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3060.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3072.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3101.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3103.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3125.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3132.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3135.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3142.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3170.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3179.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3190.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3199.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3203.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3205.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3214.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3221.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3233.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3236.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3247.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3254.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3273.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3278.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3284.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3290.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3294.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3313.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3321.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3360.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3367.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3379.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3382.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3387.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3389.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3391.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3398.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3412.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3413.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3422.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3425.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3428.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3435.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3445.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3463.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3475.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3477.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3485.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3528.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3540.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3544.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3586.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3590.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3593.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3610.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3612.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3627.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3630.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3644.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3645.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3650.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3660.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3687.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3692.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3702.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3754.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3760.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3767.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3782.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3789.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3808.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3811.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3823.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3853.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3903.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3919.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3923.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3937.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-standup/DSC_3972.jpg" alt="Soirée Stand Up — Chez Macha × Chez Bobbi" loading="lazy" /></div>
+
+      </div>
+      <button class="carousel-btn prev" id="standup-carouselPrev" aria-label="Précédent">&#8592;</button>
+      <button class="carousel-btn next" id="standup-carouselNext" aria-label="Suivant">&#8594;</button>
+    </div>
+    <div class="carousel-counter" id="standup-carouselCounter"><span id="standup-carouselCurrent">1</span> / <span id="standup-carouselTotal"></span></div>
+
+    <!-- ── PHOTOS DE GROUPE (mises en avant) ── -->
+    <p class="section-label">Les soirées</p>
+    <h2 class="section-title">Ils sont venus <span style="color:var(--yellow);">Chez Macha</span></h2>
+
+    <div class="featured-grid">
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-groupe-1.jpg" alt="Les humoristes" loading="lazy" />
+        <div class="caption"><span>Les humoristes</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-peniche.jpg" alt="Sur la péniche" loading="lazy" />
+        <div class="caption"><span>Sur la péniche</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-waterloo.jpg" alt="Chez Macha — Waterloo" loading="lazy" />
+        <div class="caption"><span>Waterloo</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-251b.jpg" alt="Après le show" loading="lazy" />
+        <div class="caption"><span>Après le show</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-252.jpg" alt="Après le show" loading="lazy" />
+        <div class="caption"><span>Après le show</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-0180.jpg" alt="Les humoristes" loading="lazy" />
+        <div class="caption"><span>Les humoristes</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/show-0184.jpg" alt="Macha et les humoristes" loading="lazy" />
+        <div class="caption"><span>Macha et les humoristes</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/alexvizorek.jpg" alt="Les humoristes" loading="lazy" />
+        <div class="caption"><span>Les humoristes</span></div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="gallery/vizorek.jpg" alt="Les humoristes" loading="lazy" />
+        <div class="caption"><span>Les humoristes</span></div>
+      </div>
+
+    </div>
+
+    <!-- ── CARROUSEL AMBIANCE ── -->
+    <p class="section-label">L'ambiance</p>
+
+
+    <h2 class="section-title">Les scènes, le public, <span style="color:var(--yellow);">les rires</span></h2>
+
+    <div class="carousel-wrap" id="carouselWrap">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-slide active" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-191.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_vizorek.jpg" alt="Alex Vizorek" />
+          <div class="caption"><span>Alex Vizorek — Tennis Churchill</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0030.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0070.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0101.jpg" alt="L'ambiance" />
+          <div class="caption"><span>L'ambiance</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0148.jpg" alt="Une soirée Chez Macha" />
+          <div class="caption"><span>Une soirée Chez Macha</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0152.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0170.jpg" alt="Macha De Ruyver" />
+          <div class="caption"><span>Macha De Ruyver</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0171.jpg" alt="Macha De Ruyver" />
+          <div class="caption"><span>Macha De Ruyver</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/show-0030b.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-232.jpg" alt="Soirée Wine Club" />
+          <div class="caption"><span>Wine Club</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-78.jpg" alt="Soirée Alice Bar" />
+          <div class="caption"><span>Alice Bar</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-52.jpg" alt="Côté Meuse" />
+          <div class="caption"><span>Côté Meuse — Namur</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_people.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-169.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-209.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-146.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-43.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-251.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/event/optimized_Stand Up Comedy Show-130.jpg" alt="Sur scène" />
+          <div class="caption"><span>Sur scène</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="https://chezmacha.be/asset/optimized_macha1.jpg" alt="Macha De Ruyver" />
+          <div class="caption"><span>Macha De Ruyver</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/people.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+        <div class="carousel-slide" onclick="openLightboxSrc(this)">
+          <img src="gallery/people1.jpg" alt="Le public" />
+          <div class="caption"><span>Le public</span></div>
+        </div>
+
+      </div>
+
+      <button class="carousel-btn prev" id="carouselPrev" aria-label="Précédent">&#8592;</button>
+      <button class="carousel-btn next" id="carouselNext" aria-label="Suivant">&#8594;</button>
+    </div>
+    <div class="carousel-counter" id="carouselCounter"><span id="carouselCurrent">1</span> / <span id="carouselTotal"></span></div>
+
+
+    <!-- CTA Instagram -->
+    <div style="margin-top:3rem;text-align:center;padding:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;">
+      <p style="font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.4rem;">Encore plus de photos</p>
+      <p style="font-family:'Jost',sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;margin-bottom:0.35rem;">Suivez-nous sur Instagram</p>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.25rem;">Toutes les soirées, tous les humoristes, en temps réel.</p>
+      <a href="https://www.instagram.com/chezmacha_standup/" target="_blank" class="btn btn-primary">@chezmacha_standup</a>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+
+  <div class="quote-centree">
+    <blockquote>
+      « Le rire est universel, il n'a pas de frontière ; c'est d'ailleurs lui qui nous unit tous ensemble. »
+    </blockquote>
+    <cite>— Macha De Ruyver, Fondatrice de Chez Macha</cite>
+  </div>
+  <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
+    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+    </nav>
+  </footer>
+
+  <script>
+    // ── Hamburger ──
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var panel = document.getElementById('mobileNavPanel');
+      if (!btn || !panel) return;
+      document.querySelectorAll('.site-nav a').forEach(function(link) {
+        panel.appendChild(link.cloneNode(true));
+      });
+      btn.addEventListener('click', function() {
+        var open = panel.classList.toggle('open');
+        btn.classList.toggle('open', open);
+      });
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('open');
+          btn.classList.remove('open');
+        }
+      });
+    })();
+
+    // ── Lightbox ──
+    function openLightbox(item) {
+      var img = item.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function openLightboxSrc(slide) {
+      openLightbox(slide);
+    }
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+    });
+
+    // ── Carousel ──
+    (function() {
+      var slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      var currentEl = document.getElementById('carouselCurrent');
+      var totalEl = document.getElementById('carouselTotal');
+      var current = 0;
+      var timer;
+
+      totalEl.textContent = slides.length;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        currentEl.textContent = current + 1;
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 4000);
+      }
+
+      document.getElementById('carouselNext').addEventListener('click', function() { next(); resetTimer(); });
+      document.getElementById('carouselPrev').addEventListener('click', function() { prev(); resetTimer(); });
+
+      // Pause on hover
+      var wrap = document.getElementById('carouselWrap');
+      wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
+      wrap.addEventListener('mouseleave', resetTimer);
+
+      resetTimer();
+    })();
+
+    // ── Carousel Stand Up ──
+    (function() {
+      var slides = Array.from(document.querySelectorAll('#standup-carouselTrack .carousel-slide'));
+      var currentEl = document.getElementById('standup-carouselCurrent');
+      var totalEl = document.getElementById('standup-carouselTotal');
+      var current = 0;
+      var timer;
+
+      totalEl.textContent = slides.length;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        currentEl.textContent = current + 1;
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 4000);
+      }
+
+      document.getElementById('standup-carouselNext').addEventListener('click', function() { next(); resetTimer(); });
+      document.getElementById('standup-carouselPrev').addEventListener('click', function() { prev(); resetTimer(); });
+
+      var wrap = document.getElementById('standup-carouselWrap');
+      wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
+      wrap.addEventListener('mouseleave', resetTimer);
+
+      resetTimer();
+    })();
+  </script>
+</body>
+</html>

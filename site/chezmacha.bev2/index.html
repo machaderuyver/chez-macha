@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <meta name="description" content="Chez Macha — le comedy club belge itinérant. Stand-up dans des bars, restos et lieux insolites. Plateaux 100% live, artistes belges, soirées uniques." />
+  <title>Chez Macha — Comedy Club Itinérant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Didact+Gothic&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-size: 15px; line-height: 1.6; min-height: 100vh; }
+
+    /* ── BANDEAU TOP ── */
+    .top-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 101;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #CC0000;
+      border-bottom: none;
+      box-shadow: 0 2px 16px rgba(204,0,0,0.4);
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      padding: 0 1rem;
+    }
+    .top-banner a { text-decoration: none; }
+    .banner-mobile { display: none; }
+    .banner-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed;
+      top: 44px; left: 0; right: 0;
+      z-index: 100;
+      height: auto;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 2rem;
+      background: rgba(20,20,20,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212,160,23,0.22);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+
+    /* Espace entre logo et camionnette */
+    .header-van { margin-left: 1rem; margin-right: auto; }
+
+    .header-socials {
+      display: flex;
+      gap: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    .site-header .logo {
+      height: 180px;
+      width: auto;
+      position: relative;
+      margin-top: -40px;
+      margin-left: -2.5rem;
+      margin-right: 40px;
+      z-index: 102;
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+      transition: filter 0.2s;
+    }
+
+    .site-header .logo:hover {
+      filter: drop-shadow(0 2px 16px rgba(212,160,23,0.45));
+    }
+
+    @media (max-width: 768px) {
+      .site-header .logo {
+        height: 70px;
+        width: auto;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        position: static;
+        z-index: auto;
+      }
+      .site-header {
+        padding: 8px 12px !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+      }
+      .hamburger-btn {
+        position: static !important;
+        transform: none !important;
+      }
+      .header-left {
+        display: flex !important;
+        justify-content: flex-start !important;
+      }
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .site-nav a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4em 0.85em;
+      white-space: nowrap;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0.85em; right: 0.85em;
+      height: 2px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .site-nav a:hover { color: var(--yellow); }
+    .site-nav a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 55vh;
+      min-height: 420px;
+      max-height: 580px;
+      overflow: hidden;
+      margin-top: 200px;
+    }
+
+    /* Spotlight doré — ambiance scène */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 90% at 72% -10%, rgba(212,160,23,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 60% at 60% 5%, rgba(212,160,23,0.10) 0%, transparent 50%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    @media (max-width: 768px) {
+      /* ── Bandeau — défile avec la page sur mobile ── */
+      .top-banner {
+        position: relative !important;
+        height: auto !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        padding: 0.4rem 0.75rem !important;
+        gap: 0.4rem;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+      }
+      .banner-divider { display: none; }
+      .banner-desktop { display: none !important; }
+      .banner-mobile { display: inline !important; }
+
+      /* ── Header — défile avec la page sur mobile ── */
+      .header-van { display: none !important; }
+      .site-header {
+        position: relative !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      /* ── Hero mobile — plus besoin de margin-top ── */
+      .hero {
+        height: 52vh;
+        min-height: 320px;
+        max-height: 460px;
+        margin-top: 0 !important;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-bg { display: block !important; object-fit: contain !important; object-position: center center !important; background-color: #1A1A1A; }
+      .hero-text-block {
+        position: absolute;
+        bottom: 3.5rem !important;
+        top: auto !important;
+        transform: none !important;
+        left: 0.75rem !important;
+        right: 0.75rem !important;
+        max-width: 100%;
+      }
+      .hero-tagline { font-size: 0.78rem !important; max-width: 100% !important; }
+      .hero-cta { flex-direction: row; gap: 0.5rem !important; flex-wrap: wrap; }
+      .hero-cta a { text-align: center; flex: 1 1 140px; box-sizing: border-box; font-size: 0.72rem !important; padding: 0.6em 0.8em !important; }
+
+      /* ── Vidéo PiP — droite, centrée verticalement sur mobile ── */
+      .hero-pip-block {
+        top: 50% !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: 0.75rem !important;
+        transform: translateY(-50%) !important;
+      }
+      .hero-pip { width: clamp(80px, 22vw, 120px) !important; border-radius: 8px !important; }
+      .sound-btn { font-size: 0.58rem !important; padding: 0.25em 0.55em !important; }
+
+      /* ── Stats bar ── */
+      .hero-stats { backdrop-filter: none; background: rgba(20,20,20,0.85); }
+      .stats-bar { flex-wrap: nowrap; overflow-x: auto; }
+      .stat-item { flex: 0 0 auto; padding: 0.4rem 0.6rem; }
+      .stat-num { font-size: 0.82rem !important; }
+      .stat-label { font-size: 0.5rem !important; }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(20,20,20,0.6) 0%, rgba(20,20,20,0.1) 35%, rgba(20,20,20,0.1) 50%, rgba(20,20,20,0.92) 100%);
+    }
+
+    .hero-pip {
+      width: clamp(80px, 10vw, 130px);
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 2.5px solid #CC0000;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 16px rgba(204,0,0,0.35);
+      object-fit: cover;
+      background: #000;
+      display: block;
+    }
+
+    .hero-top-right {
+      position: absolute;
+      top: 0.75rem; right: 1rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .social-btn {
+      text-decoration: none;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(212,160,23,0.2);
+      border-radius: 999px;
+      width: 28px; height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .social-btn svg {
+      width: 14px; height: 14px;
+    }
+
+    .social-btn:hover {
+      color: var(--yellow);
+      background: rgba(212,160,23,0.12);
+      border-color: var(--yellow);
+      transform: scale(1.12);
+    }
+
+    .sound-btn {
+      position: static;
+      z-index: 10;
+      background: rgba(20,20,20,0.7);
+      border: 1px solid rgba(212,160,23,0.35);
+      border-radius: 999px;
+      color: var(--yellow);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35em 0.85em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s;
+    }
+
+    .sound-btn:hover { background: rgba(212,160,23,0.15); }
+
+    #btn-son {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      color: #f5c518;
+      border: 1px solid #f5c518;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 1.5rem 1rem;
+      gap: 0.85rem;
+    }
+
+
+    .avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2.5px solid var(--yellow);
+      box-shadow: 0 0 0 5px rgba(212,160,23,0.1), 0 8px 24px rgba(0,0,0,0.5);
+      flex-shrink: 0;
+    }
+
+    .hero-text { display: flex; flex-direction: column; gap: 0.3rem; justify-content: flex-end; }
+
+    .hero-title {
+      font-family: 'Bebas Neue', 'Jost', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+    }
+
+    .hero-title span { color: var(--red); text-shadow: 0 0 24px rgba(204,0,0,0.5); }
+
+    .hero-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      max-width: 280px;
+      line-height: 1.55;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    /* ── VAN HEADER — caché mobile, via style.css ── */
+
+    /* ── STATS BAR (overlay dans le hero) ── */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 4;
+      background: rgba(20,20,20,0.72);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(212,160,23,0.18);
+      border-bottom: none;
+      max-width: none;
+    }
+
+    .stat-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.5rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Bebas Neue', 'Jost', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── DASHBOARD deux colonnes ── */
+    .dashboard-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dashboard-title {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .dashboard-title:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    .dashboard-title-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--yellow);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(212,160,23,0.6);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .col-left {
+      border-right: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+    }
+
+    .col-right {
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ── Galerie ── */
+    .gallery-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading-full {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-heading-full::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .comedians-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .comedian {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: default;
+    }
+
+    .comedian img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      opacity: 0.9;
+    }
+
+    .comedian:hover img {
+      border-color: var(--yellow);
+      transform: scale(1.08);
+      box-shadow: 0 0 0 4px rgba(212,160,23,0.15);
+      opacity: 1;
+    }
+
+    .comedian span {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+
+    .comedian:hover span { color: var(--yellow); }
+
+    /* ── Featured event ── */
+    .event-featured {
+      display: block;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+    }
+
+    /* Bandeau SOLD OUT en coin — visible sur tous écrans */
+    .event-featured::before {
+      content: '🔴 SOLD OUT';
+      position: absolute;
+      top: 10px;
+      right: -28px;
+      z-index: 10;
+      background: #CC0000;
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3em 2.5em;
+      transform: rotate(35deg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .event-featured::before {
+        font-size: 0.55rem;
+        top: 8px;
+        right: -30px;
+        padding: 0.25em 2.8em;
+      }
+    }
+
+    .event-featured img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .event-featured:hover img { transform: scale(1.03); }
+
+    .event-featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20,20,20,0.92) 0%, rgba(20,20,20,0.3) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem 1.1rem;
+      gap: 0.25rem;
+    }
+
+    .event-featured-badge {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--yellow);
+      color: #1A1A1A;
+      padding: 0.2em 0.6em;
+      border-radius: 3px;
+      width: fit-content;
+    }
+
+    .event-featured-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .event-featured-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Event rows ── */
+    .events { display: flex; flex-direction: column; }
+
+    .event-card {
+      display: flex;
+      align-items: stretch;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.18s;
+    }
+
+    .event-card:first-child { border-top: 1px solid var(--border); }
+    .event-card:hover { background: rgba(212,160,23,0.04); }
+    .event-card:hover .event-title { color: var(--yellow); }
+
+    .event-date {
+      min-width: 58px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 0.5rem;
+      border-right: 1px solid var(--border);
+      background: rgba(212,160,23,0.03);
+      flex-shrink: 0;
+    }
+
+    .event-day {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .event-month {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .event-body {
+      flex: 1;
+      padding: 0.8rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      justify-content: center;
+    }
+
+    .event-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .event-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .event-thumb {
+      width: 56px;
+      height: 100%;
+      min-height: 56px;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .event-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+      color: var(--yellow);
+      font-size: 0.9rem;
+      opacity: 0.35;
+      flex-shrink: 0;
+      transition: opacity 0.18s, transform 0.18s;
+    }
+
+    .event-card:hover .event-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* ── Link cards compacts ── */
+    .links { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--yellow);
+      opacity: 0;
+      transition: opacity 0.18s;
+    }
+
+    .link-card:hover { background: var(--bg-card-hover); border-color: rgba(212,160,23,0.3); transform: translateX(3px); }
+    .link-card:hover::before { opacity: 1; }
+
+    .link-icon svg {
+      width: 17px; height: 17px;
+      fill: none;
+      stroke: var(--yellow);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .link-body { flex: 1; display: flex; flex-direction: column; gap: 0; }
+
+    .link-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .link-sub { font-size: 0.7rem; color: var(--text-muted); }
+
+    .link-arrow {
+      color: var(--yellow);
+      opacity: 0.35;
+      font-size: 0.85rem;
+      transition: opacity 0.18s, transform 0.18s;
+      flex-shrink: 0;
+    }
+
+    .link-card:hover .link-arrow { opacity: 1; transform: translateX(2px); }
+
+    .badge {
+      background: var(--yellow);
+      color: var(--bg);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2em 0.55em;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── Bio mini dans colonne droite ── */
+    .bio-mini {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .bio-photo {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+
+    .bio-inner {
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bio-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .bio-name span { color: var(--yellow); }
+
+    .bio-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .bio-text strong { color: var(--text); }
+
+    /* ── Section supplémentaire (sous dashboard, full width) ── */
+    .extra-sections {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .extra-section .section-heading { margin-bottom: 0.6rem; }
+
+    /* ── Buttons ── */
+    .btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.65em 1.6em;
+      border-radius: 4px;
+      transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(204,0,0,0.4); animation: pulse-cta 2.8s ease-in-out infinite; }
+    .btn-primary:hover { background: #e60000; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(204,0,0,0.5), 0 0 20px rgba(212,160,23,0.2); animation: none; }
+    @keyframes pulse-cta { 0%,100% { box-shadow: 0 4px 20px rgba(204,0,0,0.4); } 50% { box-shadow: 0 6px 36px rgba(204,0,0,0.65), 0 0 16px rgba(212,160,23,0.15); } }
+
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: var(--red); color: #fff; }
+
+    .btn-sponsor { background: transparent; color: var(--red); border: 1.5px solid var(--red); }
+    .btn-sponsor:hover { background: var(--red); color: #fff; transform: translateY(-1px); }
+
+    .btn-don { background: transparent; color: #a78bfa; border: 1.5px solid #a78bfa; }
+    .btn-don:hover { background: #a78bfa; color: #fff; transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE mobile ── */
+    @media (max-width: 768px) {
+      .site-nav a { font-size: 0.62rem; padding: 0.3em 0.5em; }
+
+      .hero-content { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0 1rem 0.75rem; }
+      .avatar { width: 42px; height: 42px; }
+      .hero-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+      /* Dashboard 1 colonne */
+      .dashboard { grid-template-columns: 1fr; width: 100%; }
+      .dashboard-header { grid-template-columns: 1fr; }
+      .col-left { border-right: none; border-bottom: 1px solid var(--border); padding: 0.75rem 1rem; max-width: 100%; }
+      .col-right { padding: 0.75rem 1rem; display: block; max-width: 100%; }
+      /* ── Encart Vizorek — mobile ── */
+      .event-featured img { height: 110px !important; max-width: 100% !important; }
+      .event-featured-title { font-size: 1rem !important; }
+      .event-featured-meta { font-size: 0.72rem !important; }
+
+      /* SOLD OUT badge — plus gros et visible */
+      .event-featured-overlay > div:first-child {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .event-featured-overlay > div:first-child span:last-child {
+        font-size: 0.72rem !important;
+        padding: 0.3em 0.75em !important;
+        border-width: 1.5px !important;
+        font-weight: 900 !important;
+      }
+
+      /* Bouton liste d'attente — pleine largeur */
+      .event-featured-overlay > div:last-child {
+        width: 100%;
+      }
+      .event-featured-overlay > div:last-child a {
+        width: 100% !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        font-size: 0.78rem !important;
+        padding: 0.55em 1em !important;
+      }
+
+      .extra-sections { grid-template-columns: 1fr; gap: 0; padding: 0; width: 100%; }
+      .extra-section { padding: 1.25rem 1rem; border-bottom: 1px solid var(--border); max-width: 100%; }
+      .quote-universelle { padding: 1rem 1rem; margin: 1.25rem 0; max-width: 100%; }
+      .testimonials { padding: 1.25rem 1rem 0; max-width: 100%; overflow: hidden; }
+      .testimonial-bubble { padding: 0.85rem 1rem; }
+      .stats-bar { gap: 0.75rem !important; padding: 0.75rem 0.5rem !important; flex-wrap: nowrap; overflow-x: auto; }
+      .gallery-section { padding: 1.25rem 1rem 0; max-width: 100%; }
+      .section-heading-full { font-size: 0.6rem !important; }
+
+      /* Sections newsletter + soutenir */
+      #newsletter, #soutenir { padding: 1.5rem 1rem !important; }
+      #newsletter > div, #soutenir > div { max-width: 100%; }
+    }
+
+    /* ── ANIMATIONS au scroll ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── TÉMOIGNAGES CARROUSEL ── */
+    .testimonials {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .testimonials-track {
+      position: relative;
+      min-height: 110px;
+      margin-top: 1rem;
+    }
+    .testimonials-slide {
+      display: none;
+      gap: 1.25rem;
+    }
+    .testimonials-slide.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      animation: fadeSlide 0.4s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .testimonial-bubble {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--red);
+      border-radius: 0 14px 14px 0;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      position: relative;
+    }
+    .testimonial-bubble::after { display: none; }
+    .testimonial-stars { color: var(--gold); font-size: 0.65rem; letter-spacing: 0.15em; }
+    .testimonial-text { font-size: 0.83rem; color: var(--text-muted); font-style: italic; line-height: 1.65; }
+    .testimonial-author { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--text); opacity: 0.5; margin-top: 0.15rem; }
+    .testimonials-dots {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+    .testimonials-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .testimonials-dot.active {
+      background: var(--yellow);
+      transform: scale(1.3);
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(212,160,23,0.07);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      text-align: left;
+      padding: 0.75rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--text); }
+    .faq-icon { font-size: 0.9rem; transition: transform 0.3s; flex-shrink: 0; opacity: 0.5; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); opacity: 1; }
+    .faq-item.open .faq-question { color: var(--text); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 0.85rem; }
+
+    /* ── Barre sticky mobile ── */
+    .sticky-reserve {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .sticky-reserve {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 200;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        background: #D4A017;
+        padding: 0.85rem 1.25rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        box-shadow: 0 -4px 24px rgba(212,160,23,0.3);
+      }
+      .sticky-reserve-text {
+        font-family: 'Jost', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #1A1A1A;
+        line-height: 1.2;
+      }
+      .sticky-reserve-text strong {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 900;
+      }
+      .sticky-reserve-btn {
+        font-family: 'Jost', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: #1A1A1A;
+        color: #D4A017;
+        border: none;
+        border-radius: 50px;
+        padding: 0.65em 1.4em;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    }
+
+    /* ── Citation universelle ── */
+    .quote-universelle {
+      margin: 2.5rem 0;
+      padding: 2rem 2.5rem;
+      border-left: 4px solid var(--red);
+      background: rgba(204,0,0,0.04);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-universelle blockquote {
+      font-family: 'DM Sans', 'Didact Gothic', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0;
+      font-style: italic;
+    }
+    .quote-universelle cite {
+      display: block;
+      margin-top: 0.85rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+    .lien-site {
+      color: var(--gold) !important;
+      font-weight: 700;
+      text-decoration: none !important;
+    }
+    .lien-site:hover { text-decoration: underline !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;">
+        <img class="logo" src="Logo_officiel_transparent.png" alt="Chez Macha" />
+        <div class="header-socials">
+          <a class="social-btn" href="https://www.instagram.com/chezmacha_standup/" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+            </svg>
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/ChezMachaComedyclub/" target="_blank" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="social-btn" href="https://www.tiktok.com/@chezmacha_standup" target="_blank" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/>
+            </svg>
+          </a>
+                  <a class="social-btn" href="mailto:info@chezmacha.be" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <polyline points="2,4 12,13 22,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Van itinérant — desktop uniquement -->
+    <a href="apropos.html" class="header-van" aria-label="À propos">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem;">
+      <svg width="134" height="70" viewBox="0 0 134 70" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4A017" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Lignes de vitesse (Tex Avery) -->
+        <line x1="1" y1="26" x2="13" y2="26" stroke-width="1.2" stroke-opacity="0.45"/>
+        <line x1="1" y1="32" x2="10" y2="32" stroke-width="2" stroke-opacity="0.6"/>
+        <line x1="1" y1="38" x2="14" y2="38" stroke-width="1.2" stroke-opacity="0.45"/>
+        <line x1="1" y1="20" x2="7"  y2="20" stroke-width="0.9" stroke-opacity="0.3"/>
+        <!-- Corps van — légèrement trapu style cartoon -->
+        <path d="M14 47 L14 19 Q14 11 21 10 L101 10 Q110 10 112 17 L114 47" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
+        <!-- Pilier A + vitre cabine -->
+        <line x1="38" y1="10" x2="38" y2="29" stroke-width="2.2"/>
+        <path d="M16 27 L16 15 Q16 11 20 10 L36 10 L36 27 Z" stroke-width="2" fill="rgba(212,160,23,0.14)"/>
+        <!-- Fenêtres latérales -->
+        <rect x="42" y="13" width="22" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
+        <rect x="68" y="13" width="22" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
+        <rect x="94" y="13" width="15" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
+
+        <!-- ═══ PERSO 1 — enthousiaste, bras dehors ═══ -->
+        <!-- Tête crème qui déborde un peu (Tex Avery) -->
+        <circle cx="53" cy="18.5" r="7" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
+        <!-- Cheveux hérissés -->
+        <path d="M47.5 13 L49 8.5 L50.5 13" fill="#D4A017" stroke="none"/>
+        <path d="M50.5 11.5 L52.5 6.5 L54.5 11.5" fill="#D4A017" stroke="none"/>
+        <path d="M54.5 13 L56 8.5 L57.5 13" fill="#D4A017" stroke="none"/>
+        <!-- Yeux blancs ronds -->
+        <circle cx="50.2" cy="17.5" r="3" fill="white" stroke="#D4A017" stroke-width="1.3"/>
+        <circle cx="55.8" cy="17.5" r="3" fill="white" stroke="#D4A017" stroke-width="1.3"/>
+        <!-- Pupilles -->
+        <circle cx="50.8" cy="18" r="1.4" fill="#0d0c09" stroke="none"/>
+        <circle cx="56.4" cy="18" r="1.4" fill="#0d0c09" stroke="none"/>
+        <!-- Éclats -->
+        <circle cx="51.3" cy="17.4" r="0.55" fill="white" stroke="none"/>
+        <circle cx="56.9" cy="17.4" r="0.55" fill="white" stroke="none"/>
+        <!-- Grand sourire avec dents -->
+        <path d="M48.5 22 Q53 26.5 57.5 22" stroke-width="1.8" fill="rgba(15,10,0,0.75)"/>
+        <line x1="50.5" y1="22.2" x2="50.5" y2="25" stroke-width="1.3" stroke="white"/>
+        <line x1="53" y1="22.5" x2="53" y2="25.5" stroke-width="1.3" stroke="white"/>
+        <line x1="55.5" y1="22.2" x2="55.5" y2="25" stroke-width="1.3" stroke="white"/>
+        <!-- Bras dehors + main 3 doigts -->
+        <path d="M59 23 Q65 19 63 13.5" stroke-width="2.2"/>
+        <line x1="63" y1="13.5" x2="65.5" y2="10.5" stroke-width="1.8"/>
+        <line x1="63" y1="13.5" x2="66.5" y2="13" stroke-width="1.8"/>
+        <line x1="63" y1="13.5" x2="65.5" y2="16" stroke-width="1.8"/>
+
+        <!-- ═══ PERSO 2 — bouche GRANDE ouverte, yeux inégaux ═══ -->
+        <circle cx="79" cy="18.5" r="7" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
+        <!-- Yeux inégaux style Tex Avery -->
+        <circle cx="75.5" cy="16.5" r="3.5" fill="white" stroke="#D4A017" stroke-width="1.3"/>
+        <circle cx="82" cy="16.5" r="2.2" fill="white" stroke="#D4A017" stroke-width="1.3"/>
+        <circle cx="76.2" cy="17.2" r="1.7" fill="#0d0c09" stroke="none"/>
+        <circle cx="82.6" cy="17.2" r="1" fill="#0d0c09" stroke="none"/>
+        <circle cx="76.8" cy="16.6" r="0.6" fill="white" stroke="none"/>
+        <circle cx="83.1" cy="16.6" r="0.4" fill="white" stroke="none"/>
+        <!-- Bouche béante -->
+        <path d="M73.5 21 Q79 30 84.5 21" stroke-width="2" fill="rgba(15,8,0,0.85)"/>
+        <!-- Langue tirée -->
+        <path d="M76.5 24.5 Q79 28.5 81.5 24.5" stroke-width="1.5" fill="rgba(220,80,60,0.85)" stroke="rgba(200,60,40,0.9)"/>
+        <!-- Petites étoiles de rire -->
+        <path d="M85 11 L85.6 9 L86.2 11 L88.2 11.6 L86.2 12.2 L85.6 14.2 L85 12.2 L83 11.6 Z" fill="#D4A017" stroke="none"/>
+        <path d="M87 15.5 L87.4 14.2 L87.8 15.5 L89.1 15.9 L87.8 16.3 L87.4 17.6 L87 16.3 L85.7 15.9 Z" fill="#D4A017" stroke="none" opacity="0.65"/>
+
+        <!-- ═══ PERSO 3 — lunettes de soleil, sourire cool ═══ -->
+        <circle cx="101.5" cy="18.5" r="6" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
+        <!-- Lunettes noires -->
+        <rect x="96.5" y="14.5" width="6.5" height="5" rx="1.8" fill="rgba(8,8,8,0.92)" stroke="#D4A017" stroke-width="1.5"/>
+        <rect x="103.5" y="14.5" width="6.5" height="5" rx="1.8" fill="rgba(8,8,8,0.92)" stroke="#D4A017" stroke-width="1.5"/>
+        <!-- Pont + branches -->
+        <line x1="103" y1="17" x2="103.5" y2="17" stroke-width="1.3"/>
+        <line x1="96.5" y1="17" x2="94.8" y2="18" stroke-width="1.3"/>
+        <line x1="110" y1="17" x2="111.5" y2="18" stroke-width="1.3"/>
+        <!-- Reflet sur les verres -->
+        <line x1="97.5" y1="15.5" x2="99" y2="17.5" stroke-width="1" stroke="rgba(255,255,255,0.45)" stroke-linecap="round"/>
+        <line x1="104.5" y1="15.5" x2="106" y2="17.5" stroke-width="1" stroke="rgba(255,255,255,0.45)" stroke-linecap="round"/>
+        <!-- Sourire en coin très classe -->
+        <path d="M97.5 22.5 Q101.5 25 106.5 22.5" stroke-width="1.8" fill="none"/>
+        <!-- Petite houppette stylée -->
+        <path d="M100 13.5 Q101.5 10 103 13.5" stroke-width="1.8" fill="none"/>
+
+        <!-- Porte + poignée -->
+        <line x1="65" y1="29" x2="65" y2="47" stroke-width="1.8"/>
+        <path d="M50 40 Q54 39 58 40" stroke-width="2" fill="none"/>
+        <!-- Phare œil exagéré -->
+        <ellipse cx="16" cy="34" rx="5" ry="5.5" stroke-width="2.2" fill="rgba(212,160,23,0.22)"/>
+        <ellipse cx="16" cy="34" rx="2.5" ry="3" stroke-width="1.4" fill="rgba(212,160,23,0.45)"/>
+        <!-- Roues légèrement aplaties = élan -->
+        <ellipse cx="31" cy="52" rx="11" ry="10" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
+        <ellipse cx="31" cy="52" rx="4.5" ry="4" stroke-width="2"/>
+        <ellipse cx="94" cy="52" rx="11" ry="10" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
+        <ellipse cx="94" cy="52" rx="4.5" ry="4" stroke-width="2"/>
+        <!-- Passages de roue -->
+        <path d="M14 47 Q15 39 31 39 Q47 39 49 47" stroke-width="2.2"/>
+        <path d="M77 47 Q78 39 94 39 Q110 39 114 47" stroke-width="2.2"/>
+        <!-- Route + petites lignes de vitesse sous roues -->
+        <line x1="2" y1="65" x2="132" y2="65" stroke-width="1.4" stroke-dasharray="6 4" stroke-opacity="0.4"/>
+        <path d="M22 59 Q27 57 32 59" stroke-width="1" stroke-opacity="0.45"/>
+        <path d="M85 59 Q90 57 95 59" stroke-width="1" stroke-opacity="0.45"/>
+      </svg>
+      <span style="font-family:'Didact Gothic',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff8e8;text-shadow:0 1px 6px rgba(255,245,210,0.3);white-space:nowrap;">le RIRE est itinérant, TOUT comme nous</span>
+      </div>
+    </a>
+
+    <nav style="display:flex;align-items:center;gap:1rem;">
+      <ul class="site-nav">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="tickets.html">Agenda</a></li>
+        <li><a href="lieux.html">Partenaires</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="#soutenir">Nous soutenir</a></li>
+        <li><a href="presse.html">Presse</a></li>
+        <li><a href="asbl.html">ASBL</a></li>
+      </ul>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+  <!-- Menu mobile -->
+  <div class="mobile-nav-panel" id="mobileNavPanel"></div>
+
+  <!-- Bandeau Ulule -->
+  <div class="top-banner">
+    <!-- Partie gauche : résultat Ulule -->
+    <a href="https://fr.ulule.com/-faire-grandir-chez-macha--ensemble--/" target="_blank" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+      <span style="font-size:1rem;line-height:1;">🎉</span>
+      <span style="background:#fff;color:#CC0000;padding:0.15em 0.7em;border-radius:50px;font-family:'Jost',sans-serif;font-weight:900;text-transform:uppercase;font-size:0.58rem;letter-spacing:0.1em;white-space:nowrap;">Mission accomplie</span>
+      <span class="banner-desktop" style="font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:800;color:#fff;white-space:nowrap;">Ulule financé à <span style="color:#D4A017;">102% — 4 610 €</span> récoltés</span>
+      <span class="banner-mobile" style="font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:800;color:#D4A017;">4 610 € récoltés · 102%</span>
+    </a>
+    <!-- Séparateur -->
+    <div class="banner-divider"></div>
+    <!-- Partie droite : soutenir l'ASBL -->
+    <a href="#soutenir" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+      <span class="banner-desktop" style="font-size:0.78rem;color:rgba(255,255,255,0.8);white-space:nowrap;">Pas pu soutenir la campagne ?</span>
+      <span style="font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:#CC0000;background:#fff;padding:0.25em 0.85em;border-radius:5px;white-space:nowrap;">Soutenir l'ASBL →</span>
+    </a>
+  </div>
+
+  <!-- Hero compact -->
+  <div class="hero">
+    <img class="hero-bg" src="alexvizorek.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" />
+    <div class="hero-overlay"></div>
+    <!-- Texte — bas gauche -->
+    <div style="position:absolute;bottom:2rem;left:2rem;z-index:5;max-width:480px;" class="hero-text-block">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+        <img class="avatar" src="macha.jpg" alt="Macha De Ruyver" />
+      </div>
+      <p class="hero-tagline">Le stand-up belge qui pose ses micros là où ça vit —<br>bars, restos, lieux insolites. Pas d'adresse fixe, que de vraies soirées.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tickets.html#prochain">🎟 Prendre mes tickets</a>
+        <a class="btn btn-outline" href="tickets.html">Toutes les dates</a>
+      </div>
+    </div>
+    <!-- Stats bar intégrée dans le hero — overlay bas -->
+    <div class="stats-bar hero-stats">
+      <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Plateaux</span></div>
+      <div class="stat-item"><span class="stat-num">+100</span><span class="stat-label">Humoristes</span></div>
+      <div class="stat-item"><span class="stat-num">Min 2×</span><span class="stat-label">par mois</span></div>
+      <div class="stat-item"><span class="stat-num">Nov. 2024</span><span class="stat-label">On débarque</span></div>
+    </div>
+
+    <!-- Vidéo PiP — bas gauche, bouton son en overlay haut droite -->
+    <div style="position:absolute;top:1.5rem;left:1rem;z-index:15;" class="hero-pip-block">
+      <div style="position:relative;display:inline-block;">
+        <video class="hero-pip" id="heroPip" autoplay muted loop playsinline poster="macha.jpg" preload="auto" style="display:block;">
+          <source src="promo.mp4" type="video/mp4" />
+        </video>
+        <button id="btn-son">🔇 Son off</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Ancre événements -->
+  <div id="evenements"></div>
+
+  <div class="dashboard">
+
+    <!-- Colonne gauche : événements -->
+    <div class="col-left">
+
+      <!-- Prochain événement — géré dynamiquement par JS -->
+      <div class="event-featured" id="featured-next-event" style="display:block;border:2px solid #D4A017;border-radius:10px;box-shadow:0 0 18px rgba(212,160,23,0.25);">
+        <img src="events/ALEX VIZOREK.png" alt="Alex Vizorek" style="width:100%;height:140px;object-fit:cover;border-radius:8px;display:block;filter:grayscale(25%);" />
+        <div class="event-featured-overlay" style="border-radius:8px;">
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <span class="event-featured-badge">À la une</span>
+            <span style="font-family:'Jost',sans-serif;font-size:0.58rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,30,30,0.15);color:#ff4444;border:1px solid #ff4444;border-radius:4px;padding:0.2em 0.6em;">🔴 SOLD OUT</span>
+          </div>
+          <span class="event-featured-title" style="font-size:1.3rem;">Alex Vizorek — 2½</span>
+          <span class="event-featured-meta">31 mai · 19:00 · Chez Bobbi, Ittre</span>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.6rem;align-items:center;">
+            <a href="mailto:info@chezmacha.be?subject=Liste%20d'attente%20—%20Alex%20Vizorek%2031%20Mai&body=Bonjour%2C%0A%0AJe%20souhaite%20être%20ajouté(e)%20à%20la%20liste%20d'attente%20pour%20le%20spectacle%20d'Alex%20Vizorek%20le%2031%20mai%20à%20Chez%20Bobbi%2C%20Ittre.%0A%0AMerci%20!"
+               style="display:inline-flex;align-items:center;gap:0.4em;font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:var(--yellow);color:#1A1A1A;padding:0.4em 1em;border-radius:6px;text-decoration:none;">
+              ✉ Liste d'attente
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="tickets.html" class="lien-site" style="display:block;margin-top:0.75rem;text-align:right;font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;">Voir tous les événements →</a>
+    </div>
+
+    <!-- Colonne droite : Korian -->
+    <div class="col-right">
+      <a href="partenaires.html" style="display:block;text-decoration:none;background:linear-gradient(135deg,#1a0000 0%,#1A1A1A 100%);border:2.5px solid #CC0000;border-radius:14px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 0 16px rgba(204,0,0,0.25);" onmouseover="this.style.borderColor='#e60000';this.style.boxShadow='0 0 28px rgba(204,0,0,0.45)'" onmouseout="this.style.borderColor='#CC0000';this.style.boxShadow='0 0 16px rgba(204,0,0,0.25)'">
+        <img src="korian.jpg" alt="Stand-up en maison de repos" onerror="this.style.display='none'" style="width:100%;height:140px;object-fit:cover;object-position:center;display:block;" />
+        <div style="padding:1.25rem 1.5rem;">
+          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;background:var(--yellow);color:#060917;border-radius:5px;padding:0.25em 0.7em;margin-bottom:0.75rem;">🚀 Lancement sept. 2026</span>
+          <p style="font-family:'Jost',sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;color:#fff;line-height:1.2;margin-bottom:0.5rem;">Stand-up en maison de repos</p>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.85rem;">C'est avec la maison de repos <strong style="color:#fff;">Mélopée</strong>, du groupe <strong style="color:#fff;">Korian</strong>, que l'aventure commence — du stand-up pensé pour les résidents, leurs familles et le personnel soignant. Une première en Belgique francophone.</p>
+          <span style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--yellow);">En savoir plus →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- Témoignages carrousel -->
+  <div class="testimonials" id="testimonials">
+    <p class="section-heading-full">Ce qu'ils en pensent</p>
+
+    <!-- Citation presse DH -->
+    <div style="background:linear-gradient(135deg,#252020,var(--bg-card));border:1px solid rgba(212,160,23,0.3);border-radius:16px;padding:2rem 2.5rem;margin-bottom:1.5rem;position:relative;">
+      <svg style="position:absolute;top:1.5rem;left:2rem;opacity:0.12;width:40px;height:40px;" viewBox="0 0 24 24" fill="var(--yellow)"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+      <p style="font-size:1.05rem;color:var(--text);font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-left:1rem;">« Un projet ambitieux qui a déjà attiré de grands noms de l'humour comme <strong style="color:var(--yellow);font-style:normal;">Alex Vizorek, Kostia ou Sacha Ferra</strong>. »</p>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <img src="https://www.dhnet.be/pf/resources/images/dhnet/logoMain-light.svg?d=795" alt="La DH Les Sports+" style="height:22px;width:auto;opacity:0.8;" onerror="this.style.display='none'" />
+        <span style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);">Pierre-Yves Paque · 24 mars 2026</span>
+      </div>
+    </div>
+
+    <div class="testimonials-track" id="testimonials-track">
+      <div class="testimonials-slide active">
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« Une soirée incroyable, l'ambiance était au top et les humoristes vraiment excellents. On reviendra sans hésiter ! »</p>
+          <span class="testimonial-author">Sophie M. — 12/04/2026</span>
+        </div>
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
+          <span class="testimonial-author">Thomas L. — 28/03/2026</span>
+        </div>
+      </div>
+      <div class="testimonials-slide">
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
+          <span class="testimonial-author">Laura D. — 15/03/2026</span>
+        </div>
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« J'y étais avec des collègues, tout le monde a adoré. Une vraie découverte, on ne s'attendait pas à autant de talent ! »</p>
+          <span class="testimonial-author">Marc V. — 01/03/2026</span>
+        </div>
+      </div>
+      <div class="testimonials-slide">
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« Une énergie folle dans la salle, des artistes surprenants et une Macha qui met tout le monde à l'aise dès la première minute. »</p>
+          <span class="testimonial-author">Céline R. — 18/02/2026</span>
+        </div>
+        <div class="testimonial-bubble">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">« On cherchait une sortie originale, on a trouvé bien plus que ça. Le concept est unique, l'humour est bon, et l'endroit était parfait. »</p>
+          <span class="testimonial-author">Julien K. — 05/02/2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-dots" id="testimonials-dots"></div>
+
+    <!-- CTA avis -->
+    <div style="display:block;margin-top:1.5rem;cursor:pointer;" onclick="openAvisModal()" onmouseover="this.querySelector('.avis-card').style.borderColor='rgba(212,160,23,0.55)'" onmouseout="this.querySelector('.avis-card').style.borderColor='rgba(212,160,23,0.2)'">
+      <div class="avis-card" style="background:linear-gradient(135deg,#232323,#1A1A1A);border:1px solid rgba(212,160,23,0.2);border-radius:16px;padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color 0.2s;">
+        <div>
+          <div class="testimonial-stars" style="margin-bottom:0.5rem;">★★★★★</div>
+          <p class="testimonial-text" style="font-style:normal;color:var(--text);">Vous avez vécu une soirée Chez Macha ?<br><strong style="color:var(--yellow);">Partagez votre expérience</strong> — vos mots inspirent les prochains spectateurs.</p>
+        </div>
+        <span style="font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;background:transparent;border:1.5px solid rgba(212,160,23,0.4);color:#D4A017;border-radius:50px;padding:0.65em 1.5em;white-space:nowrap;flex-shrink:0;">Donner mon avis →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+
+  <div style="max-width:820px;margin:0 auto;padding:0 2rem;">
+    <div class="quote-universelle">
+      <blockquote>
+        « Le rire est universel, il n'a pas de frontière&nbsp;; c'est d'ailleurs lui qui nous unit tous ensemble. »
+      </blockquote>
+      <cite>— Macha De Ruyver, Fondatrice de Chez Macha</cite>
+    </div>
+</div>
+
+  <section id="newsletter" style="padding:2rem;border-top:1px solid var(--border);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="position:relative;overflow:hidden;border-radius:20px;background:#CC0000;padding:clamp(1.25rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;">
+        <!-- Spotlight décoratif -->
+        <div style="position:absolute;top:-80px;right:80px;width:340px;height:340px;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+        <!-- Icône enveloppe décorative -->
+        <svg style="position:absolute;right:2.5rem;top:50%;transform:translateY(-50%);opacity:0.08;pointer-events:none;" width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <!-- Texte -->
+        <div style="position:relative;z-index:1;">
+          <h2 style="font-family:'Bebas Neue','Jost',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:#fff;line-height:1.0;margin-bottom:0.6rem;">Ne rate plus<br>aucune soirée.</h2>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;color:rgba(255,255,255,0.85);line-height:1.6;max-width:380px;margin:0;">Dates, artistes, lieux secrets — directement dans ta boîte. Pas de spam, juste du rire.</p>
+        </div>
+        <!-- Formulaire -->
+        <div style="position:relative;z-index:1;flex:1;min-width:0;max-width:400px;">
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <input id="newsletterEmail" type="email" placeholder="ton@email.com" style="flex:1;min-width:160px;font-family:'DM Sans',sans-serif;font-size:0.9rem;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.4);border-radius:8px;padding:0.75em 1em;color:#fff;outline:none;" onfocus="this.style.borderColor='#fff'" onblur="this.style.borderColor='rgba(255,255,255,0.4)'" onkeydown="if(event.key==='Enter')submitNewsletter()" />
+            <button onclick="submitNewsletter()" style="font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;background:#1A1A1A;color:#fff;border:none;border-radius:8px;padding:0.75em 1.2em;cursor:pointer;white-space:nowrap;">J'en veux encore ! 😄</button>
+          </div>
+          <p style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.5rem;">Pas de spam. Désinscription à tout moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soutenir l'ASBL -->
+  <section id="soutenir" style="padding:2rem;border-top:1px solid var(--border);scroll-margin-top:120px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="background:#D4A017;border-radius:20px;padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+        <div>
+          <p style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(20,20,20,0.5);margin-bottom:0.6rem;">ASBL Ririkou</p>
+          <h2 style="font-family:'Bebas Neue','Jost',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:#1A1A1A;line-height:1.0;margin-bottom:1.5rem;">Un bon fou rire<br>vaut mieux que dix<br>cachets de valériane.</h2>
+          <p style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(20,20,20,0.5);margin-bottom:0.5rem;">Par carte / Bancontact</p>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+            <a href="https://donate.stripe.com/14A3cvbRleux6Qp7zwbfO12" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:900;background:#CC0000;color:#fff;border:none;border-radius:50px;padding:0.7em 1.4em;text-decoration:none;white-space:nowrap;">5 €</a>
+            <a href="https://donate.stripe.com/4gM28r4oT5Y16QpcTQbfO13" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:900;background:#CC0000;color:#fff;border:none;border-radius:50px;padding:0.7em 1.4em;text-decoration:none;white-space:nowrap;">10 €</a>
+            <a href="https://donate.stripe.com/6oUaEX7B5gCF7Ut5robfO14" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:900;background:#CC0000;color:#fff;border:none;border-radius:50px;padding:0.7em 1.4em;text-decoration:none;white-space:nowrap;">20 €</a>
+            <a href="https://donate.stripe.com/cNi5kDaNh1HL1w5f1YbfO15" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:900;background:#CC0000;color:#fff;border:none;border-radius:50px;padding:0.7em 1.4em;text-decoration:none;white-space:nowrap;">50 €</a>
+            <a href="https://donate.stripe.com/eVqcN51cH1HL4IhaLIbfO16" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:900;background:#CC0000;color:#fff;border:none;border-radius:50px;padding:0.7em 1.4em;text-decoration:none;white-space:nowrap;">100 €</a>
+          </div>
+          <p style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(20,20,20,0.5);margin-bottom:0.5rem;">Par virement direct — 100% à l'ASBL</p>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <span style="font-family:'Jost',sans-serif;font-size:0.95rem;font-weight:900;color:#060917;letter-spacing:0.04em;">BE73 0689 5870 2860</span>
+            <button onclick="copyIbanSection(this)" style="font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:rgba(20,20,20,0.12);color:#060917;border:1.5px solid rgba(20,20,20,0.25);border-radius:50px;padding:0.45em 1.1em;cursor:pointer;white-space:nowrap;">Copier l'IBAN</button>
+            <span style="font-size:0.72rem;color:rgba(20,20,20,0.55);">Comm. : <strong>Don Chez Macha</strong></span>
+          </div>
+        </div>
+        <svg width="90" height="90" viewBox="0 0 90 90" fill="none" style="flex-shrink:0;opacity:0.18;" aria-hidden="true">
+          <polygon points="45,5 55,35 88,35 62,55 72,85 45,65 18,85 28,55 2,35 35,35" fill="#060917"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
+    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#D4A017'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#D4A017'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#D4A017'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+    </nav>
+  </footer>
+
+  <script>
+    // Galerie automatique depuis gallery.json
+    fetch('gallery.json')
+      .then(r => r.json())
+      .then(files => {
+        const gallery = document.getElementById('gallery');
+        files.forEach(file => {
+          const div = document.createElement('div');
+          div.className = 'gallery-item';
+          const img = document.createElement('img');
+          img.src = `gallery/${file}`;
+          img.alt = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+          img.loading = 'lazy';
+          div.appendChild(img);
+          gallery.appendChild(div);
+        });
+      })
+      .catch(() => {}); // silencieux si pas de serveur
+
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Carrousel témoignages (dynamique, réinitialisable)
+    var _carouselTimer = null;
+    var _carouselCurrent = 0;
+    function reinitCarousel() {
+      clearInterval(_carouselTimer);
+      _carouselCurrent = 0;
+      var slides = document.querySelectorAll('.testimonials-slide');
+      var dotsEl = document.getElementById('testimonials-dots');
+      if (!slides.length) { dotsEl.innerHTML = ''; return; }
+      // Reset active
+      slides.forEach(function(s, i) { s.classList.toggle('active', i === 0); });
+      // Rebuild dots
+      dotsEl.innerHTML = '';
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Témoignage ' + (i + 1));
+        dot.addEventListener('click', function() { carouselGoTo(i); });
+        dotsEl.appendChild(dot);
+      });
+      if (slides.length > 1) {
+        _carouselTimer = setInterval(function() { carouselGoTo(_carouselCurrent + 1); }, 4500);
+      }
+    }
+    function carouselGoTo(n) {
+      var slides = document.querySelectorAll('.testimonials-slide');
+      var dotsEl = document.getElementById('testimonials-dots');
+      if (!slides.length) return;
+      slides[_carouselCurrent].classList.remove('active');
+      if (dotsEl.children[_carouselCurrent]) dotsEl.children[_carouselCurrent].classList.remove('active');
+      _carouselCurrent = (n + slides.length) % slides.length;
+      slides[_carouselCurrent].classList.add('active');
+      if (dotsEl.children[_carouselCurrent]) dotsEl.children[_carouselCurrent].classList.add('active');
+      clearInterval(_carouselTimer);
+      _carouselTimer = setInterval(function() { carouselGoTo(_carouselCurrent + 1); }, 4500);
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('heroPip');
+      const btnSon = document.getElementById('btn-son');
+      if (video) {
+        video.muted = true;
+        video.play().catch(() => {});
+      }
+      if (video && btnSon) {
+        btnSon.addEventListener('click', () => {
+          video.muted = !video.muted;
+          btnSon.textContent = video.muted ? '🔇 Son off' : '🔊 Son on';
+          if (!video.muted) {
+            var ctx = window._audioCtx || (window._audioCtx = new (window.AudioContext || window.webkitAudioContext)());
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        });
+      }
+    });
+  </script>
+  <script>
+    (function() {
+      var btn = document.getElementById('hamburgerBtn');
+      var panel = document.getElementById('mobileNavPanel');
+      if (!btn || !panel) return;
+      var links = document.querySelectorAll('.site-nav a');
+      links.forEach(function(link) {
+        var a = link.cloneNode(true);
+        panel.appendChild(a);
+      });
+      btn.addEventListener('click', function() {
+        var open = panel.classList.toggle('open');
+        btn.classList.toggle('open', open);
+      });
+      panel.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          panel.classList.remove('open');
+          btn.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+
+
+  <!-- Modal Pass soirées -->
+  <div id="passModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(20,20,20,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#232323;border:1px solid rgba(212,160,23,0.3);border-radius:16px;padding:clamp(1rem,4vw,2rem);max-width:420px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
+      <button onclick="closePassModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:1px solid rgba(212,160,23,0.2);border-radius:7px;color:#8a92a6;font-size:1rem;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+
+      <p id="passCategory" style="font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D4A017;margin-bottom:0.4rem;">Pass soirées</p>
+      <h2 id="passTitle" style="font-family:'Jost',sans-serif;font-size:1.4rem;font-weight:900;text-transform:uppercase;margin-bottom:0.3rem;"></h2>
+      <p id="passDesc" style="font-size:0.85rem;color:#8a92a6;margin-bottom:1.5rem;"></p>
+
+      <!-- Étapes -->
+      <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+        <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+          <span style="background:var(--yellow);color:#060917;font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;">1</span>
+          <p style="font-size:0.85rem;color:#8a92a6;margin:0;">Effectuez le virement vers le compte ci-dessous en indiquant votre <strong style="color:#fff;">prénom + nom</strong> en communication.</p>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+          <span style="background:var(--yellow);color:#060917;font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;">2</span>
+          <p style="font-size:0.85rem;color:#8a92a6;margin:0;">Envoyez la preuve de paiement à <strong style="color:#D4A017;">info@chezmacha.be</strong> — vous recevrez votre confirmation sous 24h.</p>
+        </div>
+      </div>
+
+      <!-- IBAN -->
+      <p style="font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8a92a6;margin-bottom:0.4rem;">Virement bancaire</p>
+      <div style="display:flex;align-items:center;gap:0.6rem;background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.25);border-radius:10px;padding:0.75rem 1rem;margin-bottom:0.5rem;">
+        <div style="flex:1;">
+          <p style="font-family:'Jost',sans-serif;font-size:0.7rem;color:#8a92a6;margin:0 0 0.15rem;">IBAN</p>
+          <p style="font-family:'Jost',sans-serif;font-size:1rem;font-weight:800;color:#fff;margin:0;letter-spacing:0.05em;">BE73 0689 5870 2860</p>
+        </div>
+        <button onclick="copyPassIban()" id="passCopyBtn" style="display:flex;align-items:center;gap:0.3rem;background:none;border:1px solid rgba(212,160,23,0.3);border-radius:7px;padding:0.4em 0.8em;color:#D4A017;font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;cursor:pointer;white-space:nowrap;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="passCopyLabel">Copier</span>
+        </button>
+      </div>
+      <p style="font-size:0.78rem;color:#8a92a6;margin-bottom:1.25rem;">Communication : <strong style="color:#fff;" id="passRef"></strong></p>
+
+      <!-- Onglets Mobile / QR -->
+      <div style="display:flex;gap:0;margin-bottom:1rem;border:1px solid rgba(212,160,23,0.2);border-radius:8px;overflow:hidden;">
+        <button id="passTabMobile" onclick="passTab('mobile')" style="flex:1;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.55em 0.5em;border:none;cursor:pointer;transition:background 0.15s,color 0.15s;background:#D4A017;color:#060917;">
+          📱 Téléphone
+        </button>
+        <button id="passTabQr" onclick="passTab('qr')" style="flex:1;font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.55em 0.5em;border:none;cursor:pointer;transition:background 0.15s,color 0.15s;background:transparent;color:#8a92a6;border-left:1px solid rgba(212,160,23,0.2);">
+          💻 Ordinateur
+        </button>
+      </div>
+
+      <!-- Panneau Mobile -->
+      <div id="passPanelMobile" style="margin-bottom:0.75rem;">
+        <p style="font-size:0.82rem;color:#8a92a6;line-height:1.6;margin-bottom:0.75rem;">Copie l'IBAN ci-dessus, ouvre ton app bancaire et effectue le virement. Indique <strong style="color:#fff;" id="passRefMobile"></strong> en communication.</p>
+        <button onclick="copyPassIban()" style="width:100%;font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:#D4A017;color:#060917;border:none;border-radius:10px;padding:0.8em 1.5em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.75rem;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="passMobileCopyLabel">Copier l'IBAN</span>
+        </button>
+        <a id="passEmailBtnMobile" href="" style="display:block;text-align:center;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#D4A017;border:1px solid rgba(212,160,23,0.3);padding:0.65em 1.5em;border-radius:10px;text-decoration:none;">Envoyer ma preuve de paiement →</a>
+      </div>
+
+      <!-- Panneau QR -->
+      <div id="passPanelQr" style="display:none;text-align:center;margin-bottom:0.75rem;">
+        <div id="passQrCode" style="display:inline-block;background:#fff;padding:10px;border-radius:10px;line-height:0;"></div>
+        <p style="font-family:'Jost',sans-serif;font-size:0.68rem;color:#8a92a6;margin-top:0.5rem;letter-spacing:0.04em;">Scanne avec ton app bancaire depuis un autre appareil</p>
+        <a id="passEmailBtn" href="" style="display:block;margin-top:0.75rem;text-align:center;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#D4A017;border:1px solid rgba(212,160,23,0.3);padding:0.65em 1.5em;border-radius:10px;text-decoration:none;">Envoyer ma preuve de paiement →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyIbanSection(btn) {
+      copyText('BE73068958702860', function() {
+        var orig = btn.textContent;
+        btn.textContent = '✓ Copié !';
+        setTimeout(function() { btn.textContent = orig; }, 2000);
+      });
+    }
+    // Copie robuste — fonctionne sur iOS Safari, Android Chrome, et tous les navigateurs mobiles
+    function copyText(text, done) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done).catch(function() { fallbackCopy(text, done); });
+      } else {
+        fallbackCopy(text, done);
+      }
+    }
+    function fallbackCopy(text, done) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;width:2px;height:2px;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); done(); } catch(e) {}
+      document.body.removeChild(ta);
+    }
+
+    // ── Newsletter ──
+    function submitNewsletter() {
+      var email = document.getElementById('newsletterEmail').value.trim();
+      var btn = document.querySelector('button[onclick="submitNewsletter()"]');
+      if (!email || !email.includes('@')) { document.getElementById('newsletterEmail').focus(); return; }
+      btn.textContent = '...';
+      btn.disabled = true;
+      fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'api-key': 'BREVO_API_KEY' },
+        body: JSON.stringify({ email: email, listIds: [6], updateEnabled: true })
+      })
+      .then(function(r) {
+        if (r.ok || r.status === 204) {
+          document.getElementById('newsletterEmail').value = '';
+          btn.textContent = '✓ Inscrit !';
+          btn.style.background = '#2ecc71';
+          setTimeout(function() { btn.textContent = 'J\u2019en veux encore ! 😄'; btn.style.background = '#D4A017'; btn.disabled = false; }, 3000);
+        } else {
+          btn.textContent = 'Erreur — réessaie';
+          btn.style.background = '#e74c3c';
+          setTimeout(function() { btn.textContent = 'J\u2019en veux encore ! 😄'; btn.style.background = '#D4A017'; btn.disabled = false; }, 3000);
+        }
+      })
+      .catch(function() {
+        btn.textContent = 'Erreur — réessaie';
+        btn.style.background = '#e74c3c';
+        setTimeout(function() { btn.textContent = 'J\u2019en veux encore ! 😄'; btn.style.background = '#D4A017'; btn.disabled = false; }, 3000);
+      });
+    }
+
+    // ── Modal avis ──
+    var avisNote = 5;
+    function openAvisModal() {
+      document.getElementById('avisModal').style.display = 'flex';
+      setStars(5);
+    }
+    function closeAvisModal() {
+      document.getElementById('avisModal').style.display = 'none';
+    }
+    document.getElementById('avisModal').addEventListener('click', function(e) {
+      if (e.target === this) closeAvisModal();
+    });
+    function setStars(val) {
+      avisNote = val;
+      document.querySelectorAll('.avis-star').forEach(function(s) {
+        s.style.color = parseInt(s.dataset.val) <= val ? '#D4A017' : '#8a92a6';
+      });
+    }
+    document.querySelectorAll('.avis-star').forEach(function(s) {
+      s.addEventListener('mouseover', function() { setStars(parseInt(s.dataset.val)); });
+      s.addEventListener('mouseout', function() { setStars(avisNote); });
+      s.addEventListener('click', function() { avisNote = parseInt(s.dataset.val); });
+    });
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXx9TvfEtrx4GWz33pZAO8nQ6uafk-GWiQV0L5aLn3vD0YxLMuzHG13KH8IsVF9Jg_0g/exec';
+
+    function submitAvis() {
+      var nom = document.getElementById('avisNom').value.trim();
+      var texte = document.getElementById('avisTexte').value.trim();
+      if (!texte) { document.getElementById('avisTexte').focus(); return; }
+      var avisData = { prenom: nom || 'Anonyme', note: avisNote, avis: texte, date: new Date().toLocaleDateString('fr-BE') };
+      var payload = JSON.stringify({ prenom: avisData.prenom, note: avisNote, avis: texte });
+      // Sauvegarder localement pour persistance immédiate
+      sauvegarderAvisLocal(avisData);
+      // Afficher immédiatement (optimiste) puis envoyer en arrière-plan
+      afficherAvis(avisData);
+      closeAvisModal();
+      document.getElementById('avisNom').value = '';
+      document.getElementById('avisTexte').value = '';
+      // Envoi fire-and-forget
+      try {
+        navigator.sendBeacon(SCRIPT_URL, new Blob([payload], { type: 'text/plain' }));
+      } catch(e) {
+        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: payload }).catch(function(){});
+      }
+    }
+
+    function afficherAvis(r) {
+      var track = document.querySelector('.testimonials-track');
+      if (!track) return;
+      var slide = document.createElement('div');
+      slide.className = 'testimonials-slide active';
+      slide.innerHTML = '<div class="testimonial-bubble">'
+        + '<div class="testimonial-stars">' + '★'.repeat(r.note) + '☆'.repeat(5 - r.note) + '</div>'
+        + '<p class="testimonial-text">« ' + r.avis + ' »</p>'
+        + '<span class="testimonial-author">' + r.prenom + ' — ' + r.date + '</span>'
+        + '</div>';
+      document.querySelectorAll('.testimonials-slide').forEach(function(s) { s.classList.remove('active'); });
+      track.appendChild(slide);
+      reinitCarousel();
+    }
+
+    function renderAvisList(reviews) {
+      if (!reviews.length) return;
+      var track = document.querySelector('.testimonials-track');
+      if (!track) return;
+      track.innerHTML = '';
+      for (var i = 0; i < reviews.length; i += 2) {
+        var slide = document.createElement('div');
+        slide.className = 'testimonials-slide' + (i === 0 ? ' active' : '');
+        var html = '';
+        for (var j = i; j < Math.min(i + 2, reviews.length); j++) {
+          var r = reviews[j];
+          html += '<div class="testimonial-bubble">'
+            + '<div class="testimonial-stars">' + '★'.repeat(Math.max(0, Math.min(5, r.note || 5))) + '☆'.repeat(5 - Math.max(0, Math.min(5, r.note || 5))) + '</div>'
+            + '<p class="testimonial-text">« ' + r.avis + ' »</p>'
+            + '<span class="testimonial-author">' + r.prenom + ' — ' + r.date + '</span>'
+            + '</div>';
+        }
+        slide.innerHTML = html;
+        track.appendChild(slide);
+      }
+      reinitCarousel();
+    }
+
+    function sauvegarderAvisLocal(avis) {
+      try {
+        var stored = JSON.parse(localStorage.getItem('chezmacha_avis') || '[]');
+        stored.unshift(avis);
+        localStorage.setItem('chezmacha_avis', JSON.stringify(stored.slice(0, 20)));
+      } catch(e) {}
+    }
+
+    function chargerAvis() {
+      // Afficher d'abord les avis locaux s'il y en a
+      try {
+        var local = JSON.parse(localStorage.getItem('chezmacha_avis') || '[]');
+        if (local.length) renderAvisList(local);
+      } catch(e) {}
+      // Puis charger depuis Google Sheets (remplace si données disponibles)
+      fetch(SCRIPT_URL)
+      .then(function(r) { return r.json(); })
+      .then(function(reviews) {
+        if (reviews && reviews.length) renderAvisList(reviews);
+      })
+      .catch(function() {});
+    }
+    // Initialiser le carrousel avec les slides HTML fixes, puis charger les vrais avis
+    reinitCarousel();
+    chargerAvis();
+
+    function openPassModal(e, type) {
+      e.preventDefault();
+      var configs = {
+        trio:  { cat: 'Pass soirées', label: 'Pass Trio — 35 €',             price: '35',  ref: 'PASS-TRIO',  epc: 'PASS TRIO Chez Macha',  desc: '3 soirées plateaux 5 humoristes, à utiliser à votre rythme. Valable 1 an. (Économie de 10 €)' },
+        gang:  { cat: 'Pass soirées', label: 'Pass Gang — 55 €',             price: '55',  ref: 'PASS-GANG',  epc: 'PASS GANG Chez Macha',  desc: '5 soirées plateaux 5 humoristes, à utiliser à votre rythme. Valable 1 an. (Économie de 20 €)' },
+        vip:   { cat: 'Pass soirées', label: 'Pass VIP — 100 €',             price: '100', ref: 'PASS-VIP',   epc: 'PASS VIP Chez Macha',   desc: '10 soirées plateaux 5 humoristes, à utiliser à votre rythme. Valable 1 an. (Économie de 50 €)' },
+        gift2: { cat: 'Bon cadeau',   label: 'Bon cadeau — 2 places — 25 €', price: '25',  ref: 'GIFT-2P',    epc: 'GIFT 2P Chez Macha',    desc: 'Offrez 2 places pour une soirée stand-up. Usage unique, valable 1 an.' },
+        gift4: { cat: 'Bon cadeau',   label: 'Bon cadeau — 4 places — 50 €', price: '50',  ref: 'GIFT-4P',    epc: 'GIFT 4P Chez Macha',    desc: 'Offrez 4 places pour une soirée stand-up. Usage unique, valable 1 an.' }
+      };
+      var d = configs[type];
+      if (!d) return;
+      document.getElementById('passCategory').textContent = d.cat;
+      document.getElementById('passTitle').textContent = d.label;
+      document.getElementById('passDesc').textContent = d.desc;
+      document.getElementById('passRef').textContent = d.ref + ' + votre nom';
+      document.getElementById('passRefMobile').textContent = d.ref + ' + votre nom';
+      var mailHref = 'mailto:info@chezmacha.be?subject=' + encodeURIComponent(d.label + ' — Chez Macha') + '&body=' + encodeURIComponent('Bonjour,\n\nJe viens d\'effectuer le virement pour : ' + d.label + '.\n\nMon nom : \nMontant versé : ' + d.price + ' €\nDate du virement : \n\nCi-joint ma preuve de paiement.\n\nMerci !');
+      document.getElementById('passEmailBtn').href = mailHref;
+      document.getElementById('passEmailBtnMobile').href = mailHref;
+      passTab('mobile');
+      document.getElementById('passModal').style.display = 'flex';
+      var epcData = 'BCD\n002\n1\nSCT\n\nASBL Ririkou\nBE73068958702860\nEUR' + d.price + '.00\n\n\n' + d.epc;
+      var qrContainer = document.getElementById('passQrCode');
+      qrContainer.innerHTML = '';
+      try { new QRCode(qrContainer, { text: epcData, width: 160, height: 160, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M }); } catch(err) {}
+    }
+    function closePassModal() {
+      document.getElementById('passModal').style.display = 'none';
+    }
+    document.getElementById('passModal').addEventListener('click', function(e) {
+      if (e.target === this) closePassModal();
+    });
+    function passTab(tab) {
+      var isMobile = tab === 'mobile';
+      document.getElementById('passPanelMobile').style.display = isMobile ? '' : 'none';
+      document.getElementById('passPanelQr').style.display    = isMobile ? 'none' : '';
+      document.getElementById('passTabMobile').style.background = isMobile ? '#D4A017' : 'transparent';
+      document.getElementById('passTabMobile').style.color     = isMobile ? '#060917' : '#8a92a6';
+      document.getElementById('passTabQr').style.background    = isMobile ? 'transparent' : '#D4A017';
+      document.getElementById('passTabQr').style.color         = isMobile ? '#8a92a6' : '#060917';
+    }
+    function copyPassIban() {
+      copyText('BE73068958702860', function() {
+        var label = document.getElementById('passCopyLabel');
+        label.textContent = 'Copié !';
+        setTimeout(function() { label.textContent = 'Copier'; }, 2000);
+        var mobileLabel = document.getElementById('passMobileCopyLabel');
+        if (mobileLabel) { mobileLabel.textContent = '✓ Copié !'; setTimeout(function() { mobileLabel.textContent = 'Copier l\'IBAN'; }, 2000); }
+      });
+    }
+  </script>
+
+  <!-- QR SEPA (EPC v002) — scannable par toutes les apps bancaires belges -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    (function() {
+    })();
+  </script>
+
+  <!-- Modal avis -->
+  <div id="avisModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(20,20,20,0.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#232323;border:1px solid rgba(212,160,23,0.3);border-radius:20px;padding:2rem;max-width:420px;width:100%;position:relative;box-shadow:0 8px 48px rgba(0,0,0,0.6);">
+      <button onclick="closeAvisModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#8a92a6;cursor:pointer;font-size:1.2rem;line-height:1;">✕</button>
+
+      <p style="font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D4A017;margin-bottom:0.3rem;">Chez Macha</p>
+      <h2 style="font-family:'Jost',sans-serif;font-size:1.25rem;font-weight:900;color:#fff;margin-bottom:0.25rem;">Votre avis compte</h2>
+      <p style="font-size:0.82rem;color:#8a92a6;margin-bottom:1.5rem;line-height:1.5;">Deux minutes pour inspirer les prochains spectateurs.</p>
+
+      <!-- Étoiles interactives -->
+      <p style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8a92a6;margin-bottom:0.5rem;">Votre note</p>
+      <div id="starRating" style="display:flex;gap:0.4rem;margin-bottom:1.25rem;">
+        <span class="avis-star" data-val="1" style="font-size:1.6rem;cursor:pointer;color:#8a92a6;transition:color 0.1s;">★</span>
+        <span class="avis-star" data-val="2" style="font-size:1.6rem;cursor:pointer;color:#8a92a6;transition:color 0.1s;">★</span>
+        <span class="avis-star" data-val="3" style="font-size:1.6rem;cursor:pointer;color:#8a92a6;transition:color 0.1s;">★</span>
+        <span class="avis-star" data-val="4" style="font-size:1.6rem;cursor:pointer;color:#8a92a6;transition:color 0.1s;">★</span>
+        <span class="avis-star" data-val="5" style="font-size:1.6rem;cursor:pointer;color:#8a92a6;transition:color 0.1s;">★</span>
+      </div>
+
+      <p style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8a92a6;margin-bottom:0.5rem;">Votre prénom</p>
+      <input id="avisNom" type="text" placeholder="Ex : Sarah" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.04);border:1.5px solid rgba(212,160,23,0.2);border-radius:10px;padding:0.65em 0.9em;color:#fff;font-family:'Jost',sans-serif;font-size:0.88rem;margin-bottom:1rem;outline:none;" onfocus="this.style.borderColor='#D4A017'" onblur="this.style.borderColor='rgba(212,160,23,0.2)'" />
+
+      <p style="font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8a92a6;margin-bottom:0.5rem;">Votre avis</p>
+      <textarea id="avisTexte" rows="4" placeholder="Racontez votre soirée..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.04);border:1.5px solid rgba(212,160,23,0.2);border-radius:10px;padding:0.65em 0.9em;color:#fff;font-family:'Jost',sans-serif;font-size:0.88rem;resize:none;margin-bottom:1.25rem;outline:none;" onfocus="this.style.borderColor='#D4A017'" onblur="this.style.borderColor='rgba(212,160,23,0.2)'"></textarea>
+
+      <button onclick="submitAvis()" style="width:100%;font-family:'Jost',sans-serif;font-size:0.88rem;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;background:#D4A017;color:#060917;border:none;border-radius:12px;padding:0.85em;cursor:pointer;">Envoyer mon avis →</button>
+    </div>
+  </div>
+
+  <!-- Barre sticky mobile — réservation -->
+  <div class="sticky-reserve">
+    <div class="sticky-reserve-text">
+      <strong>28 mai — Chez Bobbi</strong>
+      Places limitées
+    </div>
+    <a href="https://www.partyfinder.com/en/event/15752" target="_blank" rel="noopener" class="sticky-reserve-btn">Réserver →</a>
+  </div>
+
+  <script>
+    /* ── Prochain événement dynamique (accueil) ── */
+    (function () {
+      // Liste des événements à venir (ordre chronologique)
+      var events = [
+        {
+          date: '2026-05-22', title: 'Stand Up &amp; Spaghetti',
+          meta: '20:00 · Côté Meuse, Namur',
+          link: 'https://www.partyfinder.com/en/event/15566',
+          img: 'events/NAMUR - MAI-2.png', soldout: false,
+          badge: null
+        },
+        {
+          date: '2026-05-28', title: 'Stand Up &amp; Beers',
+          meta: '20:00 · Chez Bobbi, Ittre',
+          link: 'https://www.partyfinder.com/en/event/15752',
+          img: 'events/BOBBI - MAI.png', soldout: false,
+          badge: null
+        },
+        {
+          date: '2026-05-31', title: 'Alex Vizorek — 2½',
+          meta: '19:00 · Chez Bobbi, Ittre',
+          link: 'https://www.partyfinder.com/en/event/15673',
+          img: 'events/ALEX VIZOREK.png', soldout: true,
+          badge: '🔴 SOLD OUT'
+        },
+        {
+          date: '2026-06-18', title: 'Stand Up &amp; Beers',
+          meta: '20:00 · Chez Bobbi, Ittre',
+          link: 'https://www.partyfinder.com/en/event/16141',
+          img: 'events/BOBBI- JUINpng.png', soldout: false,
+          badge: null
+        },
+        {
+          date: '2026-06-20', title: 'Le Calme et la Tempête',
+          meta: '20:00 · Tribu Bar, Ixelles',
+          link: 'https://www.partyfinder.com/en/event/16045',
+          img: 'events/TRIBU BAR - JUIN.png', soldout: false,
+          badge: null
+        },
+        {
+          date: '2026-06-26', title: 'Stand Up &amp; Spaghetti',
+          meta: '20:00 · Côté Meuse, Namur',
+          link: null,
+          img: 'events/NAMUR - JUIN.png', soldout: false,
+          badge: null
+        }
+      ];
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Trouver le premier événement dont la date >= aujourd'hui
+      var next = null;
+      for (var i = 0; i < events.length; i++) {
+        var d = new Date(events[i].date);
+        d.setHours(0, 0, 0, 0);
+        if (d >= today) { next = events[i]; break; }
+      }
+
+      var zone = document.getElementById('featured-next-event');
+      if (!zone || !next) return;
+
+      // Formater la date en français
+      var months = ['jan.','fév.','mars','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
+      var nd = new Date(next.date);
+      var dateStr = nd.getDate() + ' ' + months[nd.getMonth()];
+
+      var badgeHtml = next.soldout
+        ? '<span class="event-featured-badge" style="background:#1a0a0a;color:#ff4444;border:1px solid #ff4444;">🔴 SOLD OUT</span>'
+        : '<span class="event-featured-badge">À la une</span>';
+
+      var btnHtml = next.soldout
+        ? '<a href="mailto:info@chezmacha.be?subject=Liste%20d'attente' +
+          '&body=Bonjour%2C%0AJe%20souhaite%20rejoindre%20la%20liste%20d'attente%20pour%20' +
+          encodeURIComponent(next.title.replace(/&amp;/g,'&')) + '." ' +
+          'style="display:inline-flex;align-items:center;gap:0.4em;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;background:var(--yellow);color:#060917;padding:0.45em 1.1em;border-radius:6px;text-decoration:none;margin-top:0.6rem;">✉ Liste d'attente</a>'
+        : '<a href="' + next.link + '" target="_blank" ' +
+          'style="display:inline-flex;align-items:center;gap:0.4em;margin-top:0.6rem;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:var(--yellow);color:#060917;padding:0.45em 1.1em;border-radius:6px;text-decoration:none;">' +
+          '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9V6a1 1 0 011-1h18a1 1 0 011 1v3M2 9h20M2 9v9a1 1 0 001 1h18a1 1 0 001-1V9M8 13h.01M12 13h.01M16 13h.01"/></svg>' +
+          'Prendre mes tickets</a>';
+
+      var imgStyle = next.soldout ? 'filter:grayscale(25%);' : '';
+
+      zone.innerHTML =
+        '<img src="' + next.img + '" alt="' + next.title + '" ' +
+        'style="width:100%;height:140px;object-fit:cover;border-radius:8px;display:block;' + imgStyle + '" />' +
+        '<div class="event-featured-overlay" style="border-radius:8px;">' +
+        '<div style="display:flex;gap:0.5rem;align-items:center;">' + badgeHtml + '</div>' +
+        '<span class="event-featured-title" style="font-size:1.3rem;">' + next.title + '</span>' +
+        '<span class="event-featured-meta">' + dateStr + ' · ' + next.meta + '</span>' +
+        btnHtml +
+        '</div>';
+
+    })();
+  </script>
+
+  <!-- Modal Sondage Dan Gagnon -->
+  <div id="sondageModal" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(20,20,20,0.88);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:1rem;">
+    <div style="background:#232323;border:1px solid rgba(212,160,23,0.3);border-radius:18px;padding:2rem 2rem 1.5rem;max-width:440px;width:100%;position:relative;box-shadow:0 28px 70px rgba(0,0,0,0.65);animation:slideUp 0.35s ease;">
+      <style>@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}</style>
+      <button onclick="closeSondageModal(false)" style="position:absolute;top:1rem;right:1rem;background:none;border:1px solid rgba(212,160,23,0.2);border-radius:7px;color:#8a92a6;font-size:1rem;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='#D4A017';this.style.color='#D4A017'" onmouseout="this.style.borderColor='rgba(212,160,23,0.2)';this.style.color='#8a92a6'">✕</button>
+
+      <p style="font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D4A017;margin-bottom:0.5rem;">Sondage</p>
+      <h2 style="font-family:'Jost',sans-serif;font-size:1.35rem;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:0.75rem;">Dan Gagnon<br><span style="color:#D4A017;">en spectacle</span></h2>
+      <p style="font-size:0.88rem;color:#8a92a6;line-height:1.65;margin-bottom:1.5rem;">Tu aimerais voir <strong style="color:#fff;">Dan Gagnon</strong> sur scène avec Chez Macha ? Réponds à 5 questions en 2 minutes — ton avis nous aide à organiser la date idéale&nbsp;!</p>
+
+      <a href="sondage-dan-gagnon.html" onclick="closeSondageModal(true)" class="lien-site" style="display:block;width:100%;text-align:center;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;background:#D4A017;color:#060917 !important;border-radius:10px;padding:0.8em 1.5em;margin-bottom:0.75rem;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        Participer au sondage →
+      </a>
+
+      <button onclick="closeSondageModal(false)" style="display:block;width:100%;background:none;border:none;font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8a92a6;cursor:pointer;padding:0.4em;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8a92a6'">
+        Peut-être plus tard
+      </button>
+      <button onclick="closeSondageModal(true)" style="display:block;width:100%;background:none;border:none;font-family:'Jost',sans-serif;font-size:0.68rem;letter-spacing:0.04em;color:#4a5268;cursor:pointer;padding:0.3em;margin-top:0.1rem;transition:color 0.2s;" onmouseover="this.style.color='#8a92a6'" onmouseout="this.style.color='#4a5268'">
+        Ne plus afficher
+      </button>
+    </div>
+  </div>
+  <script>
+    (function() {
+      if (localStorage.getItem('sondage_dan_gagnon_done')) return;
+      var modal = document.getElementById('sondageModal');
+      setTimeout(function() {
+        modal.style.display = 'flex';
+      }, 1200);
+    })();
+    function closeSondageModal(permanent) {
+      document.getElementById('sondageModal').style.display = 'none';
+      if (permanent) localStorage.setItem('sondage_dan_gagnon_done', '1');
+    }
+  </script>
+</body>
+</html>

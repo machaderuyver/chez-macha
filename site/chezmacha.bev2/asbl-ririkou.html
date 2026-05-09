@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4RG1ZZ7LY3');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'ASBL Ririkou — Chez Macha</title>
+<style>
+  :root {
+    --bg: #fdf9f3;
+    --text: #2b2b2b;
+    --accent: #e63946;
+    --soft: #f1e9dc;
+    --muted: #6b6b6b;
+    --max-width: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .asbl-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  .asbl-page .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .asbl-page h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin: 0 0 24px;
+    font-weight: 700;
+  }
+
+  .asbl-page .lead {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .asbl-page h2 {
+    font-size: 1.6rem;
+    margin: 56px 0 16px;
+    font-weight: 700;
+  }
+
+  .asbl-page p {
+    margin: 0 0 18px;
+    font-size: 1.05rem;
+  }
+
+  .asbl-page .highlight {
+    background: var(--soft);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 4px;
+  }
+
+  .asbl-page .highlight p { margin: 0; font-style: italic; }
+
+  .asbl-page ul.values {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+  }
+
+  .asbl-page ul.values li {
+    padding: 14px 0 14px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--soft);
+  }
+
+  .asbl-page ul.values li:last-child { border-bottom: none; }
+
+  .asbl-page ul.values li::before {
+    content: "❤";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .asbl-page ul.values strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .asbl-page .support-box {
+    background: #fff;
+    border: 2px dashed var(--accent);
+    padding: 32px;
+    border-radius: 8px;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .asbl-page .support-box h3 {
+    margin: 0 0 12px;
+    font-size: 1.4rem;
+  }
+
+  .asbl-page .support-box a.btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 12px 28px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: system-ui, sans-serif;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .asbl-page .support-box a.btn:hover { transform: translateY(-2px); }
+
+  .asbl-page .support-box .iban {
+    background: var(--soft);
+    padding: 16px 20px;
+    border-radius: 6px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.95rem;
+    margin: 20px 0 8px;
+    line-height: 1.9;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .asbl-page .legal {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--soft);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-family: system-ui, sans-serif;
+  }
+
+  .asbl-page .legal p { margin: 4px 0; }
+
+  .asbl-page .signature {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 1.1rem;
+    color: var(--muted);
+  }
+
+  .asbl-page .team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+
+  .asbl-page .team .member {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--soft);
+  }
+
+  .asbl-page .team .member .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 0 4px;
+  }
+
+  .asbl-page .team .member .role {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-family: system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+  }
+
+  .asbl-page .team .member .title {
+    font-style: italic;
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .asbl-page .statuts-link {
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .asbl-page .statuts-link a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<main class="asbl-page">
+
+  <span class="eyebrow">L'association</span>
+  <h1>L'ASBL Ririkou</h1>
+  <p class="lead">Une structure sérieuse en coulisses, pour garder la légèreté sur scène.</p>
+
+  <p>
+    Quand un projet grandit, il faut lui donner des bases solides.
+    En janvier 2026, l'ASBL <strong>Ririkou</strong> est née pour accompagner
+    l'aventure <em>Chez Macha</em> et lui offrir le cadre qu'elle mérite.
+  </p>
+
+  <p>
+    Mais Ririkou, ce n'est pas <em>que</em> Chez Macha. C'est une maison un peu
+    plus grande&nbsp;: un espace qui soutient la scène humoristique et les
+    artistes sous toutes leurs formes. Les plateaux <em>Chez Macha</em> en
+    sont le cœur battant, mais l'ASBL a aussi vocation à porter d'autres
+    projets&nbsp;: événements, collaborations, ateliers, nouvelles idées un peu
+    folles… bref, tout ce qui fait rire, rassemble et donne de l'air.
+  </p>
+
+  <h2>Pourquoi Ririkou ?</h2>
+  <p>
+    Parce que ça sonne enfantin. Parce que ça ne veut rien dire… et que ça
+    fait du bien. Parce que le rire nous ramène à l'enfance, à la légèreté,
+    à la liberté.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Ririkou, c'est le nom qu'on se murmure quand on veut se rappeler
+      pourquoi on fait tout ça : pour le plaisir d'être ensemble, de rire,
+      et de repartir un peu plus léger.
+    </p>
+  </div>
+
+  <h2>Notre mission</h2>
+  <p>
+    L'ASBL Ririkou a pour but de <strong>promouvoir, développer, soutenir,
+    transmettre et rendre accessible l'humour</strong> — et en particulier
+    le stand-up — en tant que moyen d'expression artistique, culturelle,
+    sociale et citoyenne. L'humour est le fil conducteur de tout ce qu'on
+    fait&nbsp;: sur scène, dans la rue, dans les écoles, dans les maisons
+    de repos, partout où il peut créer du lien.
+  </p>
+  <p>Concrètement, Ririkou permet de&nbsp;:</p>
+
+  <ul class="values">
+    <li>
+      <strong>Rémunérer les artistes correctement</strong>
+      Parce que faire rire, c'est un vrai métier.
+    </li>
+    <li>
+      <strong>Organiser des spectacles, festivals et scènes ouvertes</strong>
+      Des plateaux <em>Chez Macha</em> aux événements plus larges.
+    </li>
+    <li>
+      <strong>Proposer ateliers et transmission</strong>
+      Écriture humoristique, prise de parole, improvisation, narration.
+    </li>
+    <li>
+      <strong>Utiliser l'humour comme levier social</strong>
+      Interventions auprès de publics fragilisés, en milieu associatif,
+      éducatif ou médical.
+    </li>
+    <li>
+      <strong>Préserver l'esprit Chez Macha</strong>
+      On vient comme on est, on repart un peu plus léger.
+    </li>
+  </ul>
+
+  <h2>L'équipe</h2>
+  <p>
+    Ririkou, c'est d'abord une bande de quatre fondateurs qui ont décidé
+    de mettre leurs compétences, leur temps et leur humour au service du
+    projet.
+  </p>
+
+  <div class="team">
+    <div class="member">
+      <p class="name">Macha De Ruyver</p>
+      <p class="role">Présidente</p>
+      <p class="title">Cerveau Émotionnel Officiel</p>
+    </div>
+    <div class="member">
+      <p class="name">Sasha De Ruyver</p>
+      <p class="role">Trésorier</p>
+      <p class="title">Gardien de la caisse et des punchlines</p>
+    </div>
+    <div class="member">
+      <p class="name">Marie-Ange Levan</p>
+      <p class="role">Administratrice</p>
+      <p class="title">Oracle des données</p>
+    </div>
+    <div class="member">
+      <p class="name">Jamal Zeffri</p>
+      <p class="role">Administrateur</p>
+      <p class="title">Gardien du sens et de l'humain</p>
+    </div>
+  </div>
+
+  <h2>Nous soutenir</h2>
+  <p>
+    Faire vivre une scène de stand-up accessible, bienveillante et
+    respectueuse des artistes, ça demande du temps, de l'énergie… et
+    parfois un petit coup de pouce. Si l'aventure vous parle, vous pouvez
+    nous rejoindre de plusieurs façons.
+  </p>
+
+  <div class="support-box">
+    <h3>Envie de glisser un petit pourboire&nbsp;?</h3>
+    <p>Chaque coup de pouce aide à rémunérer les artistes et à faire vivre les plateaux.</p>
+    <p class="iban">
+      <strong>IBAN&nbsp;:</strong> BE73 0689 5870 2860<br>
+      <strong>Bénéficiaire&nbsp;:</strong> ASBL Ririkou<br>
+      <strong>Communication&nbsp;:</strong> <em>Tip Chez Macha — merci&nbsp;!</em>
+    </p>
+    <a href="mailto:info@chezmacha.be" class="btn">Nous écrire</a>
+  </div>
+
+  <p class="signature">Chez Macha, on vient comme on est… et on repart un peu plus léger. ❤️</p>
+
+  <div class="legal">
+    <p><strong>ASBL Ririkou</strong></p>
+    <p>Numéro d'entreprise&nbsp;: BE 1033.391.775</p>
+    <p>Constituée le 31 décembre 2025, publiée au Moniteur belge le 26 janvier 2026</p>
+    <p>Contact&nbsp;: info@chezmacha.be</p>
+    <p class="statuts-link">
+      <a href="https://www.ejustice.just.fgov.be/tsv_pdf/2026/01/26/26305808.pdf" target="_blank" rel="noopener">
+        Consulter les statuts officiels (PDF)
+      </a>
+    </p>
+  </div>
+
+</main>
+
+</body>
+</html>
