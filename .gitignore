@@ -3,3 +3,9 @@
 __pycache__/
 *.pyc
 uploads/
+CLAUDE.md
+CONTEXT.md
+SCRATCHPAD.md
+scrape.py
+app/
+site/chezmacha.be/
