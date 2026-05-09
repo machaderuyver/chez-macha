@@ -1844,10 +1844,10 @@
       if (!email || !email.includes('@')) { document.getElementById('newsletterEmail').focus(); return; }
       btn.textContent = '...';
       btn.disabled = true;
-      fetch('https://api.brevo.com/v3/contacts', {
+      fetch('/api/subscribe', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'api-key': 'BREVO_API_KEY' },
-        body: JSON.stringify({ email: email, listIds: [6], updateEnabled: true })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
       })
       .then(function(r) {
         if (r.ok || r.status === 204) {
