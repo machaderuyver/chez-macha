@@ -1874,6 +1874,7 @@
           document.getElementById('newsletterEmail').value = '';
           btn.textContent = '✓ Inscrit !';
           btn.style.background = '#2ecc71';
+          if (typeof gtag !== 'undefined') gtag('event', 'newsletter_signup', { method: 'form' });
           setTimeout(function() { btn.textContent = 'J\u2019en veux encore ! 😄'; btn.style.background = '#D4A017'; btn.disabled = false; }, 3000);
         } else {
           btn.textContent = 'Erreur — réessaie';
@@ -1887,6 +1888,24 @@
         setTimeout(function() { btn.textContent = 'J\u2019en veux encore ! 😄'; btn.style.background = '#D4A017'; btn.disabled = false; }, 3000);
       });
     }
+
+
+    // ── GA4 Event Tracking ──
+    document.addEventListener('click', function(e) {
+      if (typeof gtag === 'undefined') return;
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.href || '';
+      if (href.includes('billetweb') || href.includes('ticket') || href.includes('weezevent')) {
+        gtag('event', 'ticket_click', { link: href });
+      }
+      if (href.includes('mailto') && href.includes('attente')) {
+        gtag('event', 'waitlist_click');
+      }
+      if (href.includes('instagram') || href.includes('tiktok') || href.includes('facebook')) {
+        gtag('event', 'social_click', { network: href.includes('instagram') ? 'instagram' : href.includes('tiktok') ? 'tiktok' : 'facebook' });
+      }
+    });
 
     // ── Modal avis ──
     var avisNote = 5;
