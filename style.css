@@ -7,16 +7,21 @@
 
 /* ── Design tokens ── */
 :root {
-  --red: #D71920;
-  --red-hover: #e60000;
-  --gold: #F4C21A;
-  --yellow: #F4C21A;
-  --bg: #071326;
-  --bg-card: #0d1f35;
-  --bg-card-hover: #142840;
-  --border: rgba(212,160,23,0.2);
-  --text: #ffffff;
-  --text-muted: #9a9a9a;
+  --rouge:       #D71920;
+  --jaune:       #F4C21A;
+  --bleu-nuit:   #071326;
+  --blanc-creme: #F6F1E8;
+  /* Aliases */
+  --red:         #D71920;
+  --red-hover:   #b8151b;
+  --gold:        #F4C21A;
+  --yellow:      #F4C21A;
+  --bg:          #071326;
+  --bg-card:     #0c1d33;
+  --bg-card-hover: #122644;
+  --border:      rgba(244,194,26,0.2);
+  --text:        #F6F1E8;
+  --text-muted:  #8a94a8;
 }
 
 /* ── Base ── */
@@ -24,7 +29,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
-  background: #1A1A1A;
+  background: #071326;
 }
 
 body {
@@ -471,7 +476,7 @@ footer a { color: var(--gold); }
     display: block;
     padding: 14px 24px;
     font-size: 1rem;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #071326;
   }
   .header-inner { padding: 10px 16px; }
   /* Cache anciens éléments header */
