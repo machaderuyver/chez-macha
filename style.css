@@ -7,13 +7,13 @@
 
 /* ── Design tokens ── */
 :root {
-  --red: #CC0000;
+  --red: #D71920;
   --red-hover: #e60000;
-  --gold: #D4A017;
-  --yellow: #D4A017;
-  --bg: #1A1A1A;
-  --bg-card: #232323;
-  --bg-card-hover: #2d2d2d;
+  --gold: #F4C21A;
+  --yellow: #F4C21A;
+  --bg: #071326;
+  --bg-card: #0d1f35;
+  --bg-card-hover: #142840;
   --border: rgba(212,160,23,0.2);
   --text: #ffffff;
   --text-muted: #9a9a9a;
@@ -391,7 +391,7 @@ footer a { color: var(--gold); }
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #0d0d0d;
+  background: #071326;
   border-bottom: 1px solid #222;
   width: 100%;
   box-sizing: border-box;
@@ -427,7 +427,7 @@ footer a { color: var(--gold); }
   white-space: nowrap;
 }
 .main-nav ul li a:hover,
-.main-nav ul li a.active { color: #f5c518; }
+.main-nav ul li a.active { color: #F4C21A; }
 .hamburger {
   display: none;
   background: none;
@@ -457,7 +457,7 @@ footer a { color: var(--gold); }
     top: 100%;
     left: 0;
     width: 100%;
-    background: #0d0d0d;
+    background: #071326;
     border-top: 1px solid #222;
     z-index: 999;
   }
