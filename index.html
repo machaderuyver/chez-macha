@@ -87,19 +87,28 @@
     .header-van { margin-left: 1rem; margin-right: auto; }
 
     /* ── Camion header (index uniquement) ── */
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { flex: 0 0 auto; }
     .header-camion {
+      flex: 0 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      margin: 0 auto;
+      margin: 0 16px;
     }
-    .camion-img { height: 60px; width: auto; }
+    .main-nav { flex: 1; display: flex; justify-content: flex-end; }
+    .main-nav ul { gap: 10px; font-size: 0.75rem; }
+    .camion-img { height: 58px; width: auto; }
     .header-tagline {
-      font-size: 0.65rem;
+      font-size: 0.58rem;
       font-family: 'Jost', sans-serif;
       color: #F6F1E8;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-align: center;
       margin: 0;
