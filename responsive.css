@@ -1,0 +1,153 @@
+/* ============================================================
+   CHEZ MACHA — Responsive breakpoints (toutes pages sauf /index)
+   Importé en dernier dans chaque page
+   ============================================================ */
+
+/* ── BASE GLOBALE ── */
+*, *::before, *::after { box-sizing: border-box; }
+body { overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── GRAND DESKTOP (min-width: 1280px) ── */
+@media (min-width: 1280px) {
+  .page { max-width: 960px; padding: 9rem 2rem 6rem; }
+}
+
+/* ── PETIT DESKTOP (max-width: 1024px) ── */
+@media (max-width: 1024px) {
+  .site-header { padding: 12px 24px; }
+  .site-header .logo { height: 70px; }
+  .site-nav a { font-size: 0.78rem; padding: 0.3em 0.45em; }
+
+  h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+  h2 { font-size: clamp(1.4rem, 4vw, 2rem); }
+
+  .page { padding: 8rem 1.5rem 5rem; max-width: 860px; }
+
+  /* Galerie */
+  .featured-grid { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* Corporate — formats */
+  .formats { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Sponsors */
+  .formules { grid-template-columns: repeat(2, 1fr) !important; }
+  .audience-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* ── TABLETTE (max-width: 768px) ── */
+@media (max-width: 768px) {
+  /* Header */
+  .site-header { padding: 10px 16px; }
+  .site-header .logo { height: 60px; }
+  .header-van,
+  .header-tagline,
+  .header-center,
+  .header-socials { display: none !important; }
+  .site-nav { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+
+  /* Page container */
+  .page { padding: 5rem 1rem 4rem; max-width: 100%; }
+
+  /* Typographie */
+  h1 { font-size: clamp(1.6rem, 6vw, 2rem); }
+  h2 { font-size: clamp(1.3rem, 5vw, 1.6rem); }
+  p, li { font-size: 1rem; }
+  .intro { font-size: 0.92rem; }
+
+  /* Boutons */
+  .cta-row { flex-direction: column; gap: 0.75rem; }
+  .cta-row .btn,
+  .cta-row a { width: 100%; text-align: center; box-sizing: border-box; padding: 14px; font-size: 1rem; }
+
+  /* Grilles génériques */
+  .grid { grid-template-columns: 1fr !important; gap: 1rem; }
+
+  /* ── TICKETS — cartes événements ── */
+  .event-row { flex-direction: column; }
+  .event-map { width: 100% !important; flex-direction: row; border-left: none !important; border-top: 1px solid var(--border); }
+  .event-card { flex-wrap: wrap; gap: 0.75rem; }
+  .event-thumb { width: 60px !important; height: 50px !important; }
+
+  /* ── LIEUX ── */
+  .lieu { flex-direction: column !important; text-align: center; }
+  .lieu-img { width: 100% !important; height: 200px !important; }
+  .lieu-body { padding: 1rem !important; }
+
+  /* ── GALERIE ── */
+  .featured-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery-item { break-inside: avoid; }
+
+  /* ── CORPORATE — formats ── */
+  .formats { grid-template-columns: 1fr !important; gap: 1rem; }
+  .format { flex-direction: column; align-items: flex-start; }
+
+  /* ── SPONSORS — formules ── */
+  .formules { grid-template-columns: 1fr !important; }
+  .audience-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* ── À PROPOS ── */
+  .hero-row { grid-template-columns: 1fr !important; }
+  .hero-row img { width: 100% !important; height: 220px !important; }
+
+  /* ── PARTENAIRES ── */
+  .handshake-panel { flex-direction: column !important; }
+  .card { width: 100% !important; }
+
+  /* ── NEWSLETTER / CONTACT ── */
+  .contact-channels { grid-template-columns: 1fr !important; }
+  .channel { flex-direction: column; align-items: flex-start; }
+
+  /* ── PRESSE ── */
+  .article-card { flex-direction: column !important; }
+
+  /* ── ASBL ── */
+  .above-fold { flex-direction: column !important; }
+  .above-fold-left,
+  .above-fold-right { width: 100% !important; }
+
+  /* ── PODCAST ── */
+  .podcast-card { flex-direction: column !important; }
+
+  /* Footer */
+  footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    padding: 1.5rem 1rem !important;
+  }
+}
+
+/* ── MOBILE (max-width: 480px) ── */
+@media (max-width: 480px) {
+  /* Header */
+  .site-header { padding: 8px 12px; }
+  .site-header .logo { height: 50px; }
+
+  /* Page */
+  .page { padding: 4.5rem 0.75rem 3rem; }
+
+  /* Typographie */
+  h1 { font-size: clamp(1.4rem, 7vw, 1.7rem); }
+  h2 { font-size: clamp(1.2rem, 5vw, 1.4rem); }
+  p, li { font-size: 0.95rem; }
+
+  /* Boutons */
+  .btn, button, a.btn { padding: 12px; font-size: 0.95rem; }
+
+  /* Galerie */
+  .featured-grid { grid-template-columns: 1fr !important; }
+
+  /* Sponsors */
+  .audience-grid { grid-template-columns: 1fr !important; }
+
+  /* Grilles */
+  .grid,
+  .formules,
+  .formats,
+  .contact-channels { gap: 0.75rem !important; }
+
+  /* Iban block */
+  .iban-block { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
