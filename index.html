@@ -213,22 +213,15 @@
       margin-top: 200px;
       z-index: 1;
     }
-    .girafe-hero {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      height: 100%;
+    .girafe-header {
+      height: 72px;
       width: auto;
       object-fit: contain;
-      z-index: 3;
-      pointer-events: none;
+      flex-shrink: 0;
+      display: block;
     }
-    @media (max-width: 1024px) {
-      .girafe-hero { height: 80%; opacity: 0.9; }
-    }
-    @media (max-width: 768px) {
-      .girafe-hero { display: none; }
-    }
+    @media (max-width: 1024px) { .girafe-header { height: 58px; } }
+    @media (max-width: 768px)  { .girafe-header { display: none; } }
 
     /* Spotlight doré — ambiance scène */
     .hero::before {
@@ -1301,6 +1294,7 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
+      <img src="MASCOTTE_CHEZ_MACHA_-_FOND_TRANSPARENT_.jpg" alt="Mascotte Chez Macha" class="girafe-header" loading="eager" />
       <a href="index.html" class="header-logo">
         <img src="Logo_officiel_transparent.png" alt="Chez Macha" class="logo" />
       </a>
@@ -1349,7 +1343,6 @@
   <div class="hero">
     <img class="hero-bg" src="alexvizorek.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" />
     <div class="hero-overlay"></div>
-    <img src="MASCOTTE_CHEZ_MACHA_-_FOND_TRANSPARENT_.jpg" alt="Mascotte Chez Macha" class="girafe-hero" loading="lazy" />
     <!-- Texte — bas gauche -->
     <div style="position:absolute;bottom:2rem;left:2rem;z-index:5;max-width:480px;" class="hero-text-block">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
