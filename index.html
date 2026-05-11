@@ -1426,9 +1426,11 @@
   </div>
 
   <!-- Hero compact -->
-  <div class="hero">
-    <img class="hero-bg" src="alexvizorek.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" />
-    <div class="hero-overlay"></div>
+  <div class="hero" style="background:#071326;">
+    <img class="hero-bg" src="mascotte.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" style="object-fit:cover;object-position:right center;" />
+    <div class="hero-overlay" style="background:linear-gradient(to right,#071326 38%,rgba(7,19,38,0.55) 65%,rgba(7,19,38,0.0) 100%) !important;"></div>
+    <!-- Logo mascotte — coin haut droit, visible sur desktop -->
+    <img src="logo-mascotte.jpg" alt="Chez Macha — L'usine à rire" style="position:absolute;top:1rem;right:1rem;height:90px;width:auto;z-index:6;opacity:0.92;display:block;" class="hero-logo-mascotte" />
     <!-- Texte — bas gauche -->
     <div style="position:absolute;bottom:2rem;left:2rem;z-index:5;max-width:480px;" class="hero-text-block">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
@@ -1644,7 +1646,9 @@
     </div>
   </section>
 
-  <footer class="footer" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+  <footer class="footer" style="position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;overflow:hidden;">
+    <!-- Signature mascotte -->
+    <img src="mascotte.jpg" alt="" aria-hidden="true" style="position:absolute;right:-10px;bottom:-10px;height:120px;width:auto;opacity:0.13;filter:sepia(1) saturate(3) hue-rotate(5deg) brightness(1.2);pointer-events:none;z-index:0;" />
     <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
     <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
       <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#D4A017'" onmouseout="this.style.color=''">Contact & FAQ</a>
