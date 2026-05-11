@@ -185,7 +185,7 @@ h2 {
 }
 .btn-primary {
   background: var(--red);
-  color: #fff;
+  color: #F6F1E8;
   box-shadow: 0 4px 20px rgba(215,25,32,0.4);
 }
 .btn-primary:hover {
@@ -198,7 +198,7 @@ h2 {
   border: 1.5px solid rgba(255,255,255,0.3);
   color: var(--text-muted);
 }
-.btn-outline:hover { border-color: var(--red); color: #fff; }
+.btn-outline:hover { border-color: var(--red); color: #F6F1E8; }
 
 /* ── Hamburger & menu mobile ── */
 .hamburger-btn {
@@ -421,7 +421,7 @@ footer a { color: var(--gold); }
   padding: 0;
 }
 .main-nav ul li a {
-  color: #ffffff;
+  color: #F6F1E8;
   text-decoration: none;
   font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
@@ -437,7 +437,7 @@ footer a { color: var(--gold); }
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: #F6F1E8;
   font-size: 1.8rem;
   cursor: pointer;
   padding: 0.2rem 0.4rem;
