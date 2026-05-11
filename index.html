@@ -1426,20 +1426,23 @@
   </div>
 
   <!-- Hero compact -->
-  <div class="hero" style="background:#071326;">
-    <img class="hero-bg" src="mascotte.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" style="object-fit:cover;object-position:right center;" />
-    <div class="hero-overlay" style="background:linear-gradient(to right,#071326 38%,rgba(7,19,38,0.55) 65%,rgba(7,19,38,0.0) 100%) !important;"></div>
-    <!-- Logo mascotte — coin haut droit, visible sur desktop -->
-    <img src="logo-mascotte.jpg" alt="Chez Macha — L'usine à rire" style="position:absolute;top:1rem;right:1rem;height:90px;width:auto;z-index:6;opacity:0.92;display:block;" class="hero-logo-mascotte" />
-    <!-- Texte — bas gauche -->
-    <div style="position:absolute;bottom:2rem;left:2rem;z-index:5;max-width:480px;" class="hero-text-block">
-      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
-        <img class="avatar" src="macha.jpg" alt="Macha De Ruyver" />
-      </div>
-      <p class="hero-tagline">Le stand-up belge qui pose ses micros là où ça vit —<br>bars, restos, lieux insolites. Pas d'adresse fixe, que de vraies soirées.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="tickets.html#prochain">🎟 Prendre mes tickets</a>
-        <a class="btn btn-outline" href="tickets.html">Toutes les dates</a>
+  <div class="hero" style="background:#071326;overflow:hidden;">
+    <!-- Girafe — grande, côté droit -->
+    <div style="position:absolute;right:0;top:0;bottom:0;width:58%;z-index:2;overflow:hidden;">
+      <img src="mascotte.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high"
+           style="height:100%;width:auto;min-width:100%;object-fit:cover;object-position:left center;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,#071326 0%,transparent 35%);"></div>
+    </div>
+    <!-- Overlay global -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,#071326 32%,rgba(7,19,38,0.45) 55%,transparent 75%);z-index:3;pointer-events:none;"></div>
+    <!-- Contenu gauche — show poster -->
+    <div style="position:absolute;left:clamp(1.5rem,4vw,3.5rem);top:50%;transform:translateY(-50%);z-index:5;max-width:400px;" class="hero-text-block">
+      <p style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#F4C21A;margin-bottom:0.6rem;">Comedy Club Itinérant · Belgique</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,8vw,5.8rem);color:#F6F1E8;line-height:0.88;margin:0 0 0.4rem;letter-spacing:0.02em;">CHEZ<br>MACHA</h2>
+      <p style="font-family:'Jost',sans-serif;font-size:clamp(0.9rem,2vw,1.15rem);font-weight:700;color:#F4C21A;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:1.6rem;">L'USINE À RIRE</p>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <a href="tickets.html#prochain" style="display:inline-block;background:#D71920;color:#F6F1E8;font-family:'Jost',sans-serif;font-weight:900;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85em 2em;border-radius:8px;text-decoration:none;box-shadow:0 4px 24px rgba(215,25,32,0.55);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(215,25,32,0.7)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(215,25,32,0.55)'">🎟 RÉSERVER</a>
+        <a href="tickets.html" style="display:inline-block;background:transparent;color:#F6F1E8;font-family:'Jost',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.85em 1.5em;border-radius:8px;text-decoration:none;border:1.5px solid rgba(246,241,232,0.35);transition:border-color 0.2s;" onmouseover="this.style.borderColor='#F4C21A'" onmouseout="this.style.borderColor='rgba(246,241,232,0.35)'">Toutes les dates</a>
       </div>
     </div>
     <!-- Stats bar intégrée dans le hero — overlay bas -->
@@ -1648,7 +1651,7 @@
 
   <footer class="footer" style="position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;overflow:hidden;">
     <!-- Signature mascotte -->
-    <img src="mascotte.jpg" alt="" aria-hidden="true" style="position:absolute;right:-10px;bottom:-10px;height:120px;width:auto;opacity:0.13;filter:sepia(1) saturate(3) hue-rotate(5deg) brightness(1.2);pointer-events:none;z-index:0;" />
+    <img src="mascotte.jpg" alt="" aria-hidden="true" style="position:absolute;right:-5px;bottom:-5px;height:130px;width:auto;opacity:0.45;filter:sepia(1) saturate(4) hue-rotate(5deg) brightness(1.3);pointer-events:none;z-index:0;" />
     <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
     <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
       <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#D4A017'" onmouseout="this.style.color=''">Contact & FAQ</a>
