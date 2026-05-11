@@ -5,8 +5,25 @@
 
 /* ── BASE GLOBALE ── */
 *, *::before, *::after { box-sizing: border-box; }
-body { overflow-x: hidden; }
+
+/* overflow-x: clip ne crée pas de scroll container → sticky fonctionne */
+html { overflow-x: clip; }
+body { overflow-x: clip; }
+
 img { max-width: 100%; height: auto; display: block; }
+
+/* ── HEADER STICKY ── */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: #0d0d0d !important;
+  overflow: visible !important; /* retire le overflow:hidden qui peut gêner */
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
 
 /* ── GRAND DESKTOP (min-width: 1280px) ── */
 @media (min-width: 1280px) {
