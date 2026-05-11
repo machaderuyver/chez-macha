@@ -1252,160 +1252,28 @@
 
   <!-- Header -->
   <header class="site-header">
-    <div class="header-left">
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:0.2rem;">
-        <img class="logo" src="Logo_officiel_transparent.png" alt="Chez Macha" />
-        <div class="header-socials">
-          <a class="social-btn" href="https://www.instagram.com/chezmacha_standup/" target="_blank" title="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
-            </svg>
-          </a>
-          <a class="social-btn" href="https://www.facebook.com/ChezMachaComedyclub/" target="_blank" title="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <a class="social-btn" href="https://www.tiktok.com/@chezmacha_standup" target="_blank" title="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.16 8.16 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/>
-            </svg>
-          </a>
-                  <a class="social-btn" href="mailto:info@chezmacha.be" title="Email">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-              <polyline points="2,4 12,13 22,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
+    <div class="header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="Logo_officiel_transparent.png" alt="Chez Macha" class="logo" />
+      </a>
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="tickets.html">Agenda</a></li>
+          <li><a href="lieux.html">Partenaires</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="corporate.html">Corporate</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="newsletter.html">Nous soutenir</a></li>
+          <li><a href="presse.html">Presse</a></li>
+          <li><a href="asbl.html">ASBL</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <!-- Van itinérant — desktop uniquement -->
-    <a href="apropos.html" class="header-van" aria-label="À propos">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.15rem;">
-      <svg width="134" height="70" viewBox="0 0 134 70" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#D4A017" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Lignes de vitesse (Tex Avery) -->
-        <line x1="1" y1="26" x2="13" y2="26" stroke-width="1.2" stroke-opacity="0.45"/>
-        <line x1="1" y1="32" x2="10" y2="32" stroke-width="2" stroke-opacity="0.6"/>
-        <line x1="1" y1="38" x2="14" y2="38" stroke-width="1.2" stroke-opacity="0.45"/>
-        <line x1="1" y1="20" x2="7"  y2="20" stroke-width="0.9" stroke-opacity="0.3"/>
-        <!-- Corps van — légèrement trapu style cartoon -->
-        <path d="M14 47 L14 19 Q14 11 21 10 L101 10 Q110 10 112 17 L114 47" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
-        <!-- Pilier A + vitre cabine -->
-        <line x1="38" y1="10" x2="38" y2="29" stroke-width="2.2"/>
-        <path d="M16 27 L16 15 Q16 11 20 10 L36 10 L36 27 Z" stroke-width="2" fill="rgba(212,160,23,0.14)"/>
-        <!-- Fenêtres latérales -->
-        <rect x="42" y="13" width="22" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
-        <rect x="68" y="13" width="22" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
-        <rect x="94" y="13" width="15" height="15" rx="3" stroke-width="2" fill="rgba(212,160,23,0.1)"/>
-
-        <!-- ═══ PERSO 1 — enthousiaste, bras dehors ═══ -->
-        <!-- Tête crème qui déborde un peu (Tex Avery) -->
-        <circle cx="53" cy="18.5" r="7" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
-        <!-- Cheveux hérissés -->
-        <path d="M47.5 13 L49 8.5 L50.5 13" fill="#D4A017" stroke="none"/>
-        <path d="M50.5 11.5 L52.5 6.5 L54.5 11.5" fill="#D4A017" stroke="none"/>
-        <path d="M54.5 13 L56 8.5 L57.5 13" fill="#D4A017" stroke="none"/>
-        <!-- Yeux blancs ronds -->
-        <circle cx="50.2" cy="17.5" r="3" fill="white" stroke="#D4A017" stroke-width="1.3"/>
-        <circle cx="55.8" cy="17.5" r="3" fill="white" stroke="#D4A017" stroke-width="1.3"/>
-        <!-- Pupilles -->
-        <circle cx="50.8" cy="18" r="1.4" fill="#0d0c09" stroke="none"/>
-        <circle cx="56.4" cy="18" r="1.4" fill="#0d0c09" stroke="none"/>
-        <!-- Éclats -->
-        <circle cx="51.3" cy="17.4" r="0.55" fill="white" stroke="none"/>
-        <circle cx="56.9" cy="17.4" r="0.55" fill="white" stroke="none"/>
-        <!-- Grand sourire avec dents -->
-        <path d="M48.5 22 Q53 26.5 57.5 22" stroke-width="1.8" fill="rgba(15,10,0,0.75)"/>
-        <line x1="50.5" y1="22.2" x2="50.5" y2="25" stroke-width="1.3" stroke="white"/>
-        <line x1="53" y1="22.5" x2="53" y2="25.5" stroke-width="1.3" stroke="white"/>
-        <line x1="55.5" y1="22.2" x2="55.5" y2="25" stroke-width="1.3" stroke="white"/>
-        <!-- Bras dehors + main 3 doigts -->
-        <path d="M59 23 Q65 19 63 13.5" stroke-width="2.2"/>
-        <line x1="63" y1="13.5" x2="65.5" y2="10.5" stroke-width="1.8"/>
-        <line x1="63" y1="13.5" x2="66.5" y2="13" stroke-width="1.8"/>
-        <line x1="63" y1="13.5" x2="65.5" y2="16" stroke-width="1.8"/>
-
-        <!-- ═══ PERSO 2 — bouche GRANDE ouverte, yeux inégaux ═══ -->
-        <circle cx="79" cy="18.5" r="7" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
-        <!-- Yeux inégaux style Tex Avery -->
-        <circle cx="75.5" cy="16.5" r="3.5" fill="white" stroke="#D4A017" stroke-width="1.3"/>
-        <circle cx="82" cy="16.5" r="2.2" fill="white" stroke="#D4A017" stroke-width="1.3"/>
-        <circle cx="76.2" cy="17.2" r="1.7" fill="#0d0c09" stroke="none"/>
-        <circle cx="82.6" cy="17.2" r="1" fill="#0d0c09" stroke="none"/>
-        <circle cx="76.8" cy="16.6" r="0.6" fill="white" stroke="none"/>
-        <circle cx="83.1" cy="16.6" r="0.4" fill="white" stroke="none"/>
-        <!-- Bouche béante -->
-        <path d="M73.5 21 Q79 30 84.5 21" stroke-width="2" fill="rgba(15,8,0,0.85)"/>
-        <!-- Langue tirée -->
-        <path d="M76.5 24.5 Q79 28.5 81.5 24.5" stroke-width="1.5" fill="rgba(220,80,60,0.85)" stroke="rgba(200,60,40,0.9)"/>
-        <!-- Petites étoiles de rire -->
-        <path d="M85 11 L85.6 9 L86.2 11 L88.2 11.6 L86.2 12.2 L85.6 14.2 L85 12.2 L83 11.6 Z" fill="#D4A017" stroke="none"/>
-        <path d="M87 15.5 L87.4 14.2 L87.8 15.5 L89.1 15.9 L87.8 16.3 L87.4 17.6 L87 16.3 L85.7 15.9 Z" fill="#D4A017" stroke="none" opacity="0.65"/>
-
-        <!-- ═══ PERSO 3 — lunettes de soleil, sourire cool ═══ -->
-        <circle cx="101.5" cy="18.5" r="6" stroke-width="2" fill="rgba(255,242,190,0.9)" stroke="#D4A017"/>
-        <!-- Lunettes noires -->
-        <rect x="96.5" y="14.5" width="6.5" height="5" rx="1.8" fill="rgba(8,8,8,0.92)" stroke="#D4A017" stroke-width="1.5"/>
-        <rect x="103.5" y="14.5" width="6.5" height="5" rx="1.8" fill="rgba(8,8,8,0.92)" stroke="#D4A017" stroke-width="1.5"/>
-        <!-- Pont + branches -->
-        <line x1="103" y1="17" x2="103.5" y2="17" stroke-width="1.3"/>
-        <line x1="96.5" y1="17" x2="94.8" y2="18" stroke-width="1.3"/>
-        <line x1="110" y1="17" x2="111.5" y2="18" stroke-width="1.3"/>
-        <!-- Reflet sur les verres -->
-        <line x1="97.5" y1="15.5" x2="99" y2="17.5" stroke-width="1" stroke="rgba(255,255,255,0.45)" stroke-linecap="round"/>
-        <line x1="104.5" y1="15.5" x2="106" y2="17.5" stroke-width="1" stroke="rgba(255,255,255,0.45)" stroke-linecap="round"/>
-        <!-- Sourire en coin très classe -->
-        <path d="M97.5 22.5 Q101.5 25 106.5 22.5" stroke-width="1.8" fill="none"/>
-        <!-- Petite houppette stylée -->
-        <path d="M100 13.5 Q101.5 10 103 13.5" stroke-width="1.8" fill="none"/>
-
-        <!-- Porte + poignée -->
-        <line x1="65" y1="29" x2="65" y2="47" stroke-width="1.8"/>
-        <path d="M50 40 Q54 39 58 40" stroke-width="2" fill="none"/>
-        <!-- Phare œil exagéré -->
-        <ellipse cx="16" cy="34" rx="5" ry="5.5" stroke-width="2.2" fill="rgba(212,160,23,0.22)"/>
-        <ellipse cx="16" cy="34" rx="2.5" ry="3" stroke-width="1.4" fill="rgba(212,160,23,0.45)"/>
-        <!-- Roues légèrement aplaties = élan -->
-        <ellipse cx="31" cy="52" rx="11" ry="10" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
-        <ellipse cx="31" cy="52" rx="4.5" ry="4" stroke-width="2"/>
-        <ellipse cx="94" cy="52" rx="11" ry="10" stroke-width="2.5" fill="rgba(212,160,23,0.07)"/>
-        <ellipse cx="94" cy="52" rx="4.5" ry="4" stroke-width="2"/>
-        <!-- Passages de roue -->
-        <path d="M14 47 Q15 39 31 39 Q47 39 49 47" stroke-width="2.2"/>
-        <path d="M77 47 Q78 39 94 39 Q110 39 114 47" stroke-width="2.2"/>
-        <!-- Route + petites lignes de vitesse sous roues -->
-        <line x1="2" y1="65" x2="132" y2="65" stroke-width="1.4" stroke-dasharray="6 4" stroke-opacity="0.4"/>
-        <path d="M22 59 Q27 57 32 59" stroke-width="1" stroke-opacity="0.45"/>
-        <path d="M85 59 Q90 57 95 59" stroke-width="1" stroke-opacity="0.45"/>
-      </svg>
-      <span style="font-family:'Didact Gothic',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff8e8;text-shadow:0 1px 6px rgba(255,245,210,0.3);white-space:nowrap;">le RIRE est itinérant, TOUT comme nous</span>
-      </div>
-    </a>
-
-    <nav style="display:flex;align-items:center;gap:1rem;">
-      <ul class="site-nav">
-        <li><a href="index.html" class="active">Accueil</a></li>
-        <li><a href="tickets.html">Agenda</a></li>
-        <li><a href="lieux.html">Partenaires</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="corporate.html">Corporate</a></li>
-        <li><a href="apropos.html">À propos</a></li>
-        <li><a href="galerie.html">Galerie</a></li>
-        <li><a href="#soutenir">Nous soutenir</a></li>
-        <li><a href="presse.html">Presse</a></li>
-        <li><a href="asbl.html">ASBL</a></li>
-      </ul>
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
   </header>
   <!-- Menu mobile -->
-  <div class="mobile-nav-panel" id="mobileNavPanel"></div>
 
   <!-- Bandeau Ulule -->
   <div class="top-banner">
@@ -1741,28 +1609,6 @@
         });
       }
     });
-  </script>
-  <script>
-    (function() {
-      var btn = document.getElementById('hamburgerBtn');
-      var panel = document.getElementById('mobileNavPanel');
-      if (!btn || !panel) return;
-      var links = document.querySelectorAll('.site-nav a');
-      links.forEach(function(link) {
-        var a = link.cloneNode(true);
-        panel.appendChild(a);
-      });
-      btn.addEventListener('click', function() {
-        var open = panel.classList.toggle('open');
-        btn.classList.toggle('open', open);
-      });
-      panel.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-          panel.classList.remove('open');
-          btn.classList.remove('open');
-        }
-      });
-    })();
   </script>
 
 
@@ -2255,6 +2101,27 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
+  </script>
+  <script>
+    (function() {
+      var hamburger = document.querySelector('.hamburger');
+      var nav = document.querySelector('.main-nav');
+      if (!hamburger || !nav) return;
+      hamburger.addEventListener('click', function() {
+        nav.classList.toggle('open');
+        hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
+      });
+      document.querySelectorAll('.main-nav a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('open');
+          hamburger.textContent = '☰';
+        });
+      });
+      document.querySelectorAll('.main-nav a').forEach(function(link) {
+        var page = window.location.pathname.split('/').pop() || 'index.html';
+        if (link.getAttribute('href') === page) link.classList.add('active');
+      });
+    })();
   </script>
 </body>
 </html>
