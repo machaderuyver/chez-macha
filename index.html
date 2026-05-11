@@ -2243,7 +2243,12 @@
     })();
     function closeSondageModal(permanent) {
       document.getElementById('sondageModal').style.display = 'none';
-      if (permanent) localStorage.setItem('sondage_dan_gagnon_done', '1');
+      if (permanent) {
+        localStorage.setItem('sondage_dan_gagnon_done', '1');
+        if (typeof gtag !== 'undefined') gtag('event', 'sondage_click', { action: 'participer' });
+      } else {
+        if (typeof gtag !== 'undefined') gtag('event', 'sondage_click', { action: 'ignorer' });
+      }
     }
   </script>
   <script>
