@@ -81,16 +81,43 @@
       max-width: 420px;
       margin: 0 auto;
     }
-    .sondage-banner .artist-photo {
-      width: 100px;
-      height: 100px;
+    .video-teaser {
+      background: #0f1923;
+      border: 1px solid rgba(245,197,24,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+    .video-teaser-header {
+      padding: 1rem 1.25rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .video-teaser-header .dot {
+      width: 8px; height: 8px;
+      background: #f5c518;
       border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #f5c518;
-      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+    .video-teaser-header span {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f5c518;
+    }
+    .video-teaser video {
+      width: 100%;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+    }
+    .video-teaser-credit {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+      text-align: right;
     }
 
     /* ── Form ── */
@@ -293,23 +320,23 @@
 
     <!-- Banner -->
     <div class="sondage-banner">
-      <img class="artist-photo" src="app/photos/dan-gagnon.jpg" alt="Dan Gagnon" />
-      <p style="font-size:0.62rem;color:rgba(255,255,255,0.35);margin-bottom:0.75rem;letter-spacing:0.05em;">© crédit TVCOM.BE</p>
       <p class="label">Sondage express · 2 minutes</p>
       <h1>Dan Gagnon<br><span>Chez Macha</span> ?</h1>
       <p>Dis-nous ce que tu en penses — ça nous aide à programmer les meilleurs shows pour toi.</p>
     </div>
 
     <!-- Vidéo teaser -->
-    <div style="margin-bottom:2rem;">
+    <div class="video-teaser">
+      <div class="video-teaser-header">
+        <div class="dot"></div>
+        <span>Découvrez Dan Gagnon en interview</span>
+      </div>
       <video
         src="dan-gagnon-tvcom.mp4"
         controls
         playsinline
-        style="width:100%;border-radius:14px;display:block;"
-        poster="app/photos/dan-gagnon.jpg"
       ></video>
-      <p style="text-align:center;font-size:0.7rem;color:#9a9a9a;margin-top:0.5rem;">© crédit TVCOM.BE</p>
+      <p class="video-teaser-credit">© crédit TVCOM.BE</p>
     </div>
 
     <!-- Form -->
