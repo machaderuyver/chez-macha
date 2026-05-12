@@ -19,7 +19,9 @@ body::after {
   transform: none !important;
 }
 
-img { max-width: 100%; height: auto; display: block; }
+img { max-width: 100%; }
+/* Seulement les images standalone (pas dans un flex container avec height explicite) */
+img:not([style*="height"]) { height: auto; display: block; }
 
 /* ── Logo golden halo (toutes les sous-pages) ── */
 img.logo {
