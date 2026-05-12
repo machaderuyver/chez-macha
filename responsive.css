@@ -6,9 +6,18 @@
 /* ── BASE GLOBALE ── */
 *, *::before, *::after { box-sizing: border-box; }
 
-/* overflow-x: clip ne crée pas de scroll container → sticky fonctionne */
-html { overflow-x: clip; }
-body { overflow-x: clip; }
+/* overflow-x: hidden sur body uniquement — html reste sans overflow
+   pour éviter de créer un containing block qui casse position:fixed */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; }
+
+/* Empêche les éléments fixed de se transformer en éléments scrollables */
+.tex-side,
+body::after {
+  position: fixed !important;
+  will-change: auto !important;
+  transform: none !important;
+}
 
 img { max-width: 100%; height: auto; display: block; }
 
