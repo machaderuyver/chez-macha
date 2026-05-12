@@ -6,18 +6,10 @@
 /* ── BASE GLOBALE ── */
 *, *::before, *::after { box-sizing: border-box; }
 
-/* overflow-x: hidden sur body uniquement — html reste sans overflow
-   pour éviter de créer un containing block qui casse position:fixed */
-html { overflow-x: hidden; }
-body { overflow-x: hidden; }
-
-/* Empêche les éléments fixed de se transformer en éléments scrollables */
-.tex-side,
-body::after {
-  position: fixed !important;
-  will-change: auto !important;
-  transform: none !important;
-}
+/* overflow-x: clip — ne crée PAS de scroll container (contrairement à hidden)
+   → position:fixed reste ancré au viewport, pas d'effet parallaxe */
+html { overflow-x: clip; }
+body { overflow-x: clip; }
 
 img { max-width: 100%; }
 /* Seulement les images standalone (pas dans un flex container avec height explicite) */
