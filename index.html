@@ -86,19 +86,11 @@
     /* Espace entre logo et camionnette */
     .header-van { margin-left: 1rem; margin-right: auto; }
 
-    /* ── Header index ── */
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4px;
-      padding: 4px 10px;
-      flex-wrap: nowrap;
-    }
-    .header-logo { flex: 0 0 auto; }
+    /* ── Header index — golden halo logo (toutes tailles) ── */
     img.logo {
       height: 48px;
       width: auto;
+      margin-top: 6px;
       mix-blend-mode: lighten;
       filter: drop-shadow(0 0 8px rgba(244,194,26,0.8)) drop-shadow(0 0 16px rgba(244,194,26,0.4));
       transition: filter 0.3s ease;
@@ -106,33 +98,24 @@
     img.logo:hover {
       filter: drop-shadow(0 0 12px rgba(244,194,26,1)) drop-shadow(0 0 24px rgba(244,194,26,0.6));
     }
-    @media (max-width: 1024px) { img.logo { height: 48px; } }
-    @media (max-width: 768px)  { img.logo { height: 42px; } }
-    .header-camion {
-      flex: 0 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      margin: 0 4px 0 6px;
+    @media (max-width: 768px) { img.logo { height: 40px; margin-top: 4px; } }
+
+    /* ── Header desktop uniquement ── */
+    @media (min-width: 769px) {
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px;
+        padding: 4px 10px;
+        flex-wrap: nowrap;
+      }
+      .header-logo { flex: 0 0 auto; }
+      .main-nav { flex: 1; display: flex; justify-content: flex-end; }
+      .main-nav ul { gap: 5px; font-size: 0.62rem; letter-spacing: 0.01em; white-space: nowrap; flex-wrap: nowrap; }
+      .main-nav ul li a { padding: 0.3em 0.2em; }
     }
-    .main-nav { flex: 1; display: flex; justify-content: flex-end; }
-    .main-nav ul { gap: 5px; font-size: 0.62rem; letter-spacing: 0.01em; white-space: nowrap; flex-wrap: nowrap; }
-    .main-nav ul li a { padding: 0.3em 0.2em; }
-    .camion-img { height: 36px; width: auto; }
     .header-camion { display: none !important; }
-    .header-tagline {
-      font-size: 0.48rem;
-      font-family: 'Jost', sans-serif;
-      color: #F6F1E8;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 0;
-      opacity: 0.75;
-      white-space: nowrap;
-    }
-    @media (max-width: 1024px) { .header-camion { display: none; } }
 
     .header-socials {
       display: flex;
@@ -346,6 +329,39 @@
       background: #071326;
       display: block;
     }
+
+    /* ── Hero video block ── */
+    .hero-video-block {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    #hero-video {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid rgba(244,194,26,0.4);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      display: block;
+    }
+    #btn-son {
+      background: rgba(7,19,38,0.75);
+      color: #F4C21A;
+      border: 1px solid rgba(244,194,26,0.35);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #btn-son:hover { background: rgba(244,194,26,0.15); }
+    @media (max-width: 768px) { .hero-video-block { display: none; } }
 
     .hero-top-right {
       position: absolute;
