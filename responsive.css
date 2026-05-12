@@ -36,7 +36,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ── GRAND DESKTOP (min-width: 1280px) ── */
 @media (min-width: 1280px) {
-  .page { max-width: 960px; padding: 9rem 2rem 6rem; }
+  .page { max-width: 960px; padding: 8rem 2rem 6rem; }
 }
 
 /* ── PETIT DESKTOP (max-width: 1024px) ── */
@@ -48,7 +48,7 @@ img { max-width: 100%; height: auto; display: block; }
   h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); }
   h2 { font-size: clamp(1.4rem, 4vw, 2rem); }
 
-  .page { padding: 8rem 1.5rem 5rem; max-width: 860px; }
+  .page { padding: 7rem 1.5rem 5rem; max-width: 860px; }
 
   /* Galerie */
   .featured-grid { grid-template-columns: repeat(3, 1fr) !important; }
@@ -74,7 +74,7 @@ img { max-width: 100%; height: auto; display: block; }
   .hamburger-btn { display: flex !important; }
 
   /* Page container */
-  .page { padding: 5rem 1rem 4rem; max-width: 100%; }
+  .page { padding: 4.5rem 1rem 4rem; max-width: 100%; }
 
   /* Typographie */
   h1 { font-size: clamp(1.6rem, 6vw, 2rem); }
@@ -152,7 +152,7 @@ img { max-width: 100%; height: auto; display: block; }
   .site-header .logo { height: 50px; }
 
   /* Page */
-  .page { padding: 4.5rem 0.75rem 3rem; }
+  .page { padding: 4rem 0.75rem 3rem; }
 
   /* Typographie */
   h1 { font-size: clamp(1.4rem, 7vw, 1.7rem); }
