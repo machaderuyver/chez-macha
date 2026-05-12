@@ -86,13 +86,28 @@
     /* Espace entre logo et camionnette */
     .header-van { margin-left: 1rem; margin-right: auto; }
 
-    /* ── Camion header (index uniquement) ── */
+    /* ── Header index ── */
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      padding: 6px 24px;
+      flex-wrap: nowrap;
     }
     .header-logo { flex: 0 0 auto; }
+    img.logo {
+      height: 75px;
+      width: auto;
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 8px rgba(244,194,26,0.8)) drop-shadow(0 0 16px rgba(244,194,26,0.4));
+      transition: filter 0.3s ease;
+    }
+    img.logo:hover {
+      filter: drop-shadow(0 0 12px rgba(244,194,26,1)) drop-shadow(0 0 24px rgba(244,194,26,0.6));
+    }
+    @media (max-width: 1024px) { img.logo { height: 60px; } }
+    @media (max-width: 768px)  { img.logo { height: 50px; } }
     .header-camion {
       flex: 0 0 auto;
       display: flex;
@@ -101,9 +116,8 @@
       gap: 4px;
       margin: 0 6px 0 8px;
     }
-    .main-nav { flex: 1; display: flex; justify-content: flex-end; overflow: visible; }
-    .main-nav ul { gap: 6px; font-size: 0.72rem; flex-wrap: nowrap; }
-    .main-nav ul li a { padding: 0.3em 0.3em; letter-spacing: 0.03em; }
+    .main-nav { flex: 1; display: flex; justify-content: flex-end; }
+    .main-nav ul { gap: 10px; font-size: 0.75rem; white-space: nowrap; }
     .camion-img { height: 52px; width: auto; }
     .header-tagline {
       font-size: 0.58rem;
@@ -1287,7 +1301,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="header-logo">
-        <img src="Logo_officiel_transparent.png" alt="Chez Macha" class="logo" />
+        <img src="LOGO_MASCOTTE.png" alt="Chez Macha" class="logo" />
       </a>
       <div class="header-camion">
         <img src="camion.svg" alt="Camion Chez Macha" class="camion-img" />
