@@ -151,6 +151,27 @@
       /* CTA box : colonne */
       .cta-box { flex-direction: column; align-items: flex-start; padding: 1.25rem; gap: 1rem; }
       .cta-box .btn { width: 100%; text-align: center; box-sizing: border-box; }
+
+      /* Logos sponsors — grille 2 colonnes sur mobile */
+      .sponsors-logos-row {
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        gap: 0.75rem !important;
+      }
+      .sponsors-logos-row > div,
+      .sponsors-logos-row > a {
+        flex: 1 1 calc(50% - 0.75rem);
+        min-width: 120px;
+        height: 70px !important;
+        padding: 0.75rem 1rem !important;
+      }
+      .sponsors-logos-row img {
+        height: 36px !important;
+        width: auto !important;
+        max-width: 100% !important;
+        display: inline-block !important;
+        object-fit: contain !important;
+      }
     }
 
     /* ── DÉCO LATÉRALE ── */
@@ -427,7 +448,7 @@
 
     <!-- Sponsors actuels -->
     <p class="section-title">Ils nous font déjà confiance</p>
-    <div style="display:flex;gap:1.5rem;flex-wrap:nowrap;align-items:center;margin-bottom:3rem;overflow-x:auto;">
+    <div class="sponsors-logos-row" style="display:flex;gap:1.5rem;flex-wrap:nowrap;align-items:center;margin-bottom:3rem;overflow-x:auto;">
       <div style="background:#F6F1E8;border:1px solid var(--border);border-radius:12px;padding:1rem 2rem;display:flex;align-items:center;justify-content:center;height:80px;">
         <img src="https://thewineclub.be/wp-content/uploads/2023/10/wine-club-logo.svg" alt="The Wine Club" style="height:48px;width:auto;object-fit:contain;" onerror="this.parentElement.innerHTML='<span style=\'font-family:Jost,sans-serif;font-size:0.85rem;font-weight:800;color:#060917;\'>Wine Club</span>'" />
       </div>
