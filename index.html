@@ -91,13 +91,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding: 6px 16px;
+      gap: 4px;
+      padding: 4px 10px;
       flex-wrap: nowrap;
     }
     .header-logo { flex: 0 0 auto; }
     img.logo {
-      height: 55px;
+      height: 48px;
       width: auto;
       mix-blend-mode: lighten;
       filter: drop-shadow(0 0 8px rgba(244,194,26,0.8)) drop-shadow(0 0 16px rgba(244,194,26,0.4));
@@ -117,11 +117,12 @@
       margin: 0 4px 0 6px;
     }
     .main-nav { flex: 1; display: flex; justify-content: flex-end; }
-    .main-nav ul { gap: 8px; font-size: 0.7rem; white-space: nowrap; letter-spacing: 0.03em; }
+    .main-nav ul { gap: 5px; font-size: 0.62rem; letter-spacing: 0.01em; white-space: nowrap; flex-wrap: nowrap; }
     .main-nav ul li a { padding: 0.3em 0.2em; }
-    .camion-img { height: 45px; width: auto; }
+    .camion-img { height: 36px; width: auto; }
+    .header-camion { display: none !important; }
     .header-tagline {
-      font-size: 0.55rem;
+      font-size: 0.48rem;
       font-family: 'Jost', sans-serif;
       color: #F6F1E8;
       letter-spacing: 0.1em;
@@ -1368,13 +1369,11 @@
       <div class="stat-item"><span class="stat-num">Nov. 2024</span><span class="stat-label">On débarque</span></div>
     </div>
     <!-- Vidéo PiP -->
-    <div style="position:absolute;top:1.5rem;left:1rem;z-index:15;" class="hero-pip-block">
-      <div style="position:relative;display:inline-block;">
-        <video class="hero-pip" id="heroPip" autoplay muted loop playsinline poster="macha.jpg" preload="auto" style="display:block;">
-          <source src="promo.mp4" type="video/mp4" />
-        </video>
-        <button id="btn-son">🔇 Son off</button>
-      </div>
+    <div class="hero-video-block">
+      <video id="hero-video" autoplay muted loop playsinline>
+        <source src="promo.mp4" type="video/mp4" />
+      </video>
+      <button id="btn-son">🔇 Son off</button>
     </div>
   </div>
 
@@ -1642,24 +1641,17 @@
       if (!isOpen) item.classList.add('open');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.getElementById('heroPip');
+    (function() {
+      const video = document.getElementById('hero-video');
       const btnSon = document.getElementById('btn-son');
-      if (video) {
-        video.muted = true;
-        video.play().catch(() => {});
-      }
-      if (video && btnSon) {
-        btnSon.addEventListener('click', () => {
-          video.muted = !video.muted;
-          btnSon.textContent = video.muted ? '🔇 Son off' : '🔊 Son on';
-          if (!video.muted) {
-            var ctx = window._audioCtx || (window._audioCtx = new (window.AudioContext || window.webkitAudioContext)());
-            if (ctx.state === 'suspended') ctx.resume();
-          }
-        });
-      }
-    });
+      if (!video || !btnSon) return;
+      video.muted = true;
+      video.play().catch(() => {});
+      btnSon.addEventListener('click', () => {
+        video.muted = !video.muted;
+        btnSon.textContent = video.muted ? '🔇 Son off' : '🔊 Son on';
+      });
+    })();
   </script>
 
 
