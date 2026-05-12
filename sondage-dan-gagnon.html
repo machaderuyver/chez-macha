@@ -1,510 +1,574 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RG1ZZ7LY3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4RG1ZZ7LY3');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#fcbc1c" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Chez Macha" />
-  <link rel="apple-touch-icon" href="/icon-192.png" />
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
-  <meta name="description" content="Sondage — Dan Gagnon Chez Macha ? Donne ton avis !" />
-  <title>Sondage Dan Gagnon — Chez Macha</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700;800;900&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="responsive.css" />
-  <link rel="canonical" href="https://www.chezmacha.be/sondage-dan-gagnon.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Chez Macha" />
-  <meta property="og:url" content="https://www.chezmacha.be/sondage-dan-gagnon.html" />
-  <meta property="og:title" content="Sondage Dan Gagnon — Chez Macha" />
-  <meta property="og:description" content="Dan Gagnon Chez Macha ? Donne ton avis en 2 minutes !" />
-  <meta property="og:image" content="https://www.chezmacha.be/macha.jpg" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sondage – Dan Gagnon en spectacle</title>
   <style>
-    html, body { overflow-x: hidden; max-width: 100%; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Page layout ── */
-    .page {
-      max-width: 660px;
-      margin: 0 auto;
-      padding: 7rem 1.5rem 5rem;
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f4f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem 3rem;
+      color: #1a1a1a;
+    }
+
+    .survey {
+      width: 100%;
+      max-width: 620px;
     }
 
     /* ── Banner ── */
-    .sondage-banner {
-      background: linear-gradient(135deg, #071326 0%, #0a1a2e 60%, #071326 100%);
-      border: 1px solid rgba(244,194,26,0.25);
-      border-top: 3px solid #F4C21A;
-      border-radius: 16px;
-      padding: 2rem 2rem 1.75rem;
-      margin-bottom: 2.5rem;
+    .banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border-radius: 18px;
+      padding: 2rem 1.75rem 1.5rem;
+      margin-bottom: 1.5rem;
       text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
-    .sondage-banner .label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #F4C21A;
-      margin-bottom: 0.5rem;
-    }
-    .sondage-banner h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 7vw, 2.8rem);
-      color: #F6F1E8;
-      line-height: 1;
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.03em;
-    }
-    .sondage-banner h1 span { color: #F4C21A; }
-    .sondage-banner p {
-      font-size: 0.9rem;
-      color: #9a9a9a;
-      line-height: 1.6;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    /* ── Form ── */
-    .sondage-form { display: flex; flex-direction: column; gap: 1.75rem; }
-
-    /* ── Question block ── */
-    .question {
-      background: #232323;
-      border: 1px solid rgba(244,194,26,0.15);
-      border-radius: 14px;
-      padding: 1.5rem 1.5rem 1.25rem;
-    }
-    .question-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #F6F1E8;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      line-height: 1.4;
-    }
-    .required-star {
-      color: #D71920;
-      font-size: 1.1rem;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .optional-tag {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #9a9a9a;
-      border: 1px solid rgba(154,154,154,0.3);
-      border-radius: 999px;
-      padding: 0.15em 0.6em;
-      margin-left: 0.3rem;
-      align-self: center;
-      flex-shrink: 0;
-    }
-
-    /* ── Radio options ── */
-    .radio-group { display: flex; flex-direction: column; gap: 0.6rem; }
-    .radio-option { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-    .radio-option input[type="radio"] { display: none; }
-    .radio-custom {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid rgba(244,194,26,0.4);
-      background: #071326;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .radio-custom::after {
+    .banner::before {
       content: '';
-      width: 8px;
-      height: 8px;
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 130px; height: 130px;
+      background: rgba(255,200,0,0.07);
       border-radius: 50%;
-      background: #F4C21A;
-      opacity: 0;
-      transition: opacity 0.15s;
     }
-    .radio-option input[type="radio"]:checked + .radio-custom {
-      border-color: #F4C21A;
-      background: rgba(244,194,26,0.1);
+    .banner-emoji { font-size: 38px; margin-bottom: 0.5rem; }
+    .banner h1 { font-size: 21px; font-weight: 600; color: #FFD700; margin-bottom: 0.4rem; }
+    .banner p  { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .banner .badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.14);
+      border: 1px solid rgba(255,215,0,0.4);
+      color: #FFD700;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-top: 0.75rem;
     }
-    .radio-option input[type="radio"]:checked + .radio-custom::after { opacity: 1; }
-    .radio-option:hover .radio-custom { border-color: #F4C21A; }
-    .radio-text {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.92rem;
-      color: #e0e0e0;
-      transition: color 0.15s;
-    }
-    .radio-option input[type="radio"]:checked ~ .radio-text { color: #fff; font-weight: 600; }
 
-    /* ── Email field ── */
-    .email-field {
-      width: 100%;
-      background: #071326;
-      border: 1.5px solid rgba(244,194,26,0.25);
+    /* ── Progress ── */
+    .progress-bar {
+      height: 4px;
+      background: #e0ddd6;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #FFD700;
+      border-radius: 2px;
+      transition: width 0.35s ease;
+      width: 0%;
+    }
+
+    /* ── Steps ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* ── Question card ── */
+    .q-card {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .q-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    .q-sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: -0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Option cards (icons) ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .opt-card {
+      background: #f8f7f4;
+      border: 1px solid #e0ddd6;
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .opt-card:hover { border-color: #aaa; }
+    .opt-card.selected { background: #EBF4FF; border-color: #378ADD; }
+    .opt-card .icon  { font-size: 22px; margin-bottom: 6px; }
+    .opt-card .label { font-size: 12px; font-weight: 500; color: #333; }
+    .opt-card.selected .label { color: #0C447C; }
+
+    /* ── Age / pill buttons ── */
+    .age-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .age-btn {
+      border: 1px solid #d6d3cc;
       border-radius: 8px;
-      padding: 0.75em 1em;
-      color: #F6F1E8;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
+      padding: 9px 16px;
+      font-size: 13px;
+      color: #333;
+      background: #f8f7f4;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+      font-family: inherit;
+    }
+    .age-btn:hover { border-color: #aaa; }
+    .age-btn.selected { background: #EBF4FF; border-color: #378ADD; color: #0C447C; font-weight: 500; }
+
+    /* ── Scale ── */
+    .scale { display: flex; gap: 8px; }
+    .scale-btn {
+      flex: 1;
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      padding: 11px 4px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #f8f7f4;
+      color: #333;
+      transition: border-color 0.15s, background 0.15s;
+      text-align: center;
+      font-family: inherit;
+    }
+    .scale-btn:hover { border-color: #aaa; }
+    .scale-btn.selected { background: #EBF4FF; border-color: #378ADD; color: #0C447C; }
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    .scale-labels span { font-size: 11px; color: #888; }
+
+    /* ── Textarea ── */
+    .input-text {
+      width: 100%;
+      border: 1px solid #d6d3cc;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #333;
+      background: #fafaf8;
       outline: none;
-      transition: border-color 0.2s;
-      box-sizing: border-box;
+      transition: border-color 0.15s;
+      font-family: inherit;
+      resize: vertical;
     }
-    .email-field::placeholder { color: #6a6a6a; }
-    .email-field:focus { border-color: #F4C21A; }
+    .input-text:focus { border-color: #378ADD; }
 
-    /* ── Error ── */
-    .error-msg {
-      display: none;
-      color: #D71920;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: rgba(215,25,32,0.08);
-      border: 1px solid rgba(215,25,32,0.3);
-      border-radius: 8px;
-    }
-    .error-msg.visible { display: block; }
-    .question.error-highlight { border-color: rgba(215,25,32,0.5); }
-
-    /* ── Submit ── */
-    .submit-btn {
-      width: 100%;
-      background: #D71920;
-      color: #F6F1E8;
-      font-family: 'Jost', sans-serif;
-      font-size: 1rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    /* ── Nav buttons ── */
+    .nav { display: flex; gap: 10px; margin-top: 1.25rem; }
+    .btn-next {
+      flex: 1;
+      background: #1a1a2e;
+      color: #FFD700;
       border: none;
       border-radius: 10px;
-      padding: 1em 2em;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 20px rgba(215,25,32,0.4);
+      transition: opacity 0.15s;
+      font-family: inherit;
+    }
+    .btn-next:hover { opacity: 0.85; }
+    .btn-back {
+      background: #f0ede8;
+      border: 1px solid #d6d3cc;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+    .btn-back:hover { border-color: #aaa; }
+
+    /* ── Thank you ── */
+    .thankyou {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 2rem 1.5rem 1.75rem;
+      text-align: center;
+    }
+    .thankyou .big  { font-size: 42px; margin-bottom: 0.75rem; }
+    .thankyou h2   { font-size: 19px; font-weight: 600; color: #1a1a1a; margin-bottom: 0.6rem; }
+    .thankyou p    { font-size: 13px; color: #666; line-height: 1.7; }
+    .restart-btn {
+      margin-top: 1.25rem;
+      background: #f0ede8;
+      border: 1px solid #d6d3cc;
+      border-radius: 10px;
+      padding: 11px 22px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      color: #333;
+      transition: border-color 0.15s;
+    }
+    .restart-btn:hover { border-color: #aaa; }
+
+    /* ── Résultats admin (caché par défaut) ── */
+    #admin-panel {
+      display: none;
+      margin-top: 1.5rem;
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    #admin-panel h2 { font-size: 16px; font-weight: 600; margin-bottom: 1.25rem; color: #1a1a1a; }
+    .r-section { margin-bottom: 1.5rem; }
+    .r-section h3 { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .result-row { margin-bottom: 8px; }
+    .r-line { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 3px; }
+    .r-bar-bg { background: #f0ede8; border-radius: 4px; height: 7px; overflow: hidden; }
+    .r-bar    { height: 100%; border-radius: 4px; background: #378ADD; transition: width 0.5s ease; }
+    .r-count  { font-size: 11px; color: #aaa; }
+    .export-btn {
+      background: #1a1a2e;
+      color: #FFD700;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
       margin-top: 0.5rem;
     }
-    .submit-btn:hover { background: #D71920; transform: translateY(-2px); }
-    .submit-btn:active { transform: translateY(0); }
-
-    /* ── Success ── */
-    .success-card {
-      display: none;
+    .export-btn:hover { opacity: 0.85; }
+    .admin-toggle {
+      margin-top: 1rem;
       text-align: center;
-      background: #232323;
-      border: 1px solid rgba(244,194,26,0.3);
-      border-top: 3px solid #F4C21A;
-      border-radius: 16px;
-      padding: 3rem 2rem;
+      font-size: 11px;
+      color: #bbb;
+      cursor: pointer;
+      user-select: none;
     }
-    .success-card.visible { display: block; }
-    .success-card .emoji { font-size: 3rem; margin-bottom: 1rem; }
-    .success-card h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #F4C21A; margin-bottom: 0.75rem; }
-    .success-card p { color: #9a9a9a; font-size: 0.9rem; line-height: 1.6; }
+    .admin-toggle:hover { color: #888; }
 
     @media (max-width: 480px) {
-      .page { padding: 5.5rem 1rem 4rem; }
-      .question { padding: 1.25rem 1rem 1rem; }
-      .sondage-banner { padding: 1.5rem 1rem 1.25rem; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .scale-btn { padding: 10px 2px; font-size: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="header-logo">
-        <img src="Logo_officiel_transparent.png" alt="Chez Macha" class="logo" />
-      </a>
-      <button class="hamburger" aria-label="Menu">&#9776;</button>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="asbl.html">ASBL</a></li>
-          <li><a href="tickets.html">Agenda</a></li>
-          <li><a href="lieux.html">Partenaires</a></li>
-          <li><a href="sponsors.html">Sponsors</a></li>
-          <li><a href="corporate.html">Corporate</a></li>
-          <li><a href="apropos.html">À propos</a></li>
-          <li><a href="galerie.html">Galerie</a></li>
-          <li><a href="newsletter.html">Nous soutenir</a></li>
-          <li><a href="presse.html">Presse</a></li>
-        </ul>
-      </nav>
+<div class="survey">
+
+  <!-- Bannière -->
+  <div class="banner">
+    <div class="banner-emoji">🎤</div>
+    <h1>Dan Gagnon en spectacle !</h1>
+    <p><em>« Tu comprendras quand tu seras grand »</em><br>Un spectacle familial pour faire découvrir le stand-up à vos enfants</p>
+    <span class="badge">8–12 ans et les grands enfants</span>
+    <a href="https://www.tvcom.be/replay/emission/pause-culture/pause-culture-julie-mouvet-drole-de-mouv-catherine-patout-nuits-dencre/57156" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:0.85rem;color:#FFD700;font-weight:600;font-size:12px;text-decoration:none;border:1px solid rgba(255,215,0,0.4);border-radius:20px;padding:4px 14px;">▶ Voir Dan Gagnon sur TVcom</a>
+  </div>
+
+  <!-- Barre de progression -->
+  <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+  <!-- Étape 1 -->
+  <div class="step active" id="s1">
+    <div class="q-card">
+      <div class="q-label">Seriez-vous intéressé(e) à assister à ce spectacle ?</div>
+      <div class="cards" id="q1">
+        <div class="opt-card" data-val="Oui, définitivement !"><div class="icon">🙋</div><div class="label">Oui, définitivement !</div></div>
+        <div class="opt-card" data-val="Probablement oui"><div class="icon">😊</div><div class="label">Probablement oui</div></div>
+        <div class="opt-card" data-val="Peut-être"><div class="icon">🤔</div><div class="label">Peut-être</div></div>
+        <div class="opt-card" data-val="Non"><div class="icon">😕</div><div class="label">Non</div></div>
+      </div>
     </div>
-  </header>
+    <div class="nav"><button class="btn-next" onclick="nextStep(1)">Continuer →</button></div>
+  </div>
 
-  <main class="page">
-
-    <!-- Banner -->
-    <div class="sondage-banner">
-      <p class="label">Sondage express · 2 minutes</p>
-      <h1>Dan Gagnon<br><span>Chez Macha</span> ?</h1>
-      <p>Dis-nous ce que tu en penses — ça nous aide à programmer les meilleurs shows pour toi.</p>
+  <!-- Étape 2 -->
+  <div class="step" id="s2">
+    <div class="q-card">
+      <div class="q-label">Combien de personnes viendraient avec vous ?</div>
+      <div class="age-row" id="q2">
+        <button class="age-btn" data-val="Juste moi (1)">Juste moi</button>
+        <button class="age-btn" data-val="2 personnes">2 personnes</button>
+        <button class="age-btn" data-val="3 personnes">3 personnes</button>
+        <button class="age-btn" data-val="4 personnes">4 personnes</button>
+        <button class="age-btn" data-val="5 personnes ou plus">5 ou plus</button>
+      </div>
     </div>
-
-    <!-- Form -->
-    <form class="sondage-form" id="sondageForm" novalidate>
-
-      <!-- Q1 — obligatoire -->
-      <div class="question" id="q1-block">
-        <div class="question-label">
-          <span class="required-star">⭐</span>
-          Tu connais Dan Gagnon ?
-        </div>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="q1" value="fan" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, je suis fan</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q1" value="connais" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, je le connais</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q1" value="non" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Non, pas encore</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Q2 — obligatoire -->
-      <div class="question" id="q2-block">
-        <div class="question-label">
-          <span class="required-star">⭐</span>
-          Tu viendrais voir Dan Gagnon Chez Macha ?
-        </div>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="q2" value="oui-direct" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, je réserve direct !</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q2" value="oui-prix" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, si le prix est correct</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q2" value="peut-etre" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Peut-être</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q2" value="non" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Non</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Q3 — optionnel -->
-      <div class="question">
-        <div class="question-label">
-          Tu as déjà assisté à un show Chez Macha ?
-          <span class="optional-tag">optionnel</span>
-        </div>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="q3" value="plusieurs" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, plusieurs fois</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q3" value="une-fois" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Oui, une fois</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q3" value="pas-encore" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Pas encore</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Q4 — optionnel -->
-      <div class="question">
-        <div class="question-label">
-          Tu es disponible plutôt...
-          <span class="optional-tag">optionnel</span>
-        </div>
-        <div class="radio-group">
-          <label class="radio-option">
-            <input type="radio" name="q4" value="semaine" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">En semaine (lundi–jeudi)</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q4" value="weekend" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Le week-end (vendredi–dimanche)</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="q4" value="les-deux" />
-            <span class="radio-custom"></span>
-            <span class="radio-text">Les deux me vont</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Q5 — optionnel email -->
-      <div class="question">
-        <div class="question-label">
-          Ton email pour être prévenu en priorité ?
-          <span class="optional-tag">optionnel</span>
-        </div>
-        <input class="email-field" type="email" name="q5" id="emailField" placeholder="ton@email.com" />
-      </div>
-
-      <!-- Erreur -->
-      <div class="error-msg" id="errorMsg">
-        ⚠️ Merci de répondre aux 2 questions obligatoires (⭐) avant d'envoyer.
-      </div>
-
-      <!-- Submit -->
-      <button type="submit" class="submit-btn">Envoyer mon avis</button>
-
-    </form>
-
-    <!-- Succès -->
-    <div class="success-card" id="successCard">
-      <div class="emoji">🎤</div>
-      <h2>Merci pour ton avis !</h2>
-      <p>On prend note. Si Dan Gagnon débarque Chez Macha, tu seras parmi les premiers prévenus.<br><br>
-        <a href="tickets.html" style="color:#F4C21A;font-weight:700;text-decoration:none;">← Voir tous nos prochains shows</a>
-      </p>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(2)">←</button>
+      <button class="btn-next" onclick="nextStep(2)">Continuer →</button>
     </div>
+  </div>
 
-  </main>
+  <!-- Étape 3 -->
+  <div class="step" id="s3">
+    <div class="q-card">
+      <div class="q-label">Quels âges ont les enfants qui viendraient ?</div>
+      <div class="q-sub">Sélectionnez tout ce qui s'applique</div>
+      <div class="age-row" id="q3">
+        <button class="age-btn" data-val="Moins de 6 ans">Moins de 6 ans</button>
+        <button class="age-btn" data-val="6–8 ans">6–8 ans</button>
+        <button class="age-btn" data-val="8–12 ans">8–12 ans</button>
+        <button class="age-btn" data-val="12–17 ans">12–17 ans</button>
+        <button class="age-btn" data-val="18 ans et plus">18 ans et +</button>
+        <button class="age-btn" data-val="Adultes seulement">Adultes seulement</button>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(3)">←</button>
+      <button class="btn-next" onclick="nextStep(3)">Continuer →</button>
+    </div>
+  </div>
 
-  <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-    <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
-    <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
-      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
-      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
-    </nav>
-  </footer>
+  <!-- Étape 4 -->
+  <div class="step" id="s4">
+    <div class="q-card">
+      <div class="q-label">Quel format de spectacle vous convient le mieux ?</div>
+      <div class="cards" id="q4">
+        <div class="opt-card" data-val="En semaine le soir"><div class="icon">🌙</div><div class="label">En semaine, le soir</div></div>
+        <div class="opt-card" data-val="Week-end en après-midi"><div class="icon">☀️</div><div class="label">Week-end, après-midi</div></div>
+        <div class="opt-card" data-val="Week-end en soirée"><div class="icon">🌟</div><div class="label">Week-end, soirée</div></div>
+        <div class="opt-card" data-val="Peu importe"><div class="icon">🗓️</div><div class="label">Peu importe</div></div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(4)">←</button>
+      <button class="btn-next" onclick="nextStep(4)">Continuer →</button>
+    </div>
+  </div>
 
-  <script>
-    // Hamburger menu
-    (function() {
-      var btn = document.getElementById('hamburgerBtn');
-      var panel = document.getElementById('mobileNavPanel');
-      if (!btn || !panel) return;
-      panel.innerHTML = '<nav><ul style="list-style:none;padding:1rem 0;">' +
-        '<li><a href="index.html" style="display:block;padding:0.75rem 1.5rem;color:#F6F1E8;text-decoration:none;font-family:\'Jost\',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Accueil</a></li>' +
-        '<li><a href="tickets.html" style="display:block;padding:0.75rem 1.5rem;color:#F6F1E8;text-decoration:none;font-family:\'Jost\',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Agenda</a></li>' +
-        '<li><a href="lieux.html" style="display:block;padding:0.75rem 1.5rem;color:#F6F1E8;text-decoration:none;font-family:\'Jost\',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Partenaires</a></li>' +
-        '<li><a href="apropos.html" style="display:block;padding:0.75rem 1.5rem;color:#F6F1E8;text-decoration:none;font-family:\'Jost\',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">À propos</a></li>' +
-        '<li><a href="galerie.html" style="display:block;padding:0.75rem 1.5rem;color:#F6F1E8;text-decoration:none;font-family:\'Jost\',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Galerie</a></li>' +
-        '</ul></nav>';
-      btn.addEventListener('click', function() {
-        var open = panel.style.display === 'block';
-        panel.style.display = open ? 'none' : 'block';
-        btn.classList.toggle('active', !open);
-      });
-    })();
+  <!-- Étape 5 -->
+  <div class="step" id="s5">
+    <div class="q-card">
+      <div class="q-label">Sur une échelle de 1 à 5, à quel point vos enfants connaissent-ils Dan Gagnon ?</div>
+      <div class="scale" id="q5">
+        <button class="scale-btn" data-val="1">1</button>
+        <button class="scale-btn" data-val="2">2</button>
+        <button class="scale-btn" data-val="3">3</button>
+        <button class="scale-btn" data-val="4">4</button>
+        <button class="scale-btn" data-val="5">5</button>
+      </div>
+      <div class="scale-labels"><span>Pas du tout</span><span>Très bien !</span></div>
+    </div>
+    <div class="q-card" style="margin-top:0.75rem">
+      <div class="q-label">Un commentaire ou une question ? <span style="font-size:12px; font-weight:400; color:#888">(optionnel)</span></div>
+      <textarea class="input-text" id="q6" rows="3" placeholder="Ex. : Est-ce que le spectacle est adapté aux 6 ans ? Y a-t-il un tarif famille ?"></textarea>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="prevStep(5)">←</button>
+      <button class="btn-next" onclick="submitSurvey()">Envoyer mes réponses 🎤</button>
+    </div>
+  </div>
 
-    // Form validation & submit
-    document.getElementById('sondageForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <!-- Merci -->
+  <div class="step" id="s6">
+    <div class="thankyou">
+      <div class="big">🎉</div>
+      <h2>Merci pour votre participation !</h2>
+      <p>Vos réponses nous aident à préparer le meilleur spectacle possible.<br>Restez à l'affût pour les billets — ça va être une belle soirée !</p>
+      <button class="restart-btn" onclick="restartSurvey()">Recommencer le sondage</button>
+    </div>
+    <div class="admin-toggle" onclick="toggleAdmin()">▸ Voir les résultats (admin)</div>
+    <div id="admin-panel">
+      <h2>📊 Résultats du sondage</h2>
+      <div id="results-content"></div>
+      <button class="export-btn" onclick="exportCSV()">Exporter CSV</button>
+    </div>
+  </div>
 
-      var q1 = document.querySelector('input[name="q1"]:checked');
-      var q2 = document.querySelector('input[name="q2"]:checked');
-      var errorMsg = document.getElementById('errorMsg');
-      var q1Block = document.getElementById('q1-block');
-      var q2Block = document.getElementById('q2-block');
+</div>
 
-      // Reset
-      errorMsg.classList.remove('visible');
-      q1Block.classList.remove('error-highlight');
-      q2Block.classList.remove('error-highlight');
+<script>
+  // ── Stockage des réponses ──────────────────────────────────────────
+  // Les réponses sont conservées en mémoire (tableau "responses").
+  // Pour une version avec persistance, remplacez le tableau par un
+  // appel fetch() vers votre API ou service préféré (ex. Google Sheets,
+  // Supabase, Airtable, etc.).
 
-      if (!q1 || !q2) {
-        errorMsg.classList.add('visible');
-        if (!q1) q1Block.classList.add('error-highlight');
-        if (!q2) q2Block.classList.add('error-highlight');
-        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
+  const responses = [];
+  const current_answer = {};
+  let currentStep = 1;
+  const totalSteps = 5;
 
-      // GA4 event
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'sondage_submit', {
-          q1: q1.value,
-          q2: q2.value,
-        });
-      }
-
-      // Show success
-      document.getElementById('sondageForm').style.display = 'none';
-      var card = document.getElementById('successCard');
-      card.classList.add('visible');
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // ── Initialisation des clics ───────────────────────────────────────
+  document.querySelectorAll('.opt-card, .scale-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
     });
-  </script>
+  });
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+  document.querySelectorAll('.age-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (this.parentElement.id === 'q3') {
+        this.classList.toggle('selected'); // multi-select
+      } else {
+        this.parentElement.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+      }
+    });
+  });
+
+  // ── Navigation ────────────────────────────────────────────────────
+  function getSelected(groupId, multi) {
+    const btns = document.querySelectorAll('#' + groupId + ' [data-val].selected');
+    if (!multi) return btns.length ? btns[0].dataset.val : null;
+    return Array.from(btns).map(b => b.dataset.val);
+  }
+
+  function updateProgress(step) {
+    document.getElementById('prog').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
+  }
+
+  function nextStep(from) {
+    if (from === 1) current_answer.interet  = getSelected('q1', false);
+    if (from === 2) current_answer.groupe   = getSelected('q2', false);
+    if (from === 3) current_answer.ages     = getSelected('q3', true);
+    if (from === 4) current_answer.format   = getSelected('q4', false);
+    document.getElementById('s' + from).classList.remove('active');
+    currentStep = from + 1;
+    document.getElementById('s' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevStep(from) {
+    document.getElementById('s' + from).classList.remove('active');
+    currentStep = from - 1;
+    document.getElementById('s' + currentStep).classList.add('active');
+    updateProgress(currentStep);
+  }
+
+  function submitSurvey() {
+    current_answer.connaissance = getSelected('q5', false);
+    current_answer.commentaire  = document.getElementById('q6').value.trim();
+    current_answer.date         = new Date().toLocaleString('fr-CA');
+
+    // Sauvegarde en mémoire (remplacez par votre API si besoin)
+    responses.push(Object.assign({}, current_answer));
+
+    document.getElementById('s5').classList.remove('active');
+    document.getElementById('s6').classList.add('active');
+    document.getElementById('prog').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restartSurvey() {
+    document.querySelectorAll('.selected').forEach(b => b.classList.remove('selected'));
+    document.getElementById('q6').value = '';
+    document.getElementById('s6').classList.remove('active');
+    currentStep = 1;
+    document.getElementById('s1').classList.add('active');
+    updateProgress(1);
+    document.getElementById('admin-panel').style.display = 'none';
+  }
+
+  // ── Panel admin ───────────────────────────────────────────────────
+  function toggleAdmin() {
+    const panel = document.getElementById('admin-panel');
+    if (panel.style.display === 'none' || panel.style.display === '') {
+      renderResults();
+      panel.style.display = 'block';
+    } else {
+      panel.style.display = 'none';
     }
-  </script>
-  <script>
-    (function() {
-      var hamburger = document.querySelector('.hamburger');
-      var nav = document.querySelector('.main-nav');
-      if (!hamburger || !nav) return;
-      hamburger.addEventListener('click', function() {
-        nav.classList.toggle('open');
-        hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
+  }
+
+  function countValues(key, multi) {
+    const counts = {};
+    responses.forEach(r => {
+      const val = r[key];
+      if (!val) return;
+      const arr = multi ? val : [val];
+      arr.forEach(v => { counts[v] = (counts[v] || 0) + 1; });
+    });
+    return counts;
+  }
+
+  function renderBar(label, counts) {
+    const total = responses.length || 1;
+    let html = '<div class="r-section"><h3>' + label + '</h3>';
+    Object.entries(counts).sort((a,b) => b[1]-a[1]).forEach(([k,v]) => {
+      const pct = Math.round((v / total) * 100);
+      html += `<div class="result-row">
+        <div class="r-line"><span>${k}</span><span class="r-count">${v} rép. · ${pct}%</span></div>
+        <div class="r-bar-bg"><div class="r-bar" style="width:${pct}%"></div></div>
+      </div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderResults() {
+    const n = responses.length;
+    if (n === 0) {
+      document.getElementById('results-content').innerHTML = '<p style="color:#888;font-size:13px">Aucune réponse pour l\'instant.</p>';
+      return;
+    }
+    let html = `<p style="font-size:13px;color:#666;margin-bottom:1.25rem">${n} réponse${n>1?'s':''} enregistrée${n>1?'s':''}</p>`;
+    html += renderBar('Intérêt pour le spectacle', countValues('interet', false));
+    html += renderBar('Taille du groupe', countValues('groupe', false));
+    html += renderBar('Âges des enfants', countValues('ages', true));
+    html += renderBar('Format préféré', countValues('format', false));
+    html += renderBar('Notoriété de Dan Gagnon (1-5)', countValues('connaissance', false));
+
+    const comments = responses.filter(r => r.commentaire).map(r => r.commentaire);
+    if (comments.length) {
+      html += '<div class="r-section"><h3>Commentaires</h3>';
+      comments.forEach(c => {
+        html += `<p style="font-size:12px;color:#444;background:#f8f7f4;border-radius:8px;padding:8px 12px;margin-bottom:6px">${c}</p>`;
       });
-      document.querySelectorAll('.main-nav a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          nav.classList.remove('open');
-          hamburger.textContent = '☰';
-        });
-      });
-      document.querySelectorAll('.main-nav a').forEach(function(link) {
-        var page = window.location.pathname.split('/').pop() || 'index.html';
-        if (link.getAttribute('href') === page) link.classList.add('active');
-      });
-    })();
-  </script>
+      html += '</div>';
+    }
+    document.getElementById('results-content').innerHTML = html;
+  }
+
+  // ── Export CSV ────────────────────────────────────────────────────
+  function exportCSV() {
+    if (responses.length === 0) { alert('Aucune réponse à exporter.'); return; }
+    const headers = ['Date','Intérêt','Groupe','Âges','Format','Connaissance Dan Gagnon','Commentaire'];
+    const rows = responses.map(r => [
+      r.date || '',
+      r.interet || '',
+      r.groupe || '',
+      Array.isArray(r.ages) ? r.ages.join(' | ') : (r.ages || ''),
+      r.format || '',
+      r.connaissance || '',
+      (r.commentaire || '').replace(/"/g, '""')
+    ].map(v => `"${v}"`).join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'sondage-dan-gagnon.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
 </body>
 </html>
