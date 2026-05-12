@@ -21,6 +21,16 @@ body::after {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* ── Logo golden halo (toutes les sous-pages) ── */
+img.logo {
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 8px rgba(244,194,26,0.8)) drop-shadow(0 0 16px rgba(244,194,26,0.4));
+  transition: filter 0.3s ease;
+}
+img.logo:hover {
+  filter: drop-shadow(0 0 12px rgba(244,194,26,1)) drop-shadow(0 0 24px rgba(244,194,26,0.6));
+}
+
 /* ── HEADER STICKY ── */
 .site-header {
   position: sticky !important;

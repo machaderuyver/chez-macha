@@ -86,11 +86,10 @@
     /* Espace entre logo et camionnette */
     .header-van { margin-left: 1rem; margin-right: auto; }
 
-    /* ── Header index — golden halo logo (toutes tailles) ── */
+    /* ── Logo — golden halo ── */
     img.logo {
       height: 48px;
       width: auto;
-      transform: translate(-10%, 10%);
       mix-blend-mode: lighten;
       filter: drop-shadow(0 0 8px rgba(244,194,26,0.8)) drop-shadow(0 0 16px rgba(244,194,26,0.4));
       transition: filter 0.3s ease;
@@ -98,7 +97,9 @@
     img.logo:hover {
       filter: drop-shadow(0 0 12px rgba(244,194,26,1)) drop-shadow(0 0 24px rgba(244,194,26,0.6));
     }
-    @media (max-width: 768px) { img.logo { height: 40px; margin-top: 4px; } }
+    @media (min-width: 769px) { img.logo { transform: translate(-10%, 10%); } }
+    @media (max-width: 768px) { img.logo { height: 38px; } }
+    @media (max-width: 480px) { img.logo { height: 32px; } }
 
     /* ── Header desktop uniquement ── */
     @media (min-width: 769px) {
@@ -123,49 +124,7 @@
       margin-top: 0.1rem;
     }
 
-    .site-header .logo {
-      height: 180px;
-      width: auto;
-      position: relative;
-      margin-top: -40px;
-      margin-left: -2.5rem;
-      margin-right: 40px;
-      z-index: 102;
-      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
-      transition: filter 0.2s;
-    }
 
-    .site-header .logo:hover {
-      filter: drop-shadow(0 2px 16px rgba(244,194,26,0.45));
-    }
-
-    @media (max-width: 768px) {
-      .site-header .logo {
-        height: 70px;
-        width: auto;
-        margin-top: 0;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 0;
-        border: none;
-        border-radius: 0;
-        position: static;
-        z-index: auto;
-      }
-      .site-header {
-        padding: 8px 12px !important;
-        flex-wrap: nowrap !important;
-        justify-content: space-between !important;
-      }
-      .hamburger-btn {
-        position: static !important;
-        transform: none !important;
-      }
-      .header-left {
-        display: flex !important;
-        justify-content: flex-start !important;
-      }
-    }
 
     .site-nav {
       display: flex;
@@ -210,7 +169,7 @@
       min-height: 420px;
       max-height: 580px;
       overflow: hidden;
-      margin-top: 200px;
+      margin-top: 0;
       z-index: 1;
     } }
 
@@ -276,7 +235,7 @@
         overflow: hidden;
         position: relative;
       }
-      .hero-bg { display: block !important; object-fit: contain !important; object-position: center center !important; background-color: #071326; }
+      .hero-bg { display: block !important; object-fit: cover !important; object-position: center top !important; background-color: #071326; }
       .hero-text-block {
         position: absolute;
         bottom: 3.5rem !important;
