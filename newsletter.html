@@ -305,6 +305,7 @@
         document.getElementById('nlEmail').focus();
         return;
       }
+      gtag('event', 'sign_up', { method: 'newsletter' });
       window.location.href = 'mailto:info@chezmacha.be?subject=Inscription%20newsletter&body=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20la%20newsletter%20Chez%20Macha.%0A%0AEmail%20%3A%20' + encodeURIComponent(email);
     }
 
