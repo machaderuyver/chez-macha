@@ -541,6 +541,18 @@
         });
       }
 
+      // Envoi silencieux au backend
+      var q3 = document.querySelector('input[name="q3"]:checked');
+      var q4 = document.querySelector('input[name="q4"]:checked');
+      var q5 = document.getElementById('emailField');
+      var fd = new FormData();
+      fd.append('q1', q1.value);
+      fd.append('q2', q2.value);
+      if (q3) fd.append('q3', q3.value);
+      if (q4) fd.append('q4', q4.value);
+      if (q5 && q5.value.trim()) fd.append('q5', q5.value.trim());
+      fetch('envoyer-sondage-dan-gagnon.php', { method: 'POST', body: fd }).catch(function(){});
+
       // Show success
       document.getElementById('sondageForm').style.display = 'none';
       var card = document.getElementById('successCard');
