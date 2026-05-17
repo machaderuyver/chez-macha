@@ -21,7 +21,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Chez Macha" />
-  <meta name="description" content="Offrez un bon cadeau Chez Macha — une soirée stand-up inoubliable pour vos proches. 30€, 50€ ou 100€." />
+  <meta name="description" content="Offrez un bon cadeau Chez Macha — une soirée stand-up inoubliable. 30€, 50€ ou 100€." />
   <title>Bon cadeau — Chez Macha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,10 +30,8 @@
   <style>
     body { font-size: 15px; line-height: 1.6; }
     .page { max-width: 680px; }
-    h1 { margin-bottom: 0.5rem; }
     h1 span { color: var(--yellow); }
 
-    /* ── Visuel bon cadeau ── */
     .gift-hero {
       display: flex;
       align-items: center;
@@ -55,11 +53,7 @@
       background: radial-gradient(circle, rgba(244,194,26,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .gift-icon {
-      font-size: 3rem;
-      flex-shrink: 0;
-      filter: drop-shadow(0 0 12px rgba(244,194,26,0.5));
-    }
+    .gift-icon { font-size: 3rem; flex-shrink: 0; filter: drop-shadow(0 0 12px rgba(244,194,26,0.5)); }
     .gift-hero-text h2 {
       font-family: 'Jost', sans-serif;
       font-size: 1rem;
@@ -69,13 +63,8 @@
       color: var(--yellow);
       margin-bottom: 0.25rem;
     }
-    .gift-hero-text p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+    .gift-hero-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
 
-    /* ── Sélecteur de montant ── */
     .section-label {
       font-family: 'Jost', sans-serif;
       font-size: 0.7rem;
@@ -107,63 +96,20 @@
       transition: all 0.2s;
       user-select: none;
     }
-    .montant-card:hover {
-      border-color: rgba(244,194,26,0.5);
-      background: var(--bg-card-hover);
-    }
+    .montant-card:hover { border-color: rgba(244,194,26,0.5); background: var(--bg-card-hover); }
     .montant-grid input[type="radio"]:checked + .montant-card {
       border-color: var(--yellow);
       background: linear-gradient(135deg, #18200a 0%, #0c1d33 100%);
       box-shadow: 0 0 20px rgba(244,194,26,0.2), inset 0 0 0 1px rgba(244,194,26,0.15);
     }
-    .montant-prix {
-      font-family: 'Jost', sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--yellow);
-      line-height: 1;
-    }
-    .montant-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-    .montant-grid input[type="radio"]:checked + .montant-card .montant-label {
-      color: var(--text);
-    }
+    .montant-prix { font-family: 'Jost', sans-serif; font-size: 2rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+    .montant-label { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .montant-grid input[type="radio"]:checked + .montant-card .montant-label { color: var(--text); }
 
-    /* ── Champs formulaire ── */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      margin-bottom: 0.75rem;
-    }
-    .form-field label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .form-field label .opt {
-      font-weight: 400;
-      text-transform: none;
-      letter-spacing: 0;
-      color: #555e70;
-    }
-    .form-field input,
-    .form-field textarea {
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.75rem; }
+    .form-field label { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .form-field input, .form-field textarea {
       background: #060d1c;
       border: 1px solid rgba(244,194,26,0.2);
       color: var(--text);
@@ -175,17 +121,12 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       width: 100%;
     }
-    .form-field input:focus,
-    .form-field textarea:focus {
+    .form-field input:focus, .form-field textarea:focus {
       border-color: var(--yellow);
       box-shadow: 0 0 0 3px rgba(244,194,26,0.08);
     }
-    .form-field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    .form-field textarea { resize: vertical; min-height: 80px; }
 
-    /* ── Bouton submit ── */
     .btn-gift {
       width: 100%;
       background: var(--yellow);
@@ -207,18 +148,10 @@
       margin-top: 1.5rem;
       box-shadow: 0 4px 20px rgba(244,194,26,0.3);
     }
-    .btn-gift:hover {
-      background: #ffd84a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(244,194,26,0.4);
-    }
-    .btn-gift:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .btn-gift:hover { background: #ffd84a; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(244,194,26,0.4); }
+    .btn-gift:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-    /* ── Bloc instructions de virement ── */
+    /* Bloc virement (fallback si PHP indisponible) */
     #virement-block {
       display: none;
       background: linear-gradient(135deg, #0a1a0a 0%, #0c1d33 100%);
@@ -239,54 +172,21 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .virement-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(244,194,26,0.1);
-    }
+    .virement-row { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(244,194,26,0.1); }
     .virement-row:last-of-type { border-bottom: none; margin-bottom: 0; }
-    .virement-key {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .virement-val {
-      font-family: 'Didact Gothic', monospace;
-      font-size: 1.05rem;
-      color: var(--text);
-      letter-spacing: 0.03em;
-    }
-    .virement-val strong {
-      color: var(--yellow);
-      font-weight: 700;
-    }
-    .virement-notice {
-      margin-top: 1.25rem;
-      background: rgba(244,194,26,0.07);
-      border-left: 3px solid var(--yellow);
-      border-radius: 0 8px 8px 0;
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .virement-key { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .virement-val { font-family: 'Didact Gothic', monospace; font-size: 1.05rem; color: var(--text); }
+    .virement-val strong { color: var(--yellow); }
+    .virement-notice { margin-top: 1.25rem; background: rgba(244,194,26,0.07); border-left: 3px solid var(--yellow); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
     .virement-notice strong { color: var(--text); }
 
-    /* ── Séparateur ── */
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(244,194,26,0.1);
-      margin: 2rem 0;
-    }
+    .divider { border: none; border-top: 1px solid rgba(244,194,26,0.1); margin: 2rem 0; }
+
+    /* Spinner */
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(6,9,23,0.3); border-top-color: #060917; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 600px) {
-      .montant-grid { grid-template-columns: repeat(3, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
       .gift-hero { flex-direction: column; text-align: center; }
     }
@@ -301,13 +201,12 @@
   <meta property="og:site_name" content="Chez Macha" />
   <meta property="og:url" content="https://www.chezmacha.be/bon-cadeau.html" />
   <meta property="og:title" content="Bon cadeau — Chez Macha" />
-  <meta property="og:description" content="Offrez un bon cadeau Chez Macha — une soirée stand-up inoubliable pour vos proches. 30€, 50€ ou 100€." />
+  <meta property="og:description" content="Offrez un bon cadeau Chez Macha — une soirée stand-up inoubliable. 30€, 50€ ou 100€." />
   <meta property="og:image" content="https://www.chezmacha.be/macha.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/responsive.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="header-logo">
@@ -340,19 +239,18 @@
     <p class="label">Idée cadeau</p>
     <h1>Bon <span>cadeau</span></h1>
     <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:2rem;max-width:520px;">
-      Offrez une soirée stand-up inoubliable à quelqu'un que vous aimez. Le destinataire choisit lui-même la date qui lui convient.
+      Offrez une soirée stand-up inoubliable. Le destinataire choisit lui-même la date qui lui convient.
     </p>
 
     <div class="gift-hero">
       <div class="gift-icon">🎭</div>
       <div class="gift-hero-text">
         <h2>Comment ça marche ?</h2>
-        <p>Choisissez un montant, remplissez le formulaire, puis effectuez le virement bancaire. Vous recevrez le bon cadeau par email sous 48h, prêt à offrir.</p>
+        <p>Choisissez un montant, remplissez le formulaire, effectuez le virement bancaire. Vous recevrez le bon cadeau PDF personnalisé sous 48h.</p>
       </div>
     </div>
 
     <form id="bonCadeauForm" novalidate>
-      <!-- Montant -->
       <p class="section-label">1. Choisissez le montant</p>
       <div class="montant-grid">
         <label>
@@ -380,7 +278,6 @@
 
       <hr class="divider" />
 
-      <!-- Infos acheteur -->
       <p class="section-label">2. Vos informations</p>
       <div class="form-grid">
         <div class="form-field">
@@ -399,14 +296,13 @@
 
       <hr class="divider" />
 
-      <!-- Infos destinataire -->
-      <p class="section-label">3. Le destinataire <span class="opt" style="text-transform:none;letter-spacing:0;font-size:0.75rem;color:#555e70;">(optionnel)</span></p>
+      <p class="section-label">3. Le destinataire <span style="text-transform:none;letter-spacing:0;font-size:0.75rem;color:#555e70;">(optionnel)</span></p>
       <div class="form-field">
-        <label for="prenom_destinataire">Prénom du destinataire <span class="opt">(pour personnaliser le bon)</span></label>
+        <label for="prenom_destinataire">Prénom du destinataire <span style="text-transform:none;letter-spacing:0;font-weight:400;color:#555e70;">(pour personnaliser le bon)</span></label>
         <input type="text" id="prenom_destinataire" name="prenom_destinataire" placeholder="Jean" />
       </div>
       <div class="form-field">
-        <label for="message">Message personnel <span class="opt">(inclus sur le bon cadeau)</span></label>
+        <label for="message">Message personnel <span style="text-transform:none;letter-spacing:0;font-weight:400;color:#555e70;">(inclus sur le bon)</span></label>
         <textarea id="message" name="message" placeholder="Joyeux anniversaire ! Profite bien de cette soirée…"></textarea>
       </div>
 
@@ -416,13 +312,12 @@
       </button>
     </form>
 
-    <!-- Bloc virement — affiché après soumission -->
+    <!-- Fallback virement (PHP indisponible) -->
     <div id="virement-block">
       <h3>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         Commande enregistrée !
       </h3>
-
       <div class="virement-row">
         <span class="virement-key">Bénéficiaire</span>
         <span class="virement-val">ASBL Ririkou (Chez Macha)</span>
@@ -439,80 +334,72 @@
         <span class="virement-key">Communication obligatoire</span>
         <span class="virement-val"><strong id="virement-communication">—</strong></span>
       </div>
-
       <div class="virement-notice">
-        <strong>Dès réception de votre virement</strong>, vous recevrez votre bon cadeau personnalisé par email sous <strong>48h</strong>. Une confirmation de commande vient également de vous être envoyée.
+        <strong>Dès réception du virement</strong>, vous recevrez votre bon cadeau PDF par email sous <strong>48h</strong>.
       </div>
-
-      <a href="tickets.html" class="btn btn-outline" style="display:inline-block;margin-top:1.5rem;">Voir l'agenda des spectacles</a>
+      <a href="tickets.html" class="btn btn-outline" style="display:inline-block;margin-top:1.5rem;">Voir l'agenda</a>
     </div>
   </div>
 
   <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
     <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
     <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
-      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
-      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
     </nav>
   </footer>
 
   <script>
-    /* ── Soumission du formulaire ── */
     document.getElementById('bonCadeauForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      var montant = document.querySelector('input[name="montant"]:checked');
-      var prenom = document.getElementById('prenom').value.trim();
-      var nom = document.getElementById('nom').value.trim();
-      var email = document.getElementById('email').value.trim();
+      var montantRadio = document.querySelector('input[name="montant"]:checked');
+      var prenom  = document.getElementById('prenom').value.trim();
+      var nom     = document.getElementById('nom').value.trim();
+      var email   = document.getElementById('email').value.trim();
+      var prenomDest = document.getElementById('prenom_destinataire').value.trim();
+      var message = document.getElementById('message').value.trim();
 
-      if (!montant) {
-        alert('Merci de choisir un montant.');
-        return;
-      }
-      if (!prenom || !nom) {
-        alert('Merci de renseigner votre prénom et nom.');
-        return;
-      }
-      if (!email || !email.includes('@')) {
-        document.getElementById('email').focus();
-        return;
-      }
+      if (!montantRadio) { alert('Merci de choisir un montant.'); return; }
+      if (!prenom || !nom) { alert('Merci de renseigner votre prénom et nom.'); return; }
+      if (!email || !email.includes('@')) { document.getElementById('email').focus(); return; }
 
-      var montantVal = montant.value;
+      var montantVal = montantRadio.value;
       var communication = 'Bon cadeau ' + montantVal + '€ ' + prenom;
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Envoi en cours…';
 
-      /* Afficher le bloc virement */
-      document.getElementById('virement-montant').textContent = montantVal + '€';
+      var formData = new FormData(document.getElementById('bonCadeauForm'));
+
+      fetch('envoyer-bon-cadeau.php', { method: 'POST', body: formData })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.ok) {
+            /* GA4 */
+            gtag('event', 'begin_checkout', { currency: 'EUR', value: parseFloat(montantVal), items: [{ item_name: 'Bon cadeau Chez Macha', price: parseFloat(montantVal), quantity: 1 }] });
+            /* Redirection vers la page de confirmation complète */
+            var params = new URLSearchParams({ id: data.id, montant: montantVal, prenom: prenom, prenom_destinataire: prenomDest, message: message });
+            window.location.href = 'confirmation-bon-cadeau.html?' + params.toString();
+          } else {
+            showFallback(montantVal, communication, btn);
+          }
+        })
+        .catch(function() { showFallback(montantVal, communication, btn); });
+    });
+
+    function showFallback(montant, communication, btn) {
+      document.getElementById('virement-montant').textContent = montant + '€';
       document.getElementById('virement-communication').textContent = communication;
       var block = document.getElementById('virement-block');
       block.style.display = 'block';
       block.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      /* Désactiver le formulaire */
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('submitBtn').textContent = 'Commande envoyée';
-
-      /* GA4 event */
-      gtag('event', 'begin_checkout', {
-        currency: 'EUR',
-        value: parseFloat(montantVal),
-        items: [{ item_name: 'Bon cadeau Chez Macha', price: parseFloat(montantVal), quantity: 1 }]
-      });
-
-      /* Envoi au backend PHP (silencieux — ne bloque pas l'affichage) */
-      var formData = new FormData(document.getElementById('bonCadeauForm'));
-      fetch('envoyer-bon-cadeau.php', {
-        method: 'POST',
-        body: formData
-      }).catch(function() {});
-    });
+      btn.textContent = 'Commande envoyée';
+    }
   </script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
   </script>
   <script>
     (function() {
@@ -524,10 +411,7 @@
         hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
       });
       document.querySelectorAll('.main-nav a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          nav.classList.remove('open');
-          hamburger.textContent = '☰';
-        });
+        link.addEventListener('click', function() { nav.classList.remove('open'); hamburger.textContent = '☰'; });
       });
       document.querySelectorAll('.main-nav a').forEach(function(link) {
         var page = window.location.pathname.split('/').pop() || 'index.html';

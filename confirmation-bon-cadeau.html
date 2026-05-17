@@ -32,7 +32,6 @@
     .page { max-width: 640px; }
     h1 span { color: var(--yellow); }
 
-    /* ── Hero confirmation ── */
     .confirm-hero {
       text-align: center;
       padding: 2.5rem 1.5rem;
@@ -58,131 +57,33 @@
       border-radius: 50%;
       background: rgba(244,194,26,0.15);
       border: 2px solid rgba(244,194,26,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       margin: 0 auto 1.25rem;
       color: var(--yellow);
     }
-    .confirm-hero h2 {
-      font-family: 'Jost', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .confirm-hero p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      max-width: 400px;
-      margin: 0 auto;
-    }
+    .confirm-hero h2 { font-family: 'Jost', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
+    .confirm-hero p { color: var(--text-muted); font-size: 0.9rem; max-width: 400px; margin: 0 auto; }
 
-    /* ── Section label ── */
-    .section-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
+    .section-label { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
 
-    /* ── Récapitulatif ── */
-    .recap-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .recap-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 0.55rem 0;
-      border-bottom: 1px solid rgba(244,194,26,0.07);
-    }
+    .recap-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem; }
+    .recap-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(244,194,26,0.07); }
     .recap-row:last-child { border-bottom: none; }
-    .recap-key {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-    .recap-val {
-      font-size: 0.9rem;
-      color: var(--text);
-      text-align: right;
-    }
-    .recap-val.highlight {
-      font-family: 'Jost', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--yellow);
-    }
+    .recap-key { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); flex-shrink: 0; }
+    .recap-val { font-size: 0.9rem; color: var(--text); text-align: right; }
+    .recap-val.highlight { font-family: 'Jost', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--yellow); }
 
-    /* ── Bloc virement ── */
-    .virement-card {
-      background: linear-gradient(135deg, #0a1a0a 0%, #0c1d33 100%);
-      border: 1.5px solid rgba(244,194,26,0.4);
-      border-radius: 14px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .virement-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(244,194,26,0.08);
-    }
+    .virement-card { background: linear-gradient(135deg, #0a1a0a 0%, #0c1d33 100%); border: 1.5px solid rgba(244,194,26,0.4); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem; }
+    .virement-row { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(244,194,26,0.08); }
     .virement-row:last-of-type { border-bottom: none; }
-    .virement-key {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .virement-val {
-      font-size: 1rem;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-    .virement-val.big {
-      font-family: 'Didact Gothic', monospace;
-      font-size: 1.15rem;
-      color: var(--yellow);
-      font-weight: 700;
-    }
+    .virement-key { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+    .virement-val { font-size: 1rem; color: var(--text); }
+    .virement-val.big { font-family: 'Didact Gothic', monospace; font-size: 1.15rem; color: var(--yellow); font-weight: 700; }
 
-    /* ── Notice ── */
-    .notice {
-      background: rgba(244,194,26,0.07);
-      border-left: 3px solid var(--yellow);
-      border-radius: 0 10px 10px 0;
-      padding: 0.85rem 1.1rem;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
+    .notice { background: rgba(244,194,26,0.07); border-left: 3px solid var(--yellow); border-radius: 0 10px 10px 0; padding: 0.85rem 1.1rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.5rem; }
     .notice strong { color: var(--text); }
 
-    /* ── CTA row ── */
-    .cta-row {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
+    .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
     @media (max-width: 768px) {
       html, body { overflow-x: hidden; max-width: 100%; }
@@ -196,7 +97,6 @@
   <link rel="stylesheet" href="/responsive.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="header-logo">
@@ -223,40 +123,41 @@
   <div class="page">
     <a href="bon-cadeau.html" class="back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
-      Retour au bon cadeau
+      Retour
     </a>
 
-    <!-- Hero -->
     <div class="confirm-hero">
       <div class="confirm-check">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h2>Commande enregistrée !</h2>
-      <p>Plus qu'une étape : effectuez votre virement bancaire avec la communication exacte ci-dessous.</p>
+      <p>Effectuez votre virement avec la communication exacte ci-dessous. Votre bon cadeau PDF vous sera envoyé sous 48h.</p>
     </div>
 
-    <!-- Récapitulatif commande -->
     <p class="section-label">Récapitulatif</p>
     <div class="recap-card">
+      <div class="recap-row" id="row-id" style="display:none">
+        <span class="recap-key">Référence</span>
+        <span class="recap-val" id="recap-id" style="font-family:'Didact Gothic',monospace;color:var(--yellow);font-size:0.88rem;">—</span>
+      </div>
       <div class="recap-row">
         <span class="recap-key">Montant</span>
         <span class="recap-val highlight" id="recap-montant">—</span>
       </div>
-      <div class="recap-row" id="recap-prenom-row" style="display:none">
+      <div class="recap-row" id="row-prenom" style="display:none">
         <span class="recap-key">Acheteur</span>
         <span class="recap-val" id="recap-prenom">—</span>
       </div>
-      <div class="recap-row" id="recap-dest-row" style="display:none">
+      <div class="recap-row" id="row-dest" style="display:none">
         <span class="recap-key">Destinataire</span>
         <span class="recap-val" id="recap-dest">—</span>
       </div>
-      <div class="recap-row" id="recap-msg-row" style="display:none">
+      <div class="recap-row" id="row-msg" style="display:none">
         <span class="recap-key">Message</span>
-        <span class="recap-val" id="recap-msg" style="font-style:italic;">—</span>
+        <span class="recap-val" id="recap-msg" style="font-style:italic;max-width:300px;text-align:right;">—</span>
       </div>
     </div>
 
-    <!-- Instructions de virement -->
     <p class="section-label">Instructions de virement</p>
     <div class="virement-card">
       <div class="virement-row">
@@ -278,7 +179,7 @@
     </div>
 
     <div class="notice">
-      <strong>Dès réception de votre virement</strong>, vous recevrez votre bon cadeau personnalisé par email sous <strong>48h</strong>. Une confirmation a été envoyée à votre adresse email.
+      <strong>Dès réception de votre virement</strong>, vous recevrez votre bon cadeau PDF personnalisé par email sous <strong>48h</strong>. Un email de confirmation a été envoyé à votre adresse.
     </div>
 
     <div class="cta-row">
@@ -290,62 +191,60 @@
   <footer style="margin-top:5rem;padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
     <p style="font-size:0.78rem;color:var(--text-muted);">© 2026 Chez Macha · ASBL Ririkou · BE 1033.391.775. Tous droits réservés.</p>
     <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
-      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
-      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
+      <a href="newsletter.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Contact & FAQ</a>
+      <a href="charte.html" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">Charte des valeurs</a>
+      <a href="mailto:info@chezmacha.be" style="font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='#fcbc1c'" onmouseout="this.style.color=''">info@chezmacha.be</a>
     </nav>
   </footer>
 
   <script>
     (function() {
-      var params = new URLSearchParams(window.location.search);
+      var params  = new URLSearchParams(window.location.search);
+      var id      = params.get('id');
       var montant = params.get('montant');
-      var prenom = params.get('prenom');
-      var prenomDest = params.get('prenom_destinataire');
+      var prenom  = params.get('prenom');
+      var dest    = params.get('prenom_destinataire');
       var message = params.get('message');
 
-      /* GA4 purchase event */
+      /* GA4 purchase */
       if (montant) {
         gtag('event', 'purchase', {
-          transaction_id: 'bon-cadeau-' + Date.now(),
+          transaction_id: id || ('bon-' + Date.now()),
           currency: 'EUR',
           value: parseFloat(montant),
-          items: [{
-            item_name: 'Bon cadeau Chez Macha',
-            price: parseFloat(montant),
-            quantity: 1
-          }]
+          items: [{ item_name: 'Bon cadeau Chez Macha', price: parseFloat(montant), quantity: 1 }]
         });
       }
 
-      /* Remplissage récapitulatif */
+      /* Remplissage */
+      if (id) {
+        document.getElementById('recap-id').textContent = id;
+        document.getElementById('row-id').style.display = 'flex';
+      }
+
       var montantStr = montant ? montant + '€' : '—';
       document.getElementById('recap-montant').textContent = montantStr;
       document.getElementById('virement-montant').textContent = montantStr;
 
-      var communication = montant && prenom
-        ? 'Bon cadeau ' + montant + '€ ' + prenom
-        : '—';
+      var communication = (montant && prenom) ? 'Bon cadeau ' + montant + '€ ' + prenom : '—';
       document.getElementById('virement-communication').textContent = communication;
 
       if (prenom) {
         document.getElementById('recap-prenom').textContent = prenom;
-        document.getElementById('recap-prenom-row').style.display = 'flex';
+        document.getElementById('row-prenom').style.display = 'flex';
       }
-      if (prenomDest) {
-        document.getElementById('recap-dest').textContent = prenomDest;
-        document.getElementById('recap-dest-row').style.display = 'flex';
+      if (dest) {
+        document.getElementById('recap-dest').textContent = dest;
+        document.getElementById('row-dest').style.display = 'flex';
       }
       if (message) {
         document.getElementById('recap-msg').textContent = message;
-        document.getElementById('recap-msg-row').style.display = 'flex';
+        document.getElementById('row-msg').style.display = 'flex';
       }
     })();
   </script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
   </script>
   <script>
     (function() {
@@ -357,10 +256,7 @@
         hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
       });
       document.querySelectorAll('.main-nav a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          nav.classList.remove('open');
-          hamburger.textContent = '☰';
-        });
+        link.addEventListener('click', function() { nav.classList.remove('open'); hamburger.textContent = '☰'; });
       });
       document.querySelectorAll('.main-nav a').forEach(function(link) {
         var page = window.location.pathname.split('/').pop() || 'index.html';
