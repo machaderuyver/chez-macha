@@ -1870,27 +1870,23 @@
       s.addEventListener('mouseout', function() { setStars(avisNote); });
       s.addEventListener('click', function() { avisNote = parseInt(s.dataset.val); });
     });
-    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXx9TvfEtrx4GWz33pZAO8nQ6uafk-GWiQV0L5aLn3vD0YxLMuzHG13KH8IsVF9Jg_0g/exec';
+    var SB_URL  = 'https://ctkfjzdnccnjaozygbeo.supabase.co';
+    var SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0a2ZqemRuY2NuamFvenlnYmVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NjA0MDgsImV4cCI6MjA5MjQzNjQwOH0.d6eBajjff3CThATGTW6JFj0QdIRrnuufMAUVkK_L11s';
+    var SB_HDR  = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' };
 
     function submitAvis() {
-      var nom = document.getElementById('avisNom').value.trim();
+      var nom   = document.getElementById('avisNom').value.trim();
       var texte = document.getElementById('avisTexte').value.trim();
       if (!texte) { document.getElementById('avisTexte').focus(); return; }
-      var avisData = { prenom: nom || 'Anonyme', note: avisNote, avis: texte, date: new Date().toLocaleDateString('fr-BE') };
-      var payload = JSON.stringify({ prenom: avisData.prenom, note: avisNote, avis: texte });
-      // Sauvegarder localement pour persistance immédiate
-      sauvegarderAvisLocal(avisData);
-      // Afficher immédiatement (optimiste) puis envoyer en arrière-plan
-      afficherAvis(avisData);
+      var record = { prenom: nom || 'Anonyme', note: avisNote, avis: texte };
       closeAvisModal();
       document.getElementById('avisNom').value = '';
       document.getElementById('avisTexte').value = '';
-      // Envoi fire-and-forget
-      try {
-        navigator.sendBeacon(SCRIPT_URL, new Blob([payload], { type: 'text/plain' }));
-      } catch(e) {
-        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: payload }).catch(function(){});
-      }
+      fetch(SB_URL + '/rest/v1/reviews', {
+        method: 'POST',
+        headers: Object.assign({}, SB_HDR, { 'Prefer': 'return=minimal' }),
+        body: JSON.stringify(record)
+      }).catch(function(e) { console.warn('[Chez Macha] Envoi avis échoué :', e); });
     }
 
     function starHtml(note) {
@@ -1906,60 +1902,32 @@
         + '</div>';
     }
 
-    function parseFrDate(str) {
-      if (!str) return new Date(0);
-      var p = String(str).split('/');
-      if (p.length === 3) return new Date(p[2], p[1] - 1, p[0]);
-      return new Date(str);
-    }
-
-    function renderAvisList(reviews) {
-      if (!reviews) return;
-      // Accepter tableau direct ou {data:[...]} ou {reviews:[...]}
-      var list = Array.isArray(reviews) ? reviews
-                 : Array.isArray(reviews.data) ? reviews.data
-                 : Array.isArray(reviews.reviews) ? reviews.reviews
-                 : [];
-      if (!list.length) return;
-      var track = document.getElementById('tc-track');
-      if (!track) return;
-      // Filtre : exclure seulement ce qui est explicitement refusé
-      var filtered = list.filter(function(r) {
-        var a = r.approuve;
-        return a !== false && a !== 'FALSE' && a !== 0 && a !== '0';
-      });
-      if (!filtered.length) return;
-      // Tri par date décroissante (format fr-BE : dd/mm/yyyy)
-      filtered.sort(function(a, b) {
-        return parseFrDate(b.date) - parseFrDate(a.date);
-      });
-      track.innerHTML = filtered.map(bubbleHtml).join('');
-      if (typeof tcRebuild === 'function') tcRebuild();
-    }
-
-    function afficherAvis(r) {
-      var track = document.getElementById('tc-track');
-      if (!track) return;
-      track.insertAdjacentHTML('afterbegin', bubbleHtml(r));
-      if (typeof tcRebuild === 'function') tcRebuild();
-    }
-
-    function sauvegarderAvisLocal(avis) {
-      try {
-        var stored = JSON.parse(localStorage.getItem('chezmacha_avis') || '[]');
-        stored.unshift(avis);
-        localStorage.setItem('chezmacha_avis', JSON.stringify(stored.slice(0, 20)));
-      } catch(e) {}
+    function bubbleFromSB(r) {
+      var n = Math.max(1, Math.min(5, r.note || 5));
+      var dateStr = r.created_at ? new Date(r.created_at).toLocaleDateString('fr-BE') : '';
+      return '<div class="testimonial-bubble">'
+        + '<div class="testimonial-stars">' + '★'.repeat(n) + '☆'.repeat(5 - n) + '</div>'
+        + '<p class="testimonial-text">« ' + r.avis + ' »</p>'
+        + '<span class="testimonial-author">' + r.prenom + (dateStr ? ' — ' + dateStr : '') + '</span>'
+        + '</div>';
     }
 
     function chargerAvis() {
-      fetch(SCRIPT_URL)
-        .then(function(resp) {
-          if (!resp.ok) throw new Error('HTTP ' + resp.status);
-          return resp.json();
-        })
-        .then(function(data) { renderAvisList(data); })
-        .catch(function(err) { console.warn('[Chez Macha] Chargement avis échoué :', err); });
+      fetch(SB_URL + '/rest/v1/reviews?approuve=eq.true&order=created_at.desc', {
+        headers: SB_HDR
+      })
+      .then(function(resp) {
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        return resp.json();
+      })
+      .then(function(rows) {
+        if (!rows || !rows.length) return;
+        var track = document.getElementById('tc-track');
+        if (!track) return;
+        track.innerHTML = rows.map(bubbleFromSB).join('');
+        if (typeof tcRebuild === 'function') tcRebuild();
+      })
+      .catch(function(err) { console.warn('[Chez Macha] Chargement avis échoué :', err); });
     }
     chargerAvis();
 
