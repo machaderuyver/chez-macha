@@ -1049,7 +1049,7 @@
       .extra-section { padding: 1.25rem 1rem; border-bottom: 1px solid var(--border); max-width: 100%; }
       .quote-universelle { padding: 1rem 1rem; margin: 1.25rem 0; max-width: 100%; }
       .testimonials { padding: 1.25rem 1rem 0; max-width: 100%; overflow: hidden; }
-      .testimonials-slide.active { grid-template-columns: 1fr 1fr; }
+      .tc-track .testimonial-bubble { flex: 0 0 100% !important; }
       .testimonial-bubble { padding: 0.85rem 1rem; }
       .stats-bar { gap: 0.75rem !important; padding: 0.75rem 0.5rem !important; flex-wrap: nowrap; overflow-x: auto; }
       .gallery-section { padding: 1.25rem 1rem 0; max-width: 100%; }
@@ -1081,23 +1081,48 @@
       padding: 1.5rem 1.5rem 0;
       border-top: 1px solid var(--border);
     }
-    .testimonials-track {
+    .tc-wrapper {
       position: relative;
-      min-height: 110px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       margin-top: 1rem;
     }
-    .testimonials-slide {
-      display: none;
+    .tc-viewport {
+      overflow: hidden;
+      flex: 1;
+    }
+    .tc-track {
+      display: flex;
       gap: 1.25rem;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
-    .testimonials-slide.active {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      animation: fadeSlide 0.4s ease;
+    .tc-track .testimonial-bubble {
+      flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+      min-width: 0;
     }
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .tc-arrow {
+      background: rgba(7,19,38,0.75);
+      border: 1px solid rgba(244,194,26,0.35);
+      color: #F4C21A;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .tc-arrow:hover { background: rgba(244,194,26,0.15); }
+    .tc-arrow:disabled { opacity: 0.25; cursor: default; }
+    @media (max-width: 900px) {
+      .tc-track .testimonial-bubble { flex: 0 0 calc((100% - 1.25rem) / 2); }
+    }
+    @media (max-width: 580px) {
+      .tc-track .testimonial-bubble { flex: 0 0 100%; }
+      .tc-arrow { width: 28px; height: 28px; font-size: 1rem; }
     }
     .testimonial-bubble {
       background: var(--bg-card);
@@ -1429,41 +1454,43 @@
       </div>
     </div>
 
-    <div class="testimonials-track" id="testimonials-track">
-      <div class="testimonials-slide active">
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Une soirée incroyable, l'ambiance était au top et les humoristes vraiment excellents. On reviendra sans hésiter ! »</p>
-          <span class="testimonial-author">Sophie M. — 12/04/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
-          <span class="testimonial-author">Thomas L. — 28/03/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
-          <span class="testimonial-author">Laura D. — 15/03/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« J'y étais avec des collègues, tout le monde a adoré. Une vraie découverte, on ne s'attendait pas à autant de talent ! »</p>
-          <span class="testimonial-author">Marc V. — 01/03/2026</span>
+    <div class="tc-wrapper" id="tc-wrapper">
+      <button class="tc-arrow" id="tc-prev" aria-label="Précédent">&#8249;</button>
+      <div class="tc-viewport" id="tc-viewport">
+        <div class="tc-track" id="tc-track">
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« Une soirée incroyable, l'ambiance était au top et les humoristes vraiment excellents. On reviendra sans hésiter ! »</p>
+            <span class="testimonial-author">Sophie M. — 12/04/2026</span>
+          </div>
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
+            <span class="testimonial-author">Thomas L. — 28/03/2026</span>
+          </div>
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
+            <span class="testimonial-author">Laura D. — 15/03/2026</span>
+          </div>
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« J'y étais avec des collègues, tout le monde a adoré. Une vraie découverte, on ne s'attendait pas à autant de talent ! »</p>
+            <span class="testimonial-author">Marc V. — 01/03/2026</span>
+          </div>
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« Une énergie folle dans la salle, des artistes surprenants et une Macha qui met tout le monde à l'aise dès la première minute. »</p>
+            <span class="testimonial-author">Céline R. — 18/02/2026</span>
+          </div>
+          <div class="testimonial-bubble">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">« On cherchait une sortie originale, on a trouvé bien plus que ça. Le concept est unique, l'humour est bon, et l'endroit était parfait. »</p>
+            <span class="testimonial-author">Julien K. — 05/02/2026</span>
+          </div>
         </div>
       </div>
-      <div class="testimonials-slide">
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Une énergie folle dans la salle, des artistes surprenants et une Macha qui met tout le monde à l'aise dès la première minute. »</p>
-          <span class="testimonial-author">Céline R. — 18/02/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« On cherchait une sortie originale, on a trouvé bien plus que ça. Le concept est unique, l'humour est bon, et l'endroit était parfait. »</p>
-          <span class="testimonial-author">Julien K. — 05/02/2026</span>
-        </div>
-      </div>
+      <button class="tc-arrow" id="tc-next" aria-label="Suivant">&#8250;</button>
     </div>
     <div class="testimonials-dots" id="testimonials-dots"></div>
 
@@ -1579,42 +1606,73 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Carrousel témoignages (dynamique, réinitialisable)
-    var _carouselTimer = null;
-    var _carouselCurrent = 0;
-    function reinitCarousel() {
-      clearInterval(_carouselTimer);
-      _carouselCurrent = 0;
-      var slides = document.querySelectorAll('.testimonials-slide');
-      var dotsEl = document.getElementById('testimonials-dots');
-      if (!slides.length) { dotsEl.innerHTML = ''; return; }
-      // Reset active
-      slides.forEach(function(s, i) { s.classList.toggle('active', i === 0); });
-      // Rebuild dots
-      dotsEl.innerHTML = '';
-      slides.forEach(function(_, i) {
-        var dot = document.createElement('button');
-        dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Témoignage ' + (i + 1));
-        dot.addEventListener('click', function() { carouselGoTo(i); });
-        dotsEl.appendChild(dot);
-      });
-      if (slides.length > 1) {
-        _carouselTimer = setInterval(function() { carouselGoTo(_carouselCurrent + 1); }, 4500);
+    // Carrousel témoignages — sliding
+    (function() {
+      var track    = document.getElementById('tc-track');
+      var viewport = document.getElementById('tc-viewport');
+      var dotsEl   = document.getElementById('testimonials-dots');
+      var btnPrev  = document.getElementById('tc-prev');
+      var btnNext  = document.getElementById('tc-next');
+      if (!track) return;
+
+      var cards    = track.querySelectorAll('.testimonial-bubble');
+      var total    = cards.length;
+      var current  = 0;
+      var timer    = null;
+      var GAP      = 20; // 1.25rem
+
+      function visibleCount() {
+        var w = viewport.offsetWidth;
+        if (w >= 900) return 3;
+        if (w >= 580) return 2;
+        return 1;
       }
-    }
-    function carouselGoTo(n) {
-      var slides = document.querySelectorAll('.testimonials-slide');
-      var dotsEl = document.getElementById('testimonials-dots');
-      if (!slides.length) return;
-      slides[_carouselCurrent].classList.remove('active');
-      if (dotsEl.children[_carouselCurrent]) dotsEl.children[_carouselCurrent].classList.remove('active');
-      _carouselCurrent = (n + slides.length) % slides.length;
-      slides[_carouselCurrent].classList.add('active');
-      if (dotsEl.children[_carouselCurrent]) dotsEl.children[_carouselCurrent].classList.add('active');
-      clearInterval(_carouselTimer);
-      _carouselTimer = setInterval(function() { carouselGoTo(_carouselCurrent + 1); }, 4500);
-    }
+
+      function maxIndex() { return Math.max(0, total - visibleCount()); }
+
+      function goTo(n) {
+        current = Math.max(0, Math.min(n, maxIndex()));
+        var cardW = (viewport.offsetWidth - GAP * (visibleCount() - 1)) / visibleCount();
+        track.style.transform = 'translateX(-' + current * (cardW + GAP) + 'px)';
+        btnPrev.disabled = current === 0;
+        btnNext.disabled = current === maxIndex();
+        dotsEl.querySelectorAll('.testimonials-dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        var count = maxIndex() + 1;
+        for (var i = 0; i < count; i++) {
+          (function(idx) {
+            var dot = document.createElement('button');
+            dot.className = 'testimonials-dot' + (idx === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Avis ' + (idx + 1));
+            dot.addEventListener('click', function() { goTo(idx); resetTimer(); });
+            dotsEl.appendChild(dot);
+          })(i);
+        }
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(function() {
+          goTo(current >= maxIndex() ? 0 : current + 1);
+        }, 4000);
+      }
+
+      btnPrev.addEventListener('click', function() { goTo(current - 1); resetTimer(); });
+      btnNext.addEventListener('click', function() { goTo(current + 1); resetTimer(); });
+      viewport.addEventListener('mouseenter', function() { clearInterval(timer); });
+      viewport.addEventListener('mouseleave', resetTimer);
+
+      window.addEventListener('resize', function() { buildDots(); goTo(current); });
+
+      buildDots();
+      goTo(0);
+      resetTimer();
+    })();
 
     // FAQ accordion
     function toggleFaq(btn) {
