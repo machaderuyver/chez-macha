@@ -1906,18 +1906,32 @@
         + '</div>';
     }
 
+    function parseFrDate(str) {
+      if (!str) return new Date(0);
+      var p = String(str).split('/');
+      if (p.length === 3) return new Date(p[2], p[1] - 1, p[0]);
+      return new Date(str);
+    }
+
     function renderAvisList(reviews) {
-      if (!reviews || !reviews.length) return;
+      if (!reviews) return;
+      // Accepter tableau direct ou {data:[...]} ou {reviews:[...]}
+      var list = Array.isArray(reviews) ? reviews
+                 : Array.isArray(reviews.data) ? reviews.data
+                 : Array.isArray(reviews.reviews) ? reviews.reviews
+                 : [];
+      if (!list.length) return;
       var track = document.getElementById('tc-track');
       if (!track) return;
-      // Filtre : n'afficher que approuvé = true (si le champ existe)
-      var filtered = reviews.filter(function(r) {
-        return r.approuve === undefined || r.approuve === true || r.approuve === 'TRUE' || r.approuve === 1;
+      // Filtre : exclure seulement ce qui est explicitement refusé
+      var filtered = list.filter(function(r) {
+        var a = r.approuve;
+        return a !== false && a !== 'FALSE' && a !== 0 && a !== '0';
       });
       if (!filtered.length) return;
-      // Tri par date décroissante
+      // Tri par date décroissante (format fr-BE : dd/mm/yyyy)
       filtered.sort(function(a, b) {
-        return new Date(b.date) - new Date(a.date);
+        return parseFrDate(b.date) - parseFrDate(a.date);
       });
       track.innerHTML = filtered.map(bubbleHtml).join('');
       if (typeof tcRebuild === 'function') tcRebuild();
@@ -1939,11 +1953,13 @@
     }
 
     function chargerAvis() {
-      // Charger depuis Google Sheets
       fetch(SCRIPT_URL)
-        .then(function(r) { return r.json(); })
-        .then(function(reviews) { if (reviews && reviews.length) renderAvisList(reviews); })
-        .catch(function() {});
+        .then(function(resp) {
+          if (!resp.ok) throw new Error('HTTP ' + resp.status);
+          return resp.json();
+        })
+        .then(function(data) { renderAvisList(data); })
+        .catch(function(err) { console.warn('[Chez Macha] Chargement avis échoué :', err); });
     }
     chargerAvis();
 
