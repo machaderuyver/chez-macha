@@ -1053,6 +1053,7 @@
       .extra-section { padding: 1.25rem 1rem; border-bottom: 1px solid var(--border); max-width: 100%; }
       .quote-universelle { padding: 1rem 1rem; margin: 1.25rem 0; max-width: 100%; }
       .testimonials { padding: 1.25rem 1rem 0; max-width: 100%; overflow: hidden; }
+      .testimonials-slide.active { grid-template-columns: 1fr 1fr; }
       .testimonial-bubble { padding: 0.85rem 1rem; }
       .stats-bar { gap: 0.75rem !important; padding: 0.75rem 0.5rem !important; flex-wrap: nowrap; overflow-x: auto; }
       .gallery-section { padding: 1.25rem 1rem 0; max-width: 100%; }
@@ -1095,7 +1096,7 @@
     }
     .testimonials-slide.active {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       animation: fadeSlide 0.4s ease;
     }
     @keyframes fadeSlide {
@@ -1441,8 +1442,6 @@
           <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
           <span class="testimonial-author">Thomas L. — 28/03/2026</span>
         </div>
-      </div>
-      <div class="testimonials-slide">
         <div class="testimonial-bubble">
           <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
