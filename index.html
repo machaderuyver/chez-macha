@@ -639,8 +639,8 @@
       border: 1px solid var(--border);
     }
 
-    /* Bandeau SOLD OUT en coin — visible sur tous écrans */
-    .event-featured::before {
+    /* Bandeau SOLD OUT en coin — uniquement si classe is-soldout */
+    .event-featured.is-soldout::before {
       content: '🔴 SOLD OUT';
       position: absolute;
       top: 10px;
@@ -660,7 +660,7 @@
     }
 
     @media (max-width: 768px) {
-      .event-featured::before {
+      .event-featured.is-soldout::before {
         font-size: 0.55rem;
         top: 8px;
         right: -30px;
@@ -1389,8 +1389,11 @@
 
     <!-- Colonne droite : Vauxhall Summer -->
     <div class="col-right">
-      <div style="border-radius:14px;overflow:hidden;box-shadow:0 0 18px rgba(244,194,26,0.15);">
+      <div style="position:relative;border-radius:14px;overflow:hidden;box-shadow:0 0 18px rgba(244,194,26,0.15);">
         <img src="encart_vauxhall_summer.jpg" alt="Vauxhall Summer" style="width:100%;display:block;border-radius:14px;" />
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0.75rem 1rem;background:linear-gradient(0deg,rgba(7,19,38,0.88) 0%,transparent 100%);border-radius:0 0 14px 14px;">
+          <span style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;background:var(--yellow);color:#071326;border-radius:5px;padding:0.25em 0.75em;">🎟 Billetterie bientôt dispo</span>
+        </div>
       </div>
     </div>
   </div>
@@ -2049,6 +2052,7 @@
 
       var zone = document.getElementById('featured-next-event');
       if (!zone || !next) return;
+      zone.classList.toggle('is-soldout', !!next.soldout);
 
       // Formater la date en français
       var months = ['jan.','fév.','mars','avr.','mai','juin','juil.','août','sep.','oct.','nov.','déc.'];
