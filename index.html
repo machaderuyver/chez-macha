@@ -1053,7 +1053,7 @@
       .extra-section { padding: 1.25rem 1rem; border-bottom: 1px solid var(--border); max-width: 100%; }
       .quote-universelle { padding: 1rem 1rem; margin: 1.25rem 0; max-width: 100%; }
       .testimonials { padding: 1.25rem 1rem 0; max-width: 100%; overflow: hidden; }
-      .testimonials-slide.active { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr !important; }
       .testimonial-bubble { padding: 0.85rem 1rem; }
       .stats-bar { gap: 0.75rem !important; padding: 0.75rem 0.5rem !important; flex-wrap: nowrap; overflow-x: auto; }
       .gallery-section { padding: 1.25rem 1rem 0; max-width: 100%; }
@@ -1433,43 +1433,38 @@
       </div>
     </div>
 
-    <div class="testimonials-track" id="testimonials-track">
-      <div class="testimonials-slide active">
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Une soirée incroyable, l'ambiance était au top et les humoristes vraiment excellents. On reviendra sans hésiter ! »</p>
-          <span class="testimonial-author">Sophie M. — 12/04/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
-          <span class="testimonial-author">Thomas L. — 28/03/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
-          <span class="testimonial-author">Laura D. — 15/03/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« J'y étais avec des collègues, tout le monde a adoré. Une vraie découverte, on ne s'attendait pas à autant de talent ! »</p>
-          <span class="testimonial-author">Marc V. — 01/03/2026</span>
-        </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:1rem;" class="testimonials-grid">
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Une soirée incroyable, l'ambiance était au top et les humoristes vraiment excellents. On reviendra sans hésiter ! »</p>
+        <span class="testimonial-author">Sophie M. — 12/04/2026</span>
       </div>
-      <div class="testimonials-slide">
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« Une énergie folle dans la salle, des artistes surprenants et une Macha qui met tout le monde à l'aise dès la première minute. »</p>
-          <span class="testimonial-author">Céline R. — 18/02/2026</span>
-        </div>
-        <div class="testimonial-bubble">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">« On cherchait une sortie originale, on a trouvé bien plus que ça. Le concept est unique, l'humour est bon, et l'endroit était parfait. »</p>
-          <span class="testimonial-author">Julien K. — 05/02/2026</span>
-        </div>
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Macha sait créer une atmosphère unique. On rit, on se sent bien, c'est exactement ce dont on avait besoin. »</p>
+        <span class="testimonial-author">Thomas L. — 28/03/2026</span>
+      </div>
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Le meilleur comedy club de Bruxelles, sans aucun doute. Des artistes de qualité dans des lieux super sympas. »</p>
+        <span class="testimonial-author">Laura D. — 15/03/2026</span>
+      </div>
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« J'y étais avec des collègues, tout le monde a adoré. Une vraie découverte, on ne s'attendait pas à autant de talent ! »</p>
+        <span class="testimonial-author">Marc V. — 01/03/2026</span>
+      </div>
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« Une énergie folle dans la salle, des artistes surprenants et une Macha qui met tout le monde à l'aise dès la première minute. »</p>
+        <span class="testimonial-author">Céline R. — 18/02/2026</span>
+      </div>
+      <div class="testimonial-bubble">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">« On cherchait une sortie originale, on a trouvé bien plus que ça. Le concept est unique, l'humour est bon, et l'endroit était parfait. »</p>
+        <span class="testimonial-author">Julien K. — 05/02/2026</span>
       </div>
     </div>
-    <div class="testimonials-dots" id="testimonials-dots"></div>
 
     <!-- CTA avis -->
     <div style="display:block;margin-top:1.5rem;cursor:pointer;" onclick="openAvisModal()" onmouseover="this.querySelector('.avis-card').style.borderColor='rgba(244,194,26,0.55)'" onmouseout="this.querySelector('.avis-card').style.borderColor='rgba(244,194,26,0.2)'">
