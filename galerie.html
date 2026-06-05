@@ -570,6 +570,35 @@
     </div>
     <div class="carousel-counter" id="standup-carouselCounter"><span id="standup-carouselCurrent">1</span> / <span id="standup-carouselTotal"></span></div>
 
+    <!-- ── ALEX VIZOREK — 2 1/2 ── -->
+    <p class="section-label">Le spectacle</p>
+    <h2 class="section-title">Alex Vizorek — <span style="color:var(--yellow);">2 1/2</span></h2>
+    <p style="font-family:'Jost',sans-serif;font-size:0.78rem;color:var(--text-muted);margin-bottom:1.5rem;">📸 Photos : <a href="https://www.instagram.com/charly_creative_/" target="_blank" style="color:var(--yellow);text-decoration:none;">@charly_creative_</a> — Charly Balzat</p>
+
+    <div class="carousel-wrap" id="vizorek-carouselWrap">
+      <div class="carousel-track" id="vizorek-carouselTrack">
+
+        <div class="carousel-slide active" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0087.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0112.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0273.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0282.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0328.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0344.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0441.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0622.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0628.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0632.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0746.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0976.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_0980.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+        <div class="carousel-slide" onclick="openLightboxSrc(this)"><img src="gallery-vizorek/DSC_1000.jpg" alt="Alex Vizorek — 2 1/2" loading="lazy" /></div>
+
+      </div>
+      <button class="carousel-btn prev" id="vizorek-carouselPrev" aria-label="Précédent">&#8592;</button>
+      <button class="carousel-btn next" id="vizorek-carouselNext" aria-label="Suivant">&#8594;</button>
+    </div>
+    <div class="carousel-counter" id="vizorek-carouselCounter"><span id="vizorek-carouselCurrent">1</span> / <span id="vizorek-carouselTotal"></span></div>
+
     <!-- ── PHOTOS DE GROUPE (mises en avant) ── -->
     <p class="section-label">Les soirées</p>
     <h2 class="section-title">Ils sont venus <span style="color:var(--yellow);">Chez Macha</span></h2>
@@ -858,6 +887,41 @@
 
       // Pause on hover
       var wrap = document.getElementById('carouselWrap');
+      wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
+      wrap.addEventListener('mouseleave', resetTimer);
+
+      resetTimer();
+    })();
+
+    // ── Carousel Alex Vizorek — 2 1/2 ──
+    (function() {
+      var slides = Array.from(document.querySelectorAll('#vizorek-carouselTrack .carousel-slide'));
+      var currentEl = document.getElementById('vizorek-carouselCurrent');
+      var totalEl = document.getElementById('vizorek-carouselTotal');
+      var current = 0;
+      var timer;
+
+      totalEl.textContent = slides.length;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        currentEl.textContent = current + 1;
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, 4000);
+      }
+
+      document.getElementById('vizorek-carouselNext').addEventListener('click', function() { next(); resetTimer(); });
+      document.getElementById('vizorek-carouselPrev').addEventListener('click', function() { prev(); resetTimer(); });
+
+      var wrap = document.getElementById('vizorek-carouselWrap');
       wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
       wrap.addEventListener('mouseleave', resetTimer);
 
