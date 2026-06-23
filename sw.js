@@ -1,4 +1,4 @@
-const CACHE = 'chezmacha-v2';
+const CACHE = 'chezmacha-v3';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE = [
@@ -33,15 +33,14 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE).then(cache => cache.put(event.request, clone));
-        }
-        return response;
-      }).catch(() => caches.match(OFFLINE_URL));
-    })
+    fetch(event.request).then(response => {
+      if (response.ok) {
+        const clone = response.clone();
+        caches.open(CACHE).then(cache => cache.put(event.request, clone));
+      }
+      return response;
+    }).catch(() =>
+      caches.match(event.request).then(cached => cached || caches.match(OFFLINE_URL))
+    )
   );
 });
