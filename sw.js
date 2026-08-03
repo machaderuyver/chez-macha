@@ -1,4 +1,4 @@
-const CACHE = 'chezmacha-v3';
+const CACHE = 'chezmacha-v4';
 const OFFLINE_URL = '/index.html';
 
 const PRECACHE = [
