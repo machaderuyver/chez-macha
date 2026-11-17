@@ -126,40 +126,42 @@
       box-shadow: 0 0 22px rgba(244,194,26,0.35);
       transform: translateY(-3px);
     }
+    /* Cartes alignées : photo / nom / rôle / phrase au même niveau (subgrid) */
+    .team-card { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 0; }
+    .team-info { display: contents; }
+    .team-info > * { padding: 0 0.75rem; }
+    .team-info > .team-name { padding-top: 0.6rem; align-self: end; }
+    .team-info > .team-subtitle { padding-bottom: 0.75rem; min-height: calc(2 * 1.35em + 0.75rem); box-sizing: content-box; }
     .team-photo-wrap {
+      position: relative;
       margin: 8px 8px 0;
-      border-radius: 8px;
-      border: 3px solid #ffffff;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      border: 4px solid #ffffff;
       overflow: hidden;
-      height: 200px;
     }
     .team-photo {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
-      object-position: center top;
       display: block;
     }
-    .team-photo.zoom {
-      object-position: center top;
-    }
-    .team-avatar {
-      width: calc(100% - 16px);
-      aspect-ratio: 1 / 1;
+    /* responsive.css force height:auto sur les img : on reprend la main */
+    .team-photo-wrap img.team-photo { width: 100% !important; height: 100% !important; max-width: none; }
+    .team-photo-wrap--initiales {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Jost', sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--yellow);
-      background: linear-gradient(135deg, #0e1220 0%, #141828 100%);
-      margin: 8px auto 0;
-      border-radius: 8px;
-      border: 3px solid #ffffff;
+      background: #F4C21A;
     }
-    .team-info {
-      padding: 0.6rem 0.75rem 0.75rem;
+    .team-photo-wrap--initiales span {
+      font-family: 'Jost', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #071326;
     }
     .team-name {
       font-family: 'Jost', sans-serif;
@@ -612,7 +614,7 @@
         <div class="team-grid">
 
         <div class="team-card">
-          <div class="team-photo-wrap"><img class="team-photo zoom" src="macha.jpg" alt="Macha De Ruyver" /></div>
+          <div class="team-photo-wrap"><img class="team-photo" src="images-2027/equipe-macha.jpg" alt="Macha De Ruyver" style="object-position: center 30%;" /></div>
           <div class="team-info">
             <p class="team-name">Macha De Ruyver</p>
             <p class="team-role">Présidente</p>
@@ -621,7 +623,7 @@
         </div>
 
         <div class="team-card">
-          <div class="team-photo-wrap"><img class="team-photo" src="sasha.jpg" alt="Sasha De Ruyver" style="object-position: center 30%;" /></div>
+          <div class="team-photo-wrap"><img class="team-photo" src="sasha.jpg" alt="Sasha De Ruyver" style="object-position: center 46%;" /></div>
           <div class="team-info">
             <p class="team-name">Sasha De Ruyver</p>
             <p class="team-role">Trésorier</p>
@@ -630,7 +632,7 @@
         </div>
 
         <div class="team-card">
-          <div class="team-photo-wrap"><img class="team-photo" src="marie-angelevan.png" alt="Marie-Ange Levan" style="object-position: center 25%;" /></div>
+          <div class="team-photo-wrap"><img class="team-photo" src="marie-angelevan.png" alt="Marie-Ange Levan" style="object-position: center 40%;" /></div>
           <div class="team-info">
             <p class="team-name">Marie-Ange Levan</p>
             <p class="team-role">Administratrice</p>
@@ -639,7 +641,8 @@
         </div>
 
         <div class="team-card">
-          <div class="team-avatar">JZ</div>
+          <!-- ✏️ Photo de Jamal : déposer images-2027/equipe-jamal.jpg — les initiales disparaissent automatiquement -->
+          <div class="team-photo-wrap team-photo-wrap--initiales"><span aria-hidden="true">JZ</span><img class="team-photo" src="images-2027/equipe-jamal.jpg" alt="Jamal Zeffri" onerror="this.remove()" /></div>
           <div class="team-info">
             <p class="team-name">Jamal Zeffri</p>
             <p class="team-role">Administrateur</p>
